@@ -1,6 +1,6 @@
 <?php
 
-include_once __DIR__.'/../../core.php';
+include_once __DIR__."/../../core.php";
 
 ?><form action="editor.php?id_module=$id_module$" method="post">
 	<input type="hidden" name="op" value="add">
