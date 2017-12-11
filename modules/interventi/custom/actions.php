@@ -173,7 +173,6 @@ switch (post('op')) {
         // Salvataggio modifiche intervento
         $dbo->update('in_interventi', [
             'data_richiesta' => $data_richiesta,
-            'codice'=> $codice,
             'richiesta' => $richiesta,
             'descrizione' => post('descrizione'),
             'informazioniaggiuntive' => post('informazioniaggiuntive'),
