@@ -199,11 +199,11 @@ if (empty($new_codice)) {
 			<!-- RIGA 5 -->
 			<div class="row">
 				<div class="col-md-12">
-					{[ "type": "select", "label": "<?php echo tr('Tecnici'); ?>", "multiple": "1", "name": "idtecnico[]", "required": 1, "ajax-source": "tecnici", "value": "<?php echo $idtecnico; ?>" ]}
+					{[ "type": "select", "label": "<?php echo tr('Tecnici'); ?>", "multiple": "1", "name": "idtecnico[]", "required": 0, "ajax-source": "tecnici", "value": "<?php echo $idtecnico; ?>" ]}
 				</div>
 
 				<div class="col-md-12">
-					{[ "type": "textarea", "label": "<?php echo tr('Richiesta'); ?>", "name": "richiesta", "required": 1, "value": "<?php echo $richiesta; ?>", "extra": "style='max-height:80px; ' " ]}
+					{[ "type": "textarea", "label": "<?php echo tr('Richiesta'); ?>", "name": "richiesta", "required": 0, "value": "<?php echo $richiesta; ?>", "extra": "style='max-height:80px; ' " ]}
 				</div>
 
 				<?php
