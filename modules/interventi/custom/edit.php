@@ -131,6 +131,11 @@ if (empty($records[0]['firma_file'])) {
 				<div class="col-md-3">
 					{[ "type": "date", "label": "<?php echo tr('Data richiesta'); ?>", "name": "data_richiesta", "required": 1, "value": "$data_richiesta$" ]}
 				</div>
+
+        <div class="col-md-3">
+          {[ "type": "text", "label": "<?php echo tr('Num.Rapportino'); ?>", "name": "data_richiesta", "required": 0, "value": "$num_rapp$" ]}
+        </div>
+
 			</div>
 
 
