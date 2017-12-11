@@ -60,6 +60,12 @@ if (empty($records[0]['firma_file'])) {
 				<div class="col-md-3">
 					{[ "type": "select", "label": "<?php echo tr('Referente'); ?>", "name": "idreferente", "value": "$idreferente$", "ajax-source": "referenti" ]}
 				</div>
+
+				<div class="col-md-3">
+                    {[ "type": "select", "label": "<?php echo tr('Impianto'); ?>", "multiple": 1, "name": "idimpianti[]", "value": "<?php echo $idimpianto; ?>", "placeholder": "<?php echo tr('Seleziona prima un cliente'); ?>...", "ajax-source": "impianti" ]}
+				</div>
+
+
 			</div>
 
 
@@ -147,7 +153,7 @@ if (empty($records[0]['firma_file'])) {
 			<!-- RIGA 5 -->
 			<div class="row">
 				<div class="col-md-12">
-					{[ "type": "textarea", "label": "<?php echo tr('Richiesta'); ?>", "name": "richiesta", "required": 0, "class": "autosize", "value": "$richiesta$", "extra": "rows='5'" ]}
+					{[ "type": "textarea", "label": "<?php echo tr('Richiesta'); ?>", "name": "richiesta", "required": 1, "class": "autosize", "value": "$richiesta$", "extra": "rows='5'" ]}
 				</div>
 
 				<div class="col-md-12">
@@ -285,6 +291,13 @@ if (empty($records[0]['firma_file'])) {
 			$('#idpreventivo').val('').trigger('change');
 			$('input[name=idcontratto_riga]').val('');
 		}
+	});
+
+    $('#idimpianti').change( function(){
+		session_set('superselect,marticola', $(this).val(), 0);
+
+        $("#componenti").prop("disabled", !$(this).val() ? true : false);
+        $("#componenti").selectReset();
 	});
 
 	$('#matricola').change( function(){
