@@ -125,7 +125,7 @@ if (empty($records[0]['firma_file'])) {
 			<!-- RIGA 3 -->
 			<div class="row">
 				<div class="col-md-3">
-					{[ "type": "span", "label": "<?php echo tr('Codice'); ?>", "name": "codice", "value": "$codice$" ]}
+					{[ "type": "text", "label": "<?php echo tr('Codice'); ?>", "name": "codice", "required": 1, "value": "$codice$" ]}
 				</div>
 
 				<div class="col-md-3">
