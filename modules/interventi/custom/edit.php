@@ -153,7 +153,7 @@ if (empty($records[0]['firma_file'])) {
 			<!-- RIGA 5 -->
 			<div class="row">
 				<div class="col-md-12">
-					{[ "type": "textarea", "label": "<?php echo tr('Richiesta'); ?>", "name": "richiesta", "required": 1, "class": "autosize", "value": "$richiesta$", "extra": "rows='5'" ]}
+					{[ "type": "textarea", "label": "<?php echo tr('Richiesta'); ?>", "name": "richiesta", "required": 0, "class": "autosize", "value": "$richiesta$", "extra": "rows='5'" ]}
 				</div>
 
 				<div class="col-md-12">
