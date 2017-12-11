@@ -11,6 +11,9 @@ switch (post('op')) {
         $idpreventivo = post('idpreventivo');
         $idcontratto = post('idcontratto');
         $idcontratto_riga = post('idcontratto_riga');
+        
+        //aggiunto per fare in modo che sia editabile
+        $codice = post('codice');
 
         $idtipointervento = post('idtipointervento');
 
