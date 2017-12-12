@@ -178,6 +178,7 @@ switch (post('op')) {
             'richiesta' => $richiesta,
             'descrizione' => post('descrizione'),
             'informazioniaggiuntive' => post('informazioniaggiuntive'),
+            'num_rapp' => post('num_rapp')
 
             'idanagrafica' => post('idanagrafica'),
             'idclientefinale' => post('idclientefinale'),
