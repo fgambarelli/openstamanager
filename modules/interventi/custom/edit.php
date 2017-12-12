@@ -60,7 +60,6 @@ if (empty($records[0]['firma_file'])) {
 				<div class="col-md-3">
 					{[ "type": "select", "label": "<?php echo tr('Referente'); ?>", "name": "idreferente", "value": "$idreferente$", "ajax-source": "referenti" ]}
 				</div>
-
 			</div>
 
 
@@ -128,8 +127,8 @@ if (empty($records[0]['firma_file'])) {
 				</div>
 
         <div class="col-md-3">
-          {[ "type": "text", "label": "<?php echo tr('Num.Rapportino'); ?>", "name": "data_richiesta", "required": 0, "value": "$num_rapp$" ]}
-        </div>
+					{[ "type": "text", "label": "<?php echo tr('Num. Rapportino'); ?>", "name": "num_rapp", "required": 0, "value": "$num_rapp$" ]}
+				</div>
 
 			</div>
 
@@ -291,13 +290,6 @@ if (empty($records[0]['firma_file'])) {
 			$('#idpreventivo').val('').trigger('change');
 			$('input[name=idcontratto_riga]').val('');
 		}
-	});
-
-    $('#idimpianti').change( function(){
-		session_set('superselect,marticola', $(this).val(), 0);
-
-        $("#componenti").prop("disabled", !$(this).val() ? true : false);
-        $("#componenti").selectReset();
 	});
 
 	$('#matricola').change( function(){
