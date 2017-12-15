@@ -13,7 +13,7 @@ return '
 <table style="color:#aaa; font-size:10px;">
 <tr>
     <td align="left" style="width:97mm;">
-        '.tr('Stampato con OpenSTAManager').'
+        '.tr('').'
     </td>
 
     <td align="right" style="width:97mm;">
