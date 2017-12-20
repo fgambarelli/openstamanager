@@ -18,6 +18,7 @@ switch ($op) {
             $idsede = post('idsede');
             $nome = post('nome');
             $descrizione = post('descrizione');
+            $idtipoimpianto = post('idtipoimpianto');
 
             $proprietario = post('proprietario');
             $palazzo = post('palazzo');
@@ -40,6 +41,7 @@ switch ($op) {
                 ' idtecnico='.prepare($idtecnico).','.
                 ' scala='.prepare($scala).','.
                 ' piano='.prepare($piano).','.
+                ' idtipoimpianto='.prepare($idtipoimpianto).','.
                 ' interno='.prepare($interno).','.
                 ' occupante='.prepare($occupante).
                 ' WHERE id='.prepare($id_record);
@@ -81,7 +83,7 @@ switch ($op) {
         $idtecnico = post('idtecnico');
 
         if (!empty($matricola)) {
-            $dbo->query('INSERT INTO my_impianti(matricola, idanagrafica, nome, data, idtecnico) VALUES ('.prepare($matricola).', '.prepare($idanagrafica).', '.prepare($nome).', NOW(), '.prepare($idtecnico).')');
+            $dbo->query('INSERT INTO my_impianti(matricola, idanagrafica, nome, data, idtecnico,idtipoimpianto) VALUES ('.prepare($matricola).', '.prepare($idanagrafica).', '.prepare($nome).', NOW(), '.prepare($idtecnico).', '.prepare($idtipoimpianto).')');
 
             $id_record = $dbo->lastInsertedID();
 
