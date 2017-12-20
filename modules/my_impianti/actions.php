@@ -84,11 +84,7 @@ switch ($op) {
         $idtipoimpianto=post('idtipoimpianto');
 
         if (!empty($matricola)) {
-<<<<<<< HEAD
-            $dbo->query('INSERT INTO my_impianti(matricola, idanagrafica, nome, data, idtecnico, idtipoimpianto) VALUES ('.prepare($matricola).', '.prepare($idanagrafica).', '.prepare($nome).', NOW(), '.prepare($idtecnico).', '.prepare($idtipoimpianto).')');
-=======
             $dbo->query('INSERT INTO my_impianti(matricola, idanagrafica, nome, data, idtecnico,idtipoimpianto) VALUES ('.prepare($matricola).', '.prepare($idanagrafica).', '.prepare($nome).', NOW(), '.prepare($idtecnico).', '.prepare($idtipoimpianto).')');
->>>>>>> 98fab18fa2abac9721464d41a8d85a1ee993fc31
 
             $id_record = $dbo->lastInsertedID();
 
