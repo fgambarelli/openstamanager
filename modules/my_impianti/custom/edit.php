@@ -26,6 +26,9 @@ include_once __DIR__.'/../../core.php';
                     ?>
 					{[ "type": "image", "label": "<?php echo tr('Immagine'); ?>", "name": "immagine", "class": "img-thumbnail", "value": "<?php echo $immagine ?>" ]}
 				</div>
+				<div class="col-md-3">
+					{[ "type": "select", "label": "<?php echo tr('Tipo impianto'); ?>", "name": "idtipoimpianto", "required": 1, "values": "query=SELECT id, descrizione FROM my_impianti_tipiimpianto", "value": "$idtipoimpianto$" ]}
+				</div>
 
 				<div class="col-md-9">
 					<div class="row">
@@ -36,12 +39,7 @@ include_once __DIR__.'/../../core.php';
 						<div class="col-md-8">
 							{[ "type": "text", "label": "<?php echo tr('Nome'); ?>", "name": "nome", "required": 1, "value": "$nome$" ]}
 						</div>
-						<div class="clearfix"></div>
-
-						<div class="col-md-2">
-							{[ "type": "select", "label": "<?php echo tr('Tipo impianto'); ?>", "name": "idtipoimpianto", "required": 1, "values": "query=SELECT id, descrizione FROM my_impianti_tipiimpianto", "value": "$idtipoimpianto$" ]}
-						</div>
-
+						
 						<div class="col-md-12">
 							{[ "type": "select", "label": "<?php echo tr('Cliente'); ?>", "name": "idanagrafica", "required": 1, "values": "query=SELECT an_anagrafiche.idanagrafica AS id, ragione_sociale AS descrizione FROM an_anagrafiche INNER JOIN (an_tipianagrafiche_anagrafiche INNER JOIN an_tipianagrafiche ON an_tipianagrafiche_anagrafiche.idtipoanagrafica=an_tipianagrafiche.idtipoanagrafica) ON an_anagrafiche.idanagrafica=an_tipianagrafiche_anagrafiche.idanagrafica WHERE descrizione='Cliente' AND deleted=0 ORDER BY ragione_sociale", "value": "$idanagrafica$", "extra": "onchange=\"load_preventivi( this.value ); load_contratti( this.value ); $('#idsede').load( '<?php echo $rootdir ?>/ajax_autocomplete.php?module=Anagrafiche&op=get_sedi_select&idanagrafica='+$('#idanagrafica option:selected').val() ); load_impianti( $('#idanagrafica option:selected').val(), $('#idsede option:selected').val() );\"", "ajax-source": "clienti" ]}
 						</div>
