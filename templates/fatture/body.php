@@ -171,6 +171,20 @@ echo '
     </tbody>
 </table>';
 
+
+// AGGIUNGO TABELLA IMPIANTI
+$rs2 = $dbo->fetchArray('SELECT my_impianti_tipiimpianto.descrizione AS tipo_impianto, my_impianti.nome AS nome, my_impianti.matricola AS matricola FROM co_righe_documenti JOIN my_impianti_interventi ON co_righe_documenti.idintervento=my_impianti_interventi.idintervento JOIN my_impianti ON my_impianti.id = my_impianti_interventi.idimpianto JOIN my_impianti_tipiimpianto ON my_impianti_tipiimpianto.id=my_impianti.idtipoimpianto WHERE co_righe_documenti.iddocumento='.prepare($iddocumento));
+$impianti = [];
+for ($j = 0; $j < sizeof($rs2); ++$j) {
+    $impianti[] = '<b> ['.$rs2[$j]['tipo_impianto'].'] - '.$rs2[$j]['nome']."</b> <small style='color:#777;'>(".$rs2[$j]['matricola'].')</small>';
+}
+echo '
+    <tr>
+        <td colspan="5">
+        '.tr('Impianti').': '.implode(', ', $impianti).'
+        </td>
+    </tr>';
+	
 // Aggiungo diciture per condizioni iva particolari
 foreach ($v_iva as $key => $value) {
     $dicitura = $dbo->fetchArray('SELECT dicitura FROM co_iva WHERE descrizione = '.prepare($key));
