@@ -183,6 +183,8 @@ echo '
         <td colspan="5">
         '.tr('Gli interventi sono stati effettuati presso i vostri impianti: ').'
         </td>
+    </tr>
+    <tr>    
         <td colspan="5">
         '.implode(', ', $impianti).'
         </td>
