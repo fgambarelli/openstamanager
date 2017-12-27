@@ -178,17 +178,19 @@ $impianti = [];
 for ($j = 0; $j < sizeof($rs2); ++$j) {
     $impianti[] = '<b> ['.$rs2[$j]['tipo_impianto'].'] - '.$rs2[$j]['nome']."</b> <small style='color:#777;'>(".$rs2[$j]['matricola'].')</small>';
 }
-echo '
-    <tr>
-        <td colspan="5">
-        '.tr('Gli interventi sono stati effettuati presso i vostri impianti: ').'
-        </td>
-    </tr>
-    <tr>    
-        <td colspan="5">
-        '.implode(', ', $impianti).'
-        </td>
-    </tr>';
+if (!empty($rs2[0]['nome'])) {
+      echo '
+          <tr>
+              <td colspan="5">
+              '.tr('Gli interventi sono stati effettuati presso i vostri impianti: ').'
+              </td>
+          </tr>
+          <tr>
+              <td colspan="5">
+              '.implode(', ', $impianti).'
+              </td>
+          </tr>';
+      }
 
 // Aggiungo diciture per condizioni iva particolari
 foreach ($v_iva as $key => $value) {
