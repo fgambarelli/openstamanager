@@ -181,7 +181,7 @@ for ($j = 0; $j < sizeof($rs2); ++$j) {
 echo '
     <tr>
         <td colspan="5">
-        '.tr('Gli interventi sono stati effettuati presso i vostri impianti: ')'
+        '.tr('Gli interventi sono stati effettuati presso i vostri impianti: ').'
         </td>
         <td colspan="5">
         '.implode(', ', $impianti).'
