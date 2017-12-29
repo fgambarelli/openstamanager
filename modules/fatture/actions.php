@@ -377,7 +377,7 @@ switch (post('op')) {
                             '.prepare($sconto).',
                             '.prepare($sconto).",
                             'UNT',
-                            '-',
+                            'nr',
 							'1',
                             ".prepare(get_var('Percentuale rivalsa INPS')).',
                             '.prepare($rivalsainps).',
