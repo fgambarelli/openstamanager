@@ -132,7 +132,7 @@ foreach ($righe as $r) {
     // Imponibile
     echo "
             <td class='text-right'>
-                ".(empty($r['subtotale']) ? '' : Translator::numberToLocale($r['subtotale'] - $r['sconto']).' &euro;';
+                ".(empty($r['subtotale']) ? '' : Translator::numberToLocale($r['subtotale'] - $r['sconto'])).' &euro;';
 
     if ($r['sconto'] > 0) {
         echo "
@@ -162,10 +162,8 @@ foreach ($righe as $r) {
     $iva[] = $r['iva'];
     $sconto[] = $r['sconto'];
 
-    $v_iva[$r['desc_iva']] = sum($v_iva[$r['desc_iva']], $r['iva']);
-    $v_totale[$r['desc_iva']] = sum($v_totale[$r['desc_iva']], [
-        $r['subtotale'], -$r['sconto'],
-    ]);
+    $v_iva[$r['desc_iva']] += $r['iva'];
+    $v_totale[$r['desc_iva']] += $r['subtotale'] - $r['sconto'];
 }
 
 echo '
@@ -180,14 +178,19 @@ $impianti = [];
 for ($j = 0; $j < sizeof($rs2); ++$j) {
     $impianti[] = '<b> ['.$rs2[$j]['tipo_impianto'].'] - '.$rs2[$j]['nome']."</b> <small style='color:#777;'>(".$rs2[$j]['matricola'].')</small>';
 }
-echo "
-<table class='table table-striped table-bordered' id='contents'>
-    <tr>
-        <td colspan="5">
-        '.tr('Impianti').': '.implode(', ', $impianti).'
-        </td>
-    </tr>
-</table>';
+if (!empty($rs2[0]['nome'])) {
+      echo '
+          <tr>
+              <td colspan="5">
+              '.tr('Gli interventi sono stati effettuati presso i vostri impianti: ').'
+              </td>
+          </tr>
+          <tr>
+              <td colspan="5">
+              '.implode(', ', $impianti).'
+              </td>
+          </tr>';
+      }
 
 // Aggiungo diciture per condizioni iva particolari
 foreach ($v_iva as $key => $value) {
