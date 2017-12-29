@@ -132,7 +132,7 @@ foreach ($righe as $r) {
     // Imponibile
     echo "
             <td class='text-right'>
-                ".(empty($r['subtotale']) ? '' : Translator::numberToLocale($r['subtotale'])).' &euro;';
+                ".(empty($r['subtotale']) ? '' : Translator::numberToLocale($r['subtotale']-$r['sconto'])).' &euro;';
 
     if ($r['sconto'] > 0) {
         echo "
@@ -188,7 +188,7 @@ echo "
         </td>
     </tr>
 </table>';
-	
+
 // Aggiungo diciture per condizioni iva particolari
 foreach ($v_iva as $key => $value) {
     $dicitura = $dbo->fetchArray('SELECT dicitura FROM co_iva WHERE descrizione = '.prepare($key));
