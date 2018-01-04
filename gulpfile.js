@@ -25,6 +25,7 @@ var concat = require('gulp-concat');
 // Altro
 var flatten = require('gulp-flatten');
 var rename = require('gulp-rename');
+var inquirer = require('inquirer');
 
 // Configurazione
 var config = {
@@ -248,17 +249,16 @@ gulp.task('release', function () {
     var archiver = require('archiver');
     var fs = require('fs');
 
-    shell.exec('git rev-parse --short HEAD > REVISION');
-
+    // Rimozione file indesiderati
     del([
         './vendor/tecnickcom/tcpdf/fonts/*',
         '!./vendor/tecnickcom/tcpdf/fonts/*helvetica*',
-        './vendor/mpdf/mpdf/iccprofiles/*',
-        './vendor/mpdf/mpdf/qrcode/*',
+        './vendor/mpdf/mpdf/tmp/*',
         './vendor/mpdf/mpdf/ttfonts/*',
         './vendor/maximebf/debugbar/src/DebugBar/Resources/vendor/*',
     ]);
 
+    // Impostazione dello zip
     var output = fs.createWriteStream('./release.zip');
     var archive = archiver('zip');
 
@@ -272,6 +272,7 @@ gulp.task('release', function () {
 
     archive.pipe(output);
 
+    // Aggiunta dei file
     archive.glob('**/*', {
         dot: true,
         ignore: [
@@ -290,12 +291,43 @@ gulp.task('release', function () {
         ]
     });
 
+    // Eccezioni
     archive.file('backup/.htaccess');
     archive.file('files/.htaccess');
     archive.file('files/my_impianti/componente.ini');
     archive.file('logs/.htaccess');
 
-    archive.finalize();
+    // Aggiunta del commit corrente nel file REVISION
+    archive.append(shell.exec('git rev-parse --short HEAD', {
+        silent: true
+    }).stdout, {
+        name: 'REVISION'
+    });
+
+    // Opzioni sulla release
+    inquirer.prompt([{
+        type: 'input',
+        name: 'version',
+        message: 'Numero di versione:',
+    }, {
+        type: 'confirm',
+        name: 'beta',
+        message: 'Versione beta?',
+        default: false,
+    }]).then(function (result) {
+        version = result.version;
+
+        if (result.beta) {
+            version += 'beta';
+        }
+
+        archive.append(version, {
+            name: 'VERSION'
+        });
+
+        // Completamento dello zip
+        archive.finalize();
+    });;
 });
 
 // Pulizia
