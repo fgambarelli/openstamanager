@@ -103,25 +103,25 @@ $_SESSION['superselect']['idanagrafica'] = $records[0]['idanagrafica'];
 
 			</div>
 
-            <div class="row">
-                <div class="col-md-3">
-                    {[ "type": "number", "label": "<?php echo tr('Sconto incondizionato') ?>", "name": "sconto_generico", "value": "$sconto_globale$", "help": "<?php echo tr('Sconto complessivo del contratto'); ?>", "icon-after": "choice|untprc|$tipo_sconto_globale$"<?php
-											if ($records[0]['stato'] == 'Emessa') {
-                    echo ', "disabled" : 1';
-                }
-?> ]}
+      <div class="row">
+            <div class="col-md-3">
+                {[ "type": "number", "label": "<?php echo tr('Sconto incondizionato') ?>", "name": "sconto_generico", "value": "$sconto_globale$", "help": "<?php echo tr('Sconto complessivo del contratto'); ?>", "icon-after": "choice|untprc|$tipo_sconto_globale$"<?php
+									if ($records[0]['stato'] == 'Emessa') {
+                			echo ', "disabled" : 1';
+											}
+										?> ]}
                 </div>
-
-								<div class="col-md-3">
-									{[ "type": "number", "label": "<?php echo tr('Visite programmate'); ?>", "name": "visite_num", "decimals": "0", "value": "visite_num", "icon-after": "numero" ]}
-								</div>
-
-								<div class="col-md-3">
-									{[ "type": "checkbox", "label": "<?php echo tr('Reperibilita'); ?>", "name": "reperibilita", "value": "$reperibilita$" ]}
-								</div>
-
             </div>
 
+				<div class="row">
+						<div class="col-md-3">
+							{[ "type": "number", "label": "<?php echo tr('Visite programmate'); ?>", "name": "visite_num", "decimals": "0", "value": "visite_num", "icon-after": "numero" ]}
+						</div>
+
+						<div class="col-md-3">
+							{[ "type": "checkbox", "label": "<?php echo tr('Reperibilita'); ?>", "name": "reperibilita", "value": "$reperibilita$" ]}
+						</div>
+				</div>
 
 			<div class="row">
 				<div class="col-md-12">
