@@ -46,16 +46,16 @@ foreach ($righe as $r) {
             <td>
                 '.nl2br($r['descrizione']);
 
-    //if (!empty($r['codice_articolo'])) {
-      //  echo '
-      //          <br><small>'.tr('COD. _COD_', [
-      //              '_COD_' => $r['codice_articolo'],
-      //          ]).'</small>';
-      //
-      //  if ($count <= 1) {
-      //      $count += 0.4;
-      //  }
-    //}
+    if (!empty($r['codice_articolo'])) {
+        echo '
+                <br><small>'.tr('COD. _COD_', [
+                    '_COD_' => $r['codice_articolo'],
+                ]).'</small>';
+
+        if ($count <= 1) {
+            $count += 0.4;
+        }
+    }
 
     // Aggiunta riferimento a ordine
     if (!empty($r['idordine'])) {
@@ -136,7 +136,7 @@ foreach ($righe as $r) {
 
     if ($r['sconto'] > 0) {
         echo "
-                <br><small class='text-muted'>- ".tr('sconto _TOT_ _TYPE_', [
+                <br><small class='text-muted'>".tr('sconto di _TOT_ _TYPE_', [
                     '_TOT_' => Translator::numberToLocale($r['sconto']),
                     '_TYPE_' => '&euro;',
                 ]).'</small>';
