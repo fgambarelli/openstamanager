@@ -157,18 +157,19 @@ if (!$old_format) {
     $settings['format'] = is_string($settings['format']) ? $settings['format'].($settings['orientation'] == 'L' ? '-L' : '') : $settings['format'];
 
     // Instanziamento dell'oggetto mPDF
-    $mpdf = new \Mpdf\Mpdf([
-        'mode' => 'c',
-        'format' => $settings['format'],
-        'orientation' => $settings['orientation'],
-        'font-size' => $settings['font-size'],
-        'margin_left' => $settings['margins']['left'],
-        'margin_right' => $settings['margins']['right'],
-        'margin_top' => $settings['margins']['top'] + $settings['header-height'],
-        'margin_bottom' => $settings['margins']['bottom'] + $settings['footer-height'],
-        'margin_header' => $settings['margins']['top'],
-        'margin_footer' => $settings['margins']['bottom'],
-    ]);
+    $mpdf = new mPDF(
+          'c',
+          $settings['format'],
+          $settings['font-size'],
+          'helvetica',
+          $settings['margins']['left'],
+          $settings['margins']['right'],
+          $settings['margins']['top'] + $settings['header-height'],
+          $settings['margins']['bottom'] + $settings['footer-height'],
+          $settings['margins']['top'],
+          $settings['margins']['bottom'],
+          $settings['orientation']
+      );
 
     // Impostazione di header e footer
     $mpdf->SetHTMLFooter($foot);
