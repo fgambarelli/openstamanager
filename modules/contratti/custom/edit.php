@@ -115,7 +115,7 @@ $_SESSION['superselect']['idanagrafica'] = $records[0]['idanagrafica'];
 
 				<div class="row">
 						<div class="col-md-3">
-							{[ "type": "number", "label": "<?php echo tr('Visite programmate'); ?>", "name": "visite_num", "decimals": "0", "value": "$visite_num", "icon-after": "numero" ]}
+							{[ "type": "number", "label": "<?php echo tr('Visite programmate'); ?>", "name": "visite_num", "decimals": "0", "value": "$visite_num$", "icon-after": "numero" ]}
 						</div>
 
 						<div class="col-md-3">
