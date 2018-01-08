@@ -121,6 +121,14 @@ $_SESSION['superselect']['idanagrafica'] = $records[0]['idanagrafica'];
 						<div class="col-md-3">
 							{[ "type": "checkbox", "label": "<?php echo tr('Reperibilita'); ?>", "name": "reperibilita", "value": "$reperibilita$" ]}
 						</div>
+
+						<div class="col-md-3">
+							{[ "type": "number", "label": "<?php echo tr('Numero Controlli'); ?>", "name": "controllo_num", "decimals": "0", "value": "$controllo_num$", "icon-after": "numero"  ]}
+						</div>
+
+						<div class="col-md-3">
+							{[ "type": "number", "label": "<?php echo tr('Tempo medio'); ?>", "name": "tempo_medio", "decimals": "0", "value": "$tempo_medio$", "icon-after": "ore" ]}
+						</div>
 				</div>
 
 			<div class="row">
