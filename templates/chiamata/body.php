@@ -351,8 +351,12 @@ echo '
             </th>
         </tr>
         <tr>
-            <th class="text-center" style="font-size:8pt;width:10%">
+            <th class="text-center" style="font-size:8pt;width:5%">
                 <b>'.tr('Matricola').'</b>
+            </th>
+
+            <th class="text-center" style="font-size:8pt;width:10%">
+                <b>'.tr('Tipo').'</b>
             </th>
 
             <th class="text-center" style="font-size:8pt;width:30%">
@@ -363,7 +367,7 @@ echo '
                 <b>'.tr('Descrizione').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:30%">
+            <th class="text-center" style="font-size:8pt;width:25%">
                 <b>'.tr('Ubicazione').'</b>
             </th>
 
@@ -377,7 +381,7 @@ echo '
     <tbody>';
 
     // TABELLA IMPIANTI
-    $rst = $dbo->fetchArray('SELECT * FROM my_impianti JOIN my_impianti_interventi ON my_impianti_interventi.idimpianto=my_impianti.id WHERE my_impianti_interventi.idintervento='.prepare($idintervento).' ORDER BY my_impianti.id');
+    $rst = $dbo->fetchArray('SELECT *, (select descrizione from my_impianti_tipiimpianto WHERE my_impianti_tipiimpianto.id = my_impianti_interventi.idtipoimpianto) AS tipoimpianto FROM my_impianti JOIN my_impianti_interventi ON my_impianti_interventi.idimpianto=my_impianti.id WHERE my_impianti_interventi.idintervento='.prepare($idintervento).' ORDER BY my_impianti.id');
 
     foreach ($rst as $i => $r) {
         echo '
@@ -388,6 +392,12 @@ echo '
         	<td>
         	    '.$r['matricola'].'
         	</td>';
+
+        // tipo
+          echo '
+          <td class="text-center">
+                '.$r['tipoimpianto'].'
+          </td>';
 
         // nome
         echo '
@@ -404,8 +414,16 @@ echo '
         // Ubicazione
         echo '
         	<td class="text-center">
-                '.$r['Ubicazione'].'
+                '.$r['ubicazione'].'
             </td>';
+
+        // Ubicazione
+        echo '
+          <td class="text-center">
+                '.$r['Referente'].'
+          </td>';
+
+
 
         echo '
         </tr>
