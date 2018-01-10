@@ -346,7 +346,7 @@ echo '
 <table class="table table-bordered vertical-middle">
     <thead>
         <tr>
-            <th class="text-center" colspan="5" style="font-size:11pt;">
+            <th class="text-center" colspan="6" style="font-size:11pt;">
                 <b>'.tr('impianti', [], ['upper' => true]).'</b>
             </th>
         </tr>
@@ -395,7 +395,7 @@ echo '
 
         // tipo
           echo '
-          <td class="text-center">
+          <td class="text-center" style="font-size:8pt">
                 '.$r['tipoimpianto'].'
           </td>';
 
