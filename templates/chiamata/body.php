@@ -12,7 +12,7 @@ $report_name = 'intervento_'.$idintervento.'.pdf';
 echo '
 <table class="table table-bordered">
     <tr>
-        <th colspan="5" style="font-size:13pt;" class="text-center">'.tr('Rapporto operazioni e interventi', [], ['upper' => true]).'</th>
+        <th colspan="5" style="font-size:13pt;" class="text-center">'.tr('CHIAMATA', [], ['upper' => true]).'</th>
     </tr>
 
     <tr>
@@ -272,7 +272,7 @@ echo '
     <thead>
         <tr>
             <th class="text-center" colspan="5" style="font-size:11pt;">
-                <b>'.tr('Ore tecnici', [], ['upper' => true]).'</b>
+                <b>'.tr('DATA CONCORDATA', [], ['upper' => true]).'</b>
             </th>
         </tr>
         <tr>
@@ -293,7 +293,7 @@ echo '
             </th>
 
             <td class="text-center" style="font-size:6pt;width:35%">
-                '.tr('I dati del ricevente verrano trattati in base al D.lgs n. 196/2003').'
+                '.tr(' ').'
             </td>
         </tr>
     </thead>
@@ -332,7 +332,9 @@ foreach ($rst as $i => $r) {
         </td>';
 
     echo '
-    </tr>';
+    </tr>
+
+    ';
 }
 
 echo '
