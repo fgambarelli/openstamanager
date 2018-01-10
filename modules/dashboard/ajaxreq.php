@@ -26,7 +26,7 @@ switch (get('op')) {
                 'id' => $r['id'],
                 'idintervento' => $r['idintervento'],
                 'idtecnico' => $r['idtecnico'],
-                'title' => '<b>Int. '.$r['idintervento'].'</b> '.$r['cliente'].'<br><b>'.tr('Tecnici').':</b> '.$r['nome_tecnico'],
+                'title' => '<b>Int. '.$r['codice'].'</b> '.$r['cliente'].'<br><b>'.tr('Tecnici').':</b> '.$r['nome_tecnico'],
                 'start' => $r['orario_inizio'],
                 'end' => $r['orario_fine'],
                 'url' => $rootdir.'/editor.php?id_module='.Modules::get('Interventi')['id'].'&id_record='.$r['idintervento'],
