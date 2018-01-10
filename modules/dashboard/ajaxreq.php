@@ -86,12 +86,12 @@ switch (get('op')) {
             }
 
             // Lettura dati intervento
-            $query = 'SELECT *, idstatointervento AS parent_idstato, idtipointervento AS parent_idtipo, (SELECT descrizione FROM in_statiintervento WHERE idstatointervento=parent_idstato) AS stato, (SELECT descrizione FROM in_tipiintervento WHERE idtipointervento=parent_idtipo) AS tipo, (SELECT nomesede FROM an_sedi WHERE id=idsede) AS sede, (SELECT idzona FROM an_anagrafiche WHERE idanagrafica=in_interventi.idanagrafica) AS idzona FROM in_interventi LEFT JOIN an_anagrafiche ON in_interventi.idanagrafica=an_anagrafiche.idanagrafica WHERE in_interventi.id='.prepare($id).' '.Modules::getAdditionalsQuery('Interventi');
+            $query = 'SELECT *, in_interventi.numero AS numero, idstatointervento AS parent_idstato, idtipointervento AS parent_idtipo, (SELECT descrizione FROM in_statiintervento WHERE idstatointervento=parent_idstato) AS stato, (SELECT descrizione FROM in_tipiintervento WHERE idtipointervento=parent_idtipo) AS tipo, (SELECT nomesede FROM an_sedi WHERE id=idsede) AS sede, (SELECT idzona FROM an_anagrafiche WHERE idanagrafica=in_interventi.idanagrafica) AS idzona FROM in_interventi LEFT JOIN an_anagrafiche ON in_interventi.idanagrafica=an_anagrafiche.idanagrafica WHERE in_interventi.id='.prepare($id).' '.Modules::getAdditionalsQuery('Interventi');
             $rs = $dbo->fetchArray($query);
 
             $desc_tipointervento = $rs[0]['tipo'];
 
-            $tooltip_text = '<b>'.tr('Numero intervento').'</b>: '.nl2br($rs[0]['codice']).'<br/>';
+            $tooltip_text = '<b>'.tr('Numero intervento').'</b>: '.nl2br($rs[0]['numero']).'<br/>';
             $tooltip_text .= '<b>'.tr('Ragione sociale').'</b>: '.nl2br($rs[0]['ragione_sociale']).'<br/>';
 
             if (!empty($rs[0]['telefono'])) {
