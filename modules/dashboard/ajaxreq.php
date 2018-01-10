@@ -91,7 +91,7 @@ switch (get('op')) {
 
             $desc_tipointervento = $rs[0]['tipo'];
 
-            $tooltip_text = '<b>'.tr('Numero intervento').'</b>: '.$id.'<br/>';
+            $tooltip_text = '<b>'.tr('Numero intervento').'</b>: '.nl2br($rs[0]['codice '<br/>;
             $tooltip_text .= '<b>'.tr('Ragione sociale').'</b>: '.nl2br($rs[0]['ragione_sociale']).'<br/>';
 
             if (!empty($rs[0]['telefono'])) {
