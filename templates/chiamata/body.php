@@ -338,69 +338,69 @@ foreach ($rst as $i => $r) {
 }
 
 
-// INTESTAZIONE TABELLA IMPIANTI
+/ INTESTAZIONE ELENCO TECNICI
 echo '
 <table class="table table-bordered vertical-middle">
     <thead>
         <tr>
             <th class="text-center" colspan="5" style="font-size:11pt;">
-                <b>'.tr('IMPIANTI', [], ['upper' => true]).'</b>
+                <b>'.tr('DATA CONCORDATA', [], ['upper' => true]).'</b>
             </th>
         </tr>
         <tr>
             <th class="text-center" style="font-size:8pt;width:30%">
-                <b>'.tr('Matricola').'</b>
+                <b>'.tr('Tecnico').'</b>
             </th>
 
             <th class="text-center" style="font-size:8pt;width:15%">
-                <b>'.tr('Nome').'</b>
+                <b>'.tr('Data').'</b>
             </th>
 
             <th class="text-center" style="font-size:8pt;width:10%">
-                <b>'.tr('Descrizione').'</b>
+                <b>'.tr('Dalle').'</b>
             </th>
 
             <th class="text-center" style="font-size:8pt;width:10%">
-                <b>'.tr('Ubicazione').'</b>
+                <b>'.tr('Alle').'</b>
             </th>
 
             <td class="text-center" style="font-size:6pt;width:35%">
-                '.tr('Referente').'
+                '.tr(' ').'
             </td>
         </tr>
     </thead>
 
     <tbody>';
 
-// TABELLA IMPIANTI
-$rst = $dbo->fetchArray('SELECT * FROM my_impianti JOIN my_impianti_interventi ON my_impianti_interventi.idimpianto=my_impianti.id WHERE my_impianti_interventi.idintervento='.prepare($idintervento).' ORDER BY my_impianti.id');
+// Sessioni di lavoro dei tecnici
+$rst = $dbo->fetchArray('SELECT an_anagrafiche.*, in_interventi_tecnici.* FROM in_interventi_tecnici JOIN an_anagrafiche ON in_interventi_tecnici.idtecnico=an_anagrafiche.idanagrafica WHERE in_interventi_tecnici.idintervento='.prepare($idintervento).' ORDER BY in_interventi_tecnici.orario_inizio');
 
 foreach ($rst as $i => $r) {
     echo '
     <tr>';
 
-    // matricola
+    // nome tecnico
     echo '
     	<td>
-    	    '.$r['matricola'].'
+    	    '.$r['ragione_sociale'].'
     	</td>';
 
-    // nome
+    // data
     echo '
     	<td class="text-center">
-            '.$r['nome'].'
+            '.Translator::dateToLocale($r['orario_inizio'], '-').'
     	</td>';
 
-    // descrizione
+    // ora inizio
     echo '
     	<td class="text-center">
-            '.$r['descrizione'].'
+            '.Translator::timeToLocale($r['orario_inizio'], '-').'
     	</td>';
 
-    // Ubicazione
+    // ora fine
     echo '
     	<td class="text-center">
-            '.$r['Ubicazione'].'
+            '.Translator::timeToLocale($r['orario_fine'], '-').'
         </td>';
 
     echo '
