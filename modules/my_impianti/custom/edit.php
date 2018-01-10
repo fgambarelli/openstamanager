@@ -100,7 +100,7 @@ include_once __DIR__.'/../../core.php';
 				</div>
 
 				<div class="col-md-4">
-					{[ "type": "text", "label": "<?php echo tr('Occupante'); ?>", "name": "occupante", "value": "$occupante$" ]}
+					{[ "type": "text", "label": "<?php echo tr('Referente Impianto'); ?>", "name": "occupante", "value": "$occupante$" ]}
 				</div>
 			</div>
 

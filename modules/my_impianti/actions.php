@@ -80,11 +80,11 @@ switch ($op) {
         $matricola = post('matricola');
         $idanagrafica = post('idanagrafica');
         $nome = post('nome');
-        $idtecnico = post('idtecnico');
+        $occupante = post('occupante');
         $idtipoimpianto=post('idtipoimpianto');
 
         if (!empty($matricola)) {
-            $dbo->query('INSERT INTO my_impianti(matricola, idanagrafica, nome, data, idtecnico,idtipoimpianto) VALUES ('.prepare($matricola).', '.prepare($idanagrafica).', '.prepare($nome).', NOW(), '.prepare($idtecnico).', '.prepare($idtipoimpianto).')');
+            $dbo->query('INSERT INTO my_impianti(matricola, idanagrafica, nome, data, occupante ,idtipoimpianto) VALUES ('.prepare($matricola).', '.prepare($idanagrafica).', '.prepare($nome).', NOW(), '.prepare($occupante).', '.prepare($idtipoimpianto).')');
 
             $id_record = $dbo->lastInsertedID();
 
