@@ -351,19 +351,19 @@ echo '
             </th>
         </tr>
         <tr>
-            <th class="text-center" style="font-size:8pt;width:30%">
+            <th class="text-center" style="font-size:8pt;width:10%">
                 <b>'.tr('Matricola').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:15%">
+            <th class="text-center" style="font-size:8pt;width:30%">
                 <b>'.tr('Nome').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:10%">
+            <th class="text-center" style="font-size:8pt;width:20%">
                 <b>'.tr('Descrizione').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:10%">
+            <th class="text-center" style="font-size:8pt;width:30%">
                 <b>'.tr('Ubicazione').'</b>
             </th>
 
