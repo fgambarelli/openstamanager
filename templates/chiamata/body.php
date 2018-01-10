@@ -300,6 +300,7 @@ echo '
 
     <tbody>';
 
+
 // Sessioni di lavoro dei tecnici
 $rst = $dbo->fetchArray('SELECT an_anagrafiche.*, in_interventi_tecnici.* FROM in_interventi_tecnici JOIN an_anagrafiche ON in_interventi_tecnici.idtecnico=an_anagrafiche.idanagrafica WHERE in_interventi_tecnici.idintervento='.prepare($idintervento).' ORDER BY in_interventi_tecnici.orario_inizio');
 
@@ -337,8 +338,10 @@ foreach ($rst as $i => $r) {
     ';
 }
 
+echo '
+</table>';
 
-/ INTESTAZIONE ELENCO TECNICI
+// INTESTAZIONE ELENCO TECNICI
 echo '
 <table class="table table-bordered vertical-middle">
     <thead>
