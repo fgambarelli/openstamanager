@@ -371,9 +371,6 @@ echo '
                 <b>'.tr('Referente').'</b>
             </th>
 
-            <td class="text-center" style="font-size:6pt;width:35%">
-                '.tr(' ').'
-            </td>
         </tr>
     </thead>
 
