@@ -376,42 +376,42 @@ echo '
 
     <tbody>';
 
-// impianti
-$rst = $dbo->fetchArray('SELECT an_anagrafiche.*, in_interventi_tecnici.* FROM in_interventi_tecnici JOIN an_anagrafiche ON in_interventi_tecnici.idtecnico=an_anagrafiche.idanagrafica WHERE in_interventi_tecnici.idintervento='.prepare($idintervento).' ORDER BY in_interventi_tecnici.orario_inizio');
+    // TABELLA IMPIANTI
+    $rst = $dbo->fetchArray('SELECT * FROM my_impianti JOIN my_impianti_interventi ON my_impianti_interventi.idimpianto=my_impianti.id WHERE my_impianti_interventi.idintervento='.prepare($idintervento).' ORDER BY my_impianti.id');
 
-foreach ($rst as $i => $r) {
-    echo '
-    <tr>';
+    foreach ($rst as $i => $r) {
+        echo '
+        <tr>';
 
-    // nome tecnico
-    echo '
-    	<td>
-    	    '.$r['ragione_sociale'].'
-    	</td>';
+        // matricola
+        echo '
+        	<td>
+        	    '.$r['matricola'].'
+        	</td>';
 
-    // data
-    echo '
-    	<td class="text-center">
-            '.Translator::dateToLocale($r['orario_inizio'], '-').'
-    	</td>';
+        // nome
+        echo '
+        	<td class="text-center">
+                '.$r['nome'].'
+        	</td>';
 
-    // ora inizio
-    echo '
-    	<td class="text-center">
-            '.Translator::timeToLocale($r['orario_inizio'], '-').'
-    	</td>';
+        // descrizione
+        echo '
+        	<td class="text-center">
+                '.$r['descrizione'].'
+        	</td>';
 
-    // ora fine
-    echo '
-    	<td class="text-center">
-            '.Translator::timeToLocale($r['orario_fine'], '-').'
-        </td>';
+        // Ubicazione
+        echo '
+        	<td class="text-center">
+                '.$r['Ubicazione'].'
+            </td>';
 
-    echo '
-    </tr>
+        echo '
+        </tr>
 
-    ';
-}
+        ';
+    }
 
 
 echo '
