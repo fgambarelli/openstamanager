@@ -472,4 +472,8 @@ if ($mostra_prezzi) {
 }
 
 echo '
-</table>';
+</table>
+  <div class="col-xs-6">
+      <img src="'.DOCROOT.'/templates/'.$ptype.'/tabella.jpg" alt="Logo" border="0"/>
+  </div>'
+;
