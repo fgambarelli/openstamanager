@@ -341,30 +341,34 @@ foreach ($rst as $i => $r) {
 echo '
 </table>';
 
-// INTESTAZIONE ELENCO TECNICI
+// INTESTAZIONE impianti
 echo '
 <table class="table table-bordered vertical-middle">
     <thead>
         <tr>
             <th class="text-center" colspan="5" style="font-size:11pt;">
-                <b>'.tr('DATA CONCORDATA', [], ['upper' => true]).'</b>
+                <b>'.tr('impianti', [], ['upper' => true]).'</b>
             </th>
         </tr>
         <tr>
             <th class="text-center" style="font-size:8pt;width:30%">
-                <b>'.tr('Tecnico').'</b>
+                <b>'.tr('Matricola').'</b>
             </th>
 
             <th class="text-center" style="font-size:8pt;width:15%">
-                <b>'.tr('Data').'</b>
+                <b>'.tr('Nome').'</b>
             </th>
 
             <th class="text-center" style="font-size:8pt;width:10%">
-                <b>'.tr('Dalle').'</b>
+                <b>'.tr('Descrizione').'</b>
             </th>
 
             <th class="text-center" style="font-size:8pt;width:10%">
-                <b>'.tr('Alle').'</b>
+                <b>'.tr('Ubicazione').'</b>
+            </th>
+
+            <th class="text-center" style="font-size:8pt;width:10%">
+                <b>'.tr('Referente').'</b>
             </th>
 
             <td class="text-center" style="font-size:6pt;width:35%">
@@ -375,7 +379,7 @@ echo '
 
     <tbody>';
 
-// Sessioni di lavoro dei tecnici
+// impianti
 $rst = $dbo->fetchArray('SELECT an_anagrafiche.*, in_interventi_tecnici.* FROM in_interventi_tecnici JOIN an_anagrafiche ON in_interventi_tecnici.idtecnico=an_anagrafiche.idanagrafica WHERE in_interventi_tecnici.idintervento='.prepare($idintervento).' ORDER BY in_interventi_tecnici.orario_inizio');
 
 foreach ($rst as $i => $r) {
