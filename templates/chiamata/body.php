@@ -389,13 +389,13 @@ echo '
 
         // matricola
         echo '
-        	<td>
+        	<td class="text-center" style="font-size:6pt">
         	    '.$r['matricola'].'
         	</td>';
 
         // tipo
           echo '
-          <td class="text-center" style="font-size:8pt">
+          <td class="text-center" style="font-size:6pt">
                 '.$r['tipoimpianto'].'
           </td>';
 
@@ -419,8 +419,8 @@ echo '
 
         // Ubicazione
         echo '
-          <td class="text-center">
-                '.$r['Referente'].'
+          <td class="text-center" style="font-size:8pt">
+                '.$r['occupante'].'
           </td>';
 
 
