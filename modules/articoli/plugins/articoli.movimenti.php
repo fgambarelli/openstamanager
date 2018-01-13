@@ -57,6 +57,10 @@ if (!empty($rs2)) {
         echo '
                 <td>'.Translator::timestampToLocale($r['created_at']).'</td>';
 
+        // Clinte
+        echo '
+                <td>'.Translator::timestampToLocale($r['cliente']).'</td>';
+
         // Operazioni
         echo '
                 <td class="text-center">';
