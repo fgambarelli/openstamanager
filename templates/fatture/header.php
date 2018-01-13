@@ -8,7 +8,7 @@ echo '
     </div>
     <div class="col-xs-6 text-right">
         <p><b>$f_ragionesociale$</b></p>
-        <p>'.tr('Sede Legale e Amm:').'.$f_indirizzo$ $f_citta_full$</p>
+        <p>'.tr('Sede : ').'.$f_indirizzo$ $f_citta_full$</p>
         <p>'.(!empty($f_piva) ? tr('P.Iva').': ' : '').'$f_piva$'.(!empty($f_codicefiscale) ? tr('C.F.').': ' : '').'$f_codicefiscale$</p>
         <p>'.(!empty($f_capsoc) ? tr('Cap.Soc.').': ' : '').'$f_capsoc$</p>
         <p>'.(!empty($f_telefono) ? tr('Tel').': ' : '').'$f_telefono$</p>
@@ -28,34 +28,34 @@ echo '
             <tr>
                 <td valign="top" class="border-full text-center">
                     <p class="small-bold">'.tr('Nr. documento', [], ['upper' => true]).'</p>
-                    
+
                 </td>
 
                 <td class="border-right border-bottom border-top text-center">
                     <p class="small-bold">'.tr('Data documento', [], ['upper' => true]).'</p>
-                    
+
                 </td>
 
 
                 <td class="border-right border-bottom border-top center text-center">
                     <p class="small-bold">'.tr('Foglio', [], ['upper' => true]).'</p>
-                    
+
                 </td>
             </tr>
             <tr>
                 <td valign="top" class="border-full text-center">
-                    
+
                     <p><b>$numero_doc$</b></p>
                 </td>
 
                 <td class="border-right border-bottom border-top text-center">
-                    
+
                     <p><b>$data$</b></p>
                 </td>
 
 
                 <td class="border-right border-bottom border-top center text-center">
-                    
+
                     <p>{PAGENO}/{nb}</p>
                 </td>
             </tr>
@@ -98,7 +98,7 @@ echo '
                     <p class="small-bold">'.tr('Partita IVA', [], ['upper' => true]).'</p>
                 </td>
                 <td class="border-right border-bottom text-right">
-                    <small>$c_piva$</small>
+                    <p>$c_piva$</p>
                 </td>
             </tr>
 
