@@ -19,7 +19,7 @@ echo '
 <p>'.tr('Quantità calcolata dai movimenti').': '.Translator::numberToLocale($qta_totale).' '.$rs[0]['unita_misura'].'</p>';
 
 // Elenco movimenti magazzino
-$query = 'SELECT *, , (SELECT an_anagrafiche.ragione_sociale from an_anagrafiche WHERE an_anagrafiche.idanagrafica =
+$query = 'SELECT *, (SELECT an_anagrafiche.ragione_sociale from an_anagrafiche WHERE an_anagrafiche.idanagrafica =
 (CASE WHEN mg_movimenti.iddocumento >0
 THEN (SELECT co_documenti.idanagrafica from co_documenti where co_documenti.id=mg_movimenti.iddocumento)
 ELSE CASE WHEN mg_movimenti.idintervento >0
