@@ -41,6 +41,7 @@ if (!empty($rs2)) {
                 <th class="text-center" width="100">'.tr('Q.tà').'</th>
                 <th width="720">'.tr('Causale').'</th>
                 <th>'.tr('Data').'</th>
+                <th>'.tr('Cliente').'</th>
                 <th class="text-center">#</th>
             </tr>';
     foreach ($rs2 as $r) {
@@ -57,9 +58,9 @@ if (!empty($rs2)) {
         echo '
                 <td>'.Translator::timestampToLocale($r['created_at']).'</td>';
 
-        // Clinte
+        // Cliente
         echo '
-                <td>'.Translator::timestampToLocale($r['cliente']).'</td>';
+                <td>'.$r['cliente'].'</td>';
 
         // Operazioni
         echo '
