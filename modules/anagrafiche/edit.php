@@ -349,9 +349,7 @@ if (str_contains($records[0]['idtipianagrafica'], $id_azienda)) {
 				<div class="col-md-12">
 					{[ "type": "textarea", "label": "<?php echo tr('Note'); ?>", "name": "note", "value": "$note$" ]}
 				</div>
-            </div>
-
-{( "name": "filelist_and_upload", "id_module": "<?php echo $id_module ?>", "id_record": "<?php echo $id_record ?>" )}
+      </div>
 
 <?php
 
@@ -401,6 +399,8 @@ if (!empty($google)) {
 		</div>
 	</div>
 </form>
+
+{( "name": "filelist_and_upload", "id_module": "<?php echo $id_module ?>", "id_record": "<?php echo $id_record ?>" )}
 
 <?php
 if (!str_contains($records[0]['idtipianagrafica'], $id_azienda)) {
