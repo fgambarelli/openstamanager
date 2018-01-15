@@ -43,7 +43,7 @@ switch (post('op')) {
 
         // Se al preventivo non è stato associato un pagamento predefinito al cliente leggo il pagamento dalle impostazioni
         if ($idpagamento == '') {
-            $idpagamento = get_var('Tipo d\i pagamento predefinito');
+            $idpagamento = get_var('Tipo di pagamento predefinito');
         }
 
         $dbo->query('INSERT INTO co_preventivi(idanagrafica, nome, numero, idagente, idstato, idtipointervento, data_bozza, data_conclusione, idiva, idpagamento, descrizione, validita, tempi_consegna, esclusioni ) VALUES ('.prepare($idanagrafica).', '.prepare($nome).', '.prepare($numero).', '.prepare($idagente).", (SELECT `id` FROM `co_statipreventivi` WHERE `descrizione`='Bozza'), ".prepare($idtipointervento).', NOW(), DATE_ADD(NOW(), INTERVAL +2 MONTH), '.prepare($idiva).', '.prepare($idpagamento).", 'Con la presente siamo a comunicare la nostra migliore offerta riguardante', 60 ,'Da verificare al momento dell accettazione del preventivo','Escluso quanto non indicato' )");

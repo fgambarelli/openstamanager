@@ -349,8 +349,7 @@ if (str_contains($records[0]['idtipianagrafica'], $id_azienda)) {
 				<div class="col-md-12">
 					{[ "type": "textarea", "label": "<?php echo tr('Note'); ?>", "name": "note", "value": "$note$" ]}
 				</div>
-      </div>
-
+            </div>
 <?php
 
 if (!empty($google)) {
@@ -430,3 +429,4 @@ if (!str_contains($records[0]['idtipianagrafica'], $id_azienda)) {
         });
 	});
 </script>
+

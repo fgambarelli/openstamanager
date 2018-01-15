@@ -658,9 +658,12 @@ ALTER TABLE `zz_widgets` ADD FOREIGN KEY (`id_module`) REFERENCES `zz_modules`(`
 ALTER TABLE `zz_group_module` ADD FOREIGN KEY (`idmodule`) REFERENCES `zz_modules`(`id`) ON DELETE CASCADE, ADD FOREIGN KEY (`idgruppo`) REFERENCES `zz_groups`(`id`) ON DELETE CASCADE;
 
 -- Aggiunta di chiavi esterne in zz_permissions
+DELETE FROM `zz_permissions` WHERE `idmodule` NOT IN (SELECT `id` FROM `zz_modules`);
 ALTER TABLE `zz_permissions` ADD FOREIGN KEY (`idmodule`) REFERENCES `zz_modules`(`id`) ON DELETE CASCADE, ADD FOREIGN KEY (`idgruppo`) REFERENCES `zz_groups`(`id`) ON DELETE CASCADE;
 
 -- Aggiunta di chiavi esterne in zz_plugins
+DELETE FROM `zz_plugins` WHERE `idmodule_to` NOT IN (SELECT `id` FROM `zz_modules`);
+DELETE FROM `zz_plugins` WHERE `idmodule_from` NOT IN (SELECT `id` FROM `zz_modules`);
 ALTER TABLE `zz_plugins` ADD FOREIGN KEY (`idmodule_from`) REFERENCES `zz_modules`(`id`) ON DELETE CASCADE, ADD FOREIGN KEY (`idmodule_to`) REFERENCES `zz_modules`(`id`) ON DELETE CASCADE;
 
 -- Aggiunta di chiavi esterne in zz_users
@@ -714,7 +717,7 @@ UPDATE `zz_group_module` SET `default` = 1;
 UPDATE `zz_widgets` SET `more_link` = REPLACE(TRIM(`more_link`), 'templates/pdfgen.php', 'pdfgen.php');
 
 -- Nuova struttura per i plugins
-ALTER TABLE `zz_plugins` ADD `title` varchar(255) NOT NULL AFTER `name`, CHANGE `idmodule_from` `idmodule_from` int(11), CHANGE `idmodule_to` `idmodule_to` int(11),
+ALTER TABLE `zz_plugins` ADD `title` varchar(255) NOT NULL AFTER `name`,
 ADD `directory` varchar(50) NOT NULL AFTER `script`, ADD `options` text AFTER `script`, ADD `options2` text AFTER `script`, ADD `version` varchar(15) NOT NULL AFTER `script`, ADD `compatibility` varchar(1000) NOT NULL AFTER `script`, ADD `order` int(11) NOT NULL AFTER `script`, ADD `default` boolean NOT NULL DEFAULT 0 AFTER `script`, ADD `enabled` boolean NOT NULL DEFAULT 1 AFTER `script`;
 
 UPDATE `zz_plugins` SET `name` = 'Serial' WHERE `name` = 'Lotti';
