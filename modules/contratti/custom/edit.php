@@ -382,7 +382,7 @@ if (!empty($records[0]['idcontratto_prev'])) {
     });
 </script>
 
-
+{( "name": "filelist_and_upload", "id_module": "<?php echo $id_module ?>", "id_record": "<?php echo $id_record ?>" )}
 
 <?php
 //fatture collegate a questo contratto
