@@ -7,7 +7,7 @@ $report_name = 'fattura_'.$numero.'.pdf';
 $autofill = [
     'count' => 0, // Conteggio delle righe
     'words' => 70, // Numero di parolo dopo cui contare una riga nuova
-    'rows' => 20, // Numero di righe massimo presente nella pagina
+    'rows' => 15, // Numero di righe massimo presente nella pagina
     'additional' => 15, // Numero di righe massimo da aggiungere
     'columns' => 5, // Numero di colonne della tabella
 ];
@@ -107,7 +107,7 @@ foreach ($righe as $r) {
     echo '
             <td class="text-center">';
     if($r['is_descrizione']==0){
-        echo 
+        echo
                 Translator::numberToLocale($r['qta']).' '.$r['um'];
     }
     echo '
@@ -142,7 +142,7 @@ foreach ($righe as $r) {
     if($r['is_descrizione']==0){
         echo
                 (empty($r['subtotale']) ? '' : Translator::numberToLocale($r['subtotale'] - $r['sconto'])).' &euro;';
-    
+
         if ($r['sconto'] > 0) {
             echo "
                     <br><small class='text-muted'>".tr('sconto di _TOT_ _TYPE_', [
@@ -230,11 +230,11 @@ if (!empty($rs2[0]['nome'])) {
     </thead>
 
     <tbody>';
-	  
+
   // TABELLA IMPIANTI
-    $rst = $dbo->fetchArray('SELECT DISTINCT in_interventi.num_rapp, (select descrizione from my_impianti_tipiimpianto WHERE my_impianti_tipiimpianto.id = my_impianti.idtipoimpianto) AS tipoimpianto, my_impianti.nome, my_impianti.descrizione, my_impianti.ubicazione 
-	FROM my_impianti 
-	JOIN my_impianti_interventi ON my_impianti_interventi.idimpianto=my_impianti.id 
+    $rst = $dbo->fetchArray('SELECT DISTINCT in_interventi.num_rapp, (select descrizione from my_impianti_tipiimpianto WHERE my_impianti_tipiimpianto.id = my_impianti.idtipoimpianto) AS tipoimpianto, my_impianti.nome, my_impianti.descrizione, my_impianti.ubicazione
+	FROM my_impianti
+	JOIN my_impianti_interventi ON my_impianti_interventi.idimpianto=my_impianti.id
 	JOIN co_righe_documenti ON co_righe_documenti.idintervento=my_impianti_interventi.idintervento
 	JOIN in_interventi ON in_interventi.id = my_impianti_interventi.idintervento
 	WHERE co_righe_documenti.iddocumento='.prepare($iddocumento).' ORDER BY my_impianti.id');
@@ -281,8 +281,8 @@ if (!empty($rs2[0]['nome'])) {
 }
 echo '
 </table>';
-	  
-	  
+
+
 // Aggiungo diciture per condizioni iva particolari
 foreach ($v_iva as $key => $value) {
     $dicitura = $dbo->fetchArray('SELECT dicitura FROM co_iva WHERE descrizione = '.prepare($key));
