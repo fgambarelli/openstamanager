@@ -176,22 +176,67 @@ echo '
 
 // AGGIUNGO TABELLA IMPIANTI
 $rs2 = $dbo->fetchArray('SELECT DISTINCT my_impianti_tipiimpianto.descrizione AS tipo_impianto, my_impianti.nome AS nome, my_impianti.matricola AS matricola FROM co_righe_documenti JOIN my_impianti_interventi ON co_righe_documenti.idintervento=my_impianti_interventi.idintervento JOIN my_impianti ON my_impianti.id = my_impianti_interventi.idimpianto JOIN my_impianti_tipiimpianto ON my_impianti_tipiimpianto.id=my_impianti.idtipoimpianto WHERE co_righe_documenti.iddocumento='.prepare($iddocumento));
-$impianti = [];
-for ($j = 0; $j < sizeof($rs2); ++$j) {
-    $impianti[] = '<b> ['.$rs2[$j]['tipo_impianto'].'] - '.$rs2[$j]['nome']."</b> <small style='color:#777;'>(".$rs2[$j]['matricola'].')</small>';
-}
+
 if (!empty($rs2[0]['nome'])) {
       echo '
-          <tr>
-              <td colspan="5">
-              '.tr('Gli interventi sono stati effettuati presso i vostri impianti: ').'
-              </td>
-          </tr>
-          <tr>
-              <td colspan="5">
-              '.implode(', ', $impianti).'
-              </td>
-          </tr>';
+  // TABELLA IMPIANTI
+    $rst = $dbo->fetchArray('SELECT *, (select descrizione from my_impianti_tipiimpianto WHERE my_impianti_tipiimpianto.id = my_impianti.idtipoimpianto) AS tipoimpianto
+	FROM my_impianti 
+	JOIN my_impianti_interventi ON my_impianti_interventi.idimpianto=my_impianti.id 
+	JOIN co_righe_documenti ON co_righe_documenti.idintervento=my_impianti_interventi.idintervento
+	JOIN in_interventi ON in_interventi.id = my_impianti_interventi.idintervento
+	WHERE co_righe_documenti.iddocumento='.prepare($iddocumento).' ORDER BY my_impianti.id');
+
+    foreach ($rst as $i => $r) {
+        echo '
+        <tr>';
+
+        // matricola
+        echo '
+        	<td class="text-center" style="font-size:6pt">
+        	    '.$r['matricola'].'
+        	</td>';
+
+        // tipo
+          echo '
+          <td class="text-center" style="font-size:6pt">
+                '.$r['tipoimpianto'].'
+          </td>';
+
+        // nome
+        echo '
+        	<td class="text-center">
+                '.$r['nome'].'
+        	</td>';
+
+        // descrizione
+        echo '
+        	<td class="text-center">
+                '.$r['descrizione'].'
+        	</td>';
+
+        // Ubicazione
+        echo '
+        	<td class="text-center">
+                '.$r['ubicazione'].'
+            </td>';
+
+        // Ubicazione
+        echo '
+          <td class="text-center" style="font-size:8pt">
+                '.$r['occupante'].'
+          </td>';
+
+        echo '
+        </tr>
+
+        ';
+    }
+
+
+echo '
+</table>'
+;
       }
 
 // Aggiungo diciture per condizioni iva particolari
