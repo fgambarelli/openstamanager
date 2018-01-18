@@ -193,23 +193,23 @@ if (!empty($rs2[0]['nome'])) {
             </th>
         </tr>
         <tr>
-            <th class="text-center" style="font-size:8pt;width:15%">
+            <th class="text-center" style="font-size:8pt;width:8%">
                 <b>'.tr('N.Rapp').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:15%">
+            <th class="text-center" style="font-size:8pt;width:7%">
                 <b>'.tr('Tipo').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:30%">
+            <th class="text-center" style="font-size:8pt;width:35%">
                 <b>'.tr('Nome').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:30%">
+            <th class="text-center" style="font-size:8pt;width:25%">
                 <b>'.tr('Descrizione').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:20%">
+            <th class="text-center" style="font-size:8pt;width:25%">
                 <b>'.tr('Ubicazione').'</b>
             </th>
 
