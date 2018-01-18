@@ -19,6 +19,9 @@ switch ($op) {
             $nome = post('nome');
             $descrizione = post('descrizione');
             $idtipoimpianto = post('idtipoimpianto');
+			$km = post('km');
+			$minuti = post('minuti');
+			$idtipoimpianto = post('idtipoimpianto');
 
             $proprietario = post('proprietario');
             $palazzo = post('palazzo');
@@ -42,6 +45,9 @@ switch ($op) {
                 ' scala='.prepare($scala).','.
                 ' piano='.prepare($piano).','.
                 ' idtipoimpianto='.prepare($idtipoimpianto).','.
+				' delega_criter='.prepare($delega_criter).','.
+				' minuti='.prepare($minuti).','.
+				' km='.prepare($km).','.
                 ' interno='.prepare($interno).','.
                 ' occupante='.prepare($occupante).
                 ' WHERE id='.prepare($id_record);
