@@ -188,16 +188,16 @@ if (!empty($rs2[0]['nome'])) {
       echo '
 	<thead>
         <tr>
-            <th class="text-center" colspan="6" style="font-size:11pt;">
+            <th class="text-center" colspan="5" style="font-size:8pt;">
                 <b>'.tr('impianti', [], ['upper' => true]).'</b>
             </th>
         </tr>
         <tr>
-            <th class="text-center" style="font-size:8pt;width:5%">
-                <b>'.tr('Matricola').'</b>
+            <th class="text-center" style="font-size:8pt;width:15%">
+                <b>'.tr('N.Rapp').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:10%">
+            <th class="text-center" style="font-size:8pt;width:15%">
                 <b>'.tr('Tipo').'</b>
             </th>
 
@@ -205,16 +205,12 @@ if (!empty($rs2[0]['nome'])) {
                 <b>'.tr('Nome').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:20%">
+            <th class="text-center" style="font-size:8pt;width:30%">
                 <b>'.tr('Descrizione').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:25%">
+            <th class="text-center" style="font-size:8pt;width:20%">
                 <b>'.tr('Ubicazione').'</b>
-            </th>
-
-            <th class="text-center" style="font-size:8pt;width:10%">
-                <b>'.tr('Referente').'</b>
             </th>
 
         </tr>
@@ -223,7 +219,7 @@ if (!empty($rs2[0]['nome'])) {
     <tbody>';
 	  
   // TABELLA IMPIANTI
-    $rst = $dbo->fetchArray('SELECT *, (select descrizione from my_impianti_tipiimpianto WHERE my_impianti_tipiimpianto.id = my_impianti.idtipoimpianto) AS tipoimpianto
+    $rst = $dbo->fetchArray('SELECT DISTINCT num_rapp, (select descrizione from my_impianti_tipiimpianto WHERE my_impianti_tipiimpianto.id = my_impianti.idtipoimpianto) AS tipoimpianto, nome, descrizione, ubicazione
 	FROM my_impianti 
 	JOIN my_impianti_interventi ON my_impianti_interventi.idimpianto=my_impianti.id 
 	JOIN co_righe_documenti ON co_righe_documenti.idintervento=my_impianti_interventi.idintervento
@@ -234,10 +230,10 @@ if (!empty($rs2[0]['nome'])) {
         echo '
         <tr>';
 
-        // matricola
+        // num_rapp
         echo '
         	<td class="text-center" style="font-size:6pt">
-        	    '.$r['matricola'].'
+        	    '.$r['num_rapp'].'
         	</td>';
 
         // tipo
@@ -248,27 +244,21 @@ if (!empty($rs2[0]['nome'])) {
 
         // nome
         echo '
-        	<td class="text-center">
+        	<td class="text-center" style="font-size:6pt">
                 '.$r['nome'].'
         	</td>';
 
         // descrizione
         echo '
-        	<td class="text-center">
+        	<td class="text-center" style="font-size:6pt">
                 '.$r['descrizione'].'
         	</td>';
 
         // Ubicazione
         echo '
-        	<td class="text-center">
+        	<td class="text-center" style="font-size:6pt">
                 '.$r['ubicazione'].'
             </td>';
-
-        // Ubicazione
-        echo '
-          <td class="text-center" style="font-size:8pt">
-                '.$r['occupante'].'
-          </td>';
 
         echo '
         </tr>
