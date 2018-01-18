@@ -106,10 +106,10 @@ switch ($op) {
         $filename = post('filename');
         $idarticolo = post('idarticolo');
 
-        // Se √® stato specificato un idarticolo, carico il file .ini dal campo `contenuto` di quell'idarticolo
+        // Se Ë stato specificato un idarticolo, carico il file .ini dal campo `contenuto` di quell'idarticolo
         $rs = $dbo->fetchArray('SELECT contenuto, componente_filename FROM mg_articoli WHERE id='.prepare($idarticolo));
 
-        // Se i campi da caricare sono del componente gi√† salvato leggo dal campo `contenuto`...
+        // Se i campi da caricare sono del componente gi‡ salvato leggo dal campo `contenuto`...
         if ($rs[0]['componente_filename'] == $filename) {
             $contenuto = $rs[0]['contenuto'];
         }
