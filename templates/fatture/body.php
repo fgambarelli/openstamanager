@@ -173,12 +173,54 @@ echo '
     </tbody>
 </table>';
 
+// INTESTAZIONE impianti
+echo '
+<table class="table table-bordered vertical-middle">
+    <thead>';
 
 // AGGIUNGO TABELLA IMPIANTI
 $rs2 = $dbo->fetchArray('SELECT DISTINCT my_impianti_tipiimpianto.descrizione AS tipo_impianto, my_impianti.nome AS nome, my_impianti.matricola AS matricola FROM co_righe_documenti JOIN my_impianti_interventi ON co_righe_documenti.idintervento=my_impianti_interventi.idintervento JOIN my_impianti ON my_impianti.id = my_impianti_interventi.idimpianto JOIN my_impianti_tipiimpianto ON my_impianti_tipiimpianto.id=my_impianti.idtipoimpianto WHERE co_righe_documenti.iddocumento='.prepare($iddocumento));
-
+$impianti = [];
+for ($j = 0; $j < sizeof($rs2); ++$j) {
+    $impianti[] = '<b> ['.$rs2[$j]['tipo_impianto'].'] - '.$rs2[$j]['nome']."</b> <small style='color:#777;'>(".$rs2[$j]['matricola'].')</small>';
+}
 if (!empty($rs2[0]['nome'])) {
       echo '
+        <tr>
+            <th class="text-center" colspan="6" style="font-size:11pt;">
+                <b>'.tr('impianti', [], ['upper' => true]).'</b>
+            </th>
+        </tr>
+        <tr>
+            <th class="text-center" style="font-size:8pt;width:5%">
+                <b>'.tr('Matricola').'</b>
+            </th>
+
+            <th class="text-center" style="font-size:8pt;width:10%">
+                <b>'.tr('Tipo').'</b>
+            </th>
+
+            <th class="text-center" style="font-size:8pt;width:30%">
+                <b>'.tr('Nome').'</b>
+            </th>
+
+            <th class="text-center" style="font-size:8pt;width:20%">
+                <b>'.tr('Descrizione').'</b>
+            </th>
+
+            <th class="text-center" style="font-size:8pt;width:25%">
+                <b>'.tr('Ubicazione').'</b>
+            </th>
+
+            <th class="text-center" style="font-size:8pt;width:10%">
+                <b>'.tr('Referente').'</b>
+            </th>
+
+        </tr>
+    </thead>
+
+    <tbody>';
+	  
   // TABELLA IMPIANTI
     $rst = $dbo->fetchArray('SELECT *, (select descrizione from my_impianti_tipiimpianto WHERE my_impianti_tipiimpianto.id = my_impianti.idtipoimpianto) AS tipoimpianto
 	FROM my_impianti 
@@ -235,8 +277,8 @@ if (!empty($rs2[0]['nome'])) {
 
 
 echo '
-</table>'
-;
+</table>';
+
       }
 
 // Aggiungo diciture per condizioni iva particolari
