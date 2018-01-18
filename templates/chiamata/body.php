@@ -258,7 +258,7 @@ echo '
 <table class="table table-bordered vertical-middle">
     <thead>
         <tr>
-            <th class="text-center" colspan="5" style="font-size:11pt;">
+            <th class="text-center" colspan="4" style="font-size:11pt;">
                 <b>'.tr('DATA CONCORDATA', [], ['upper' => true]).'</b>
             </th>
         </tr>
@@ -267,21 +267,18 @@ echo '
                 <b>'.tr('Tecnico').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:15%">
+            <th class="text-center" style="font-size:8pt;width:30%">
                 <b>'.tr('Data').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:10%">
+            <th class="text-center" style="font-size:8pt;width:20%">
                 <b>'.tr('Dalle').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:10%">
+            <th class="text-center" style="font-size:8pt;width:20%">
                 <b>'.tr('Alle').'</b>
             </th>
 
-            <td class="text-center" style="font-size:6pt;width:35%">
-                '.tr(' ').'
-            </td>
         </tr>
     </thead>
 
@@ -342,15 +339,15 @@ echo '
                 <b>'.tr('Matr.').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:5%">
+            <th class="text-center" style="font-size:8pt;width:8%">
                 <b>'.tr('Tipo').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:30%">
+            <th class="text-center" style="font-size:8pt;width:25%">
                 <b>'.tr('Nome').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:25%">
+            <th class="text-center" style="font-size:8pt;width:22%">
                 <b>'.tr('Descrizione').'</b>
             </th>
 
@@ -358,7 +355,7 @@ echo '
                 <b>'.tr('Ubicazione').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:15%">
+            <th class="text-center" style="font-size:8pt;width:20%">
                 <b>'.tr('Referente').'</b>
             </th>
 
@@ -376,13 +373,13 @@ echo '
 
         // matricola
         echo '
-        	<td class="text-center" style="font-size:7pt">
+        	<td class="text-center" style="font-size:6pt">
         	    '.$r['matricola'].'
         	</td>';
 
         // tipo
           echo '
-          <td class="text-center" style="font-size:7pt">
+          <td class="text-center" style="font-size:6pt">
                 '.$r['tipoimpianto'].'
           </td>';
 
