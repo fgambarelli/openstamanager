@@ -20,11 +20,14 @@ include_once __DIR__.'/../../core.php';
 			<div class="clearfix"></div>
 
 			<div class="row">
-				<div class="col-md-3">
+				<div class="col-md-4">
 					<?php
                     $immagine = ($records[0]['immagine'] == '') ? '' : $rootdir.'/files/my_impianti/'.$records[0]['immagine'];
                     ?>
 					{[ "type": "image", "label": "<?php echo tr('Immagine'); ?>", "name": "immagine", "class": "img-thumbnail", "value": "<?php echo $immagine ?>" ]}
+				</div>
+				<div class="col-md-5">
+					{[ "type": "select", "label": "<?php echo tr('Tipo impianto'); ?>", "name": "idtipoimpianto", "required": 1, "values": "query=SELECT id, descrizione FROM my_impianti_tipiimpianto", "value": "$idtipoimpianto$" ]}
 				</div>
 
 				<div class="col-md-9">
@@ -41,6 +44,7 @@ include_once __DIR__.'/../../core.php';
 						<div class="col-md-12">
 							{[ "type": "select", "label": "<?php echo tr('Cliente'); ?>", "name": "idanagrafica", "required": 1, "values": "query=SELECT an_anagrafiche.idanagrafica AS id, ragione_sociale AS descrizione FROM an_anagrafiche INNER JOIN (an_tipianagrafiche_anagrafiche INNER JOIN an_tipianagrafiche ON an_tipianagrafiche_anagrafiche.idtipoanagrafica=an_tipianagrafiche.idtipoanagrafica) ON an_anagrafiche.idanagrafica=an_tipianagrafiche_anagrafiche.idanagrafica WHERE descrizione='Cliente' AND deleted=0 ORDER BY ragione_sociale", "value": "$idanagrafica$", "extra": "onchange=\"load_preventivi( this.value ); load_contratti( this.value ); $('#idsede').load( '<?php echo $rootdir ?>/ajax_autocomplete.php?module=Anagrafiche&op=get_sedi_select&idanagrafica='+$('#idanagrafica option:selected').val() ); load_impianti( $('#idanagrafica option:selected').val(), $('#idsede option:selected').val() );\"", "ajax-source": "clienti" ]}
 						</div>
+
 					</div>
 				</div>
 			</div>
@@ -82,27 +86,30 @@ include_once __DIR__.'/../../core.php';
 				</div>
 
 				<div class="col-md-4">
-					{[ "type": "text", "label": "<?php echo tr('Scala'); ?>", "name": "scala", "value": "$scala$" ]}
+					{[ "type": "text", "label": "<?php echo tr('Referente Impianto'); ?>", "name": "occupante", "value": "$occupante$" ]}
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="col-md-4">
-					{[ "type": "text", "label": "<?php echo tr('Piano'); ?>", "name": "piano", "value": "$piano$" ]}
+					{[ "type": "checkbox", "label": "<?php echo tr('Delega criter '); ?>", "name": "delega_criter", "value": "$delega_criter$" ]}
 				</div>
 
 				<div class="col-md-4">
-					{[ "type": "text", "label": "<?php echo tr('Interno'); ?>", "name": "interno", "value": "$interno$" ]}
+					{[ "type": "number", "label": "<?php echo tr('Trasferta'); ?>", "name": "minuti", "decimals": "0", "value": "$minuti$", "icon-after": "minuti"  ]}
 				</div>
-
+				
 				<div class="col-md-4">
-					{[ "type": "text", "label": "<?php echo tr('Occupante'); ?>", "name": "occupante", "value": "$occupante$" ]}
+					{[ "type": "number", "label": "<?php echo tr('KM (Andata e Ritorno)'); ?>", "name": "km", "decimals": "0", "value": "$km$", "icon-after": "km"  ]}
 				</div>
+				
 			</div>
 
 		</div>
 	</div>
 </form>
+
+{( "name": "filelist_and_upload", "id_module": "<?php echo $id_module ?>", "id_record": "<?php echo $id_record ?>" )}
 
 <a class="btn btn-danger ask" data-backto="record-list">
     <i class="fa fa-trash"></i> <?php echo tr('Elimina'); ?>

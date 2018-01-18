@@ -121,6 +121,23 @@ if ($records[0]['stato'] == 'Emessa') {
                 </div>
             </div>
 
+				<div class="row">
+						<div class="col-md-3">
+							{[ "type": "number", "label": "<?php echo tr('Visite programmate'); ?>", "name": "visite_num", "decimals": "0", "value": "$visite_num$", "icon-after": "numero" ]}
+						</div>
+
+						<div class="col-md-3">
+							{[ "type": "checkbox", "label": "<?php echo tr('Reperibilita'); ?>", "name": "reperibilita", "value": "$reperibilita$" ]}
+						</div>
+
+						<div class="col-md-3">
+							{[ "type": "number", "label": "<?php echo tr('Numero Controlli'); ?>", "name": "controllo_num", "decimals": "0", "value": "$controllo_num$", "icon-after": "numero"  ]}
+						</div>
+
+						<div class="col-md-3">
+							{[ "type": "number", "label": "<?php echo tr('Tempo medio'); ?>", "name": "tempo_medio", "decimals": "0", "value": "$tempo_medio$", "icon-after": "ore" ]}
+						</div>
+				</div>
 
 			<div class="row">
 				<div class="col-md-12">
@@ -277,8 +294,7 @@ if (sizeof($rs) > 0) {
 <?php
 if ($records[0]['stato'] != 'Pagato') {
     ?>
-        <a class="btn btn-primary" data-href="<?php echo $rootdir ?>/modules/contratti/add_riga.php?id_module=<?php echo $id_module ?>&id_record=<?php echo $id_record ?>" data-toggle="modal" data-title="Aggiungi riga" data-target="#bs-popup"><i class="fa fa-plus"></i> <?php echo tr('Riga'); ?></a>
-		<a class="btn btn-primary" data-href="<?php echo $rootdir ?>/modules/contratti/add_descrizione.php?id_module=<?php echo $id_module ?>&id_record=<?php echo $id_record ?>" data-toggle="modal" data-title="Aggiungi descrizione" data-target="#bs-popup"><i class="fa fa-plus"></i> <?php echo tr('Descrizione'); ?></a>
+        <a class="btn btn-primary" data-href="<?php echo $rootdir ?>/modules/contratti/add_riga.php?id_module=<?php echo $id_module ?>&id_record=<?php echo $id_record ?>" data-toggle="modal" data-title="Aggiungi riga" data-target="#bs-popup"><i class="fa fa-plus"></i> <?php echo tr('Riga'); ?></a><br>
     <?php
 
 }
@@ -374,7 +390,7 @@ if (!empty($records[0]['idcontratto_prev'])) {
     });
 </script>
 
-
+{( "name": "filelist_and_upload", "id_module": "<?php echo $id_module ?>", "id_record": "<?php echo $id_record ?>" )}
 
 <?php
 //fatture collegate a questo contratto
