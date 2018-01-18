@@ -40,10 +40,18 @@ $_SESSION['superselect']['idanagrafica'] = $records[0]['idanagrafica'];
 				</div>
 
 				<div class="col-md-4">
+                    <?php
+                        echo Modules::link('Anagrafiche', $records[0]['idanagrafica'], null, null, 'class="pull-right"');
+                    ?>
+
 					{[ "type": "select", "label": "<?php echo tr('Cliente'); ?>", "name": "idanagrafica", "id": "idanagrafica_c", "required": 1, "value": "$idanagrafica$", "ajax-source": "clienti" ]}
 				</div>
 
 				<div class="col-md-3">
+                    <?php
+                        if($records[0]['idagente']!=0)
+                            echo Modules::link('Anagrafiche', $records[0]['idagente'], null, null, 'class="pull-right"');
+                    ?>
 					{[ "type": "select", "label": "<?php echo tr('Agente'); ?>", "name": "idagente", "values": "query=SELECT an_anagrafiche.idanagrafica AS id, ragione_sociale AS descrizione FROM an_anagrafiche INNER JOIN (an_tipianagrafiche_anagrafiche INNER JOIN an_tipianagrafiche ON an_tipianagrafiche_anagrafiche.idtipoanagrafica=an_tipianagrafiche.idtipoanagrafica) ON an_anagrafiche.idanagrafica=an_tipianagrafiche_anagrafiche.idanagrafica WHERE descrizione='Agente' AND deleted=0 ORDER BY ragione_sociale", "value": "$idagente$" ]}
 				</div>
 
@@ -103,13 +111,13 @@ $_SESSION['superselect']['idanagrafica'] = $records[0]['idanagrafica'];
 
 			</div>
 
-      <div class="row">
-            <div class="col-md-3">
-                {[ "type": "number", "label": "<?php echo tr('Sconto incondizionato') ?>", "name": "sconto_generico", "value": "$sconto_globale$", "help": "<?php echo tr('Sconto complessivo del contratto'); ?>", "icon-after": "choice|untprc|$tipo_sconto_globale$"<?php
-									if ($records[0]['stato'] == 'Emessa') {
-                			echo ', "disabled" : 1';
-											}
-										?> ]}
+            <div class="row">
+                <div class="col-md-3">
+                    {[ "type": "number", "label": "<?php echo tr('Sconto incondizionato') ?>", "name": "sconto_generico", "value": "$sconto_globale$", "help": "<?php echo tr('Sconto complessivo del contratto'); ?>", "icon-after": "choice|untprc|$tipo_sconto_globale$"<?php
+if ($records[0]['stato'] == 'Emessa') {
+                    echo ', "disabled" : 1';
+                }
+?> ]}
                 </div>
             </div>
 
