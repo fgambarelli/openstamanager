@@ -86,22 +86,23 @@ include_once __DIR__.'/../../core.php';
 				</div>
 
 				<div class="col-md-4">
-					{[ "type": "text", "label": "<?php echo tr('Scala'); ?>", "name": "scala", "value": "$scala$" ]}
+					{[ "type": "text", "label": "<?php echo tr('Referente Impianto'); ?>", "name": "occupante", "value": "$occupante$" ]}
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="col-md-4">
-					{[ "type": "text", "label": "<?php echo tr('Piano'); ?>", "name": "piano", "value": "$piano$" ]}
+					{[ "type": "checkbox", "label": "<?php echo tr('Delega criter '); ?>", "name": "delega_criter", "value": "$delega_criter$" ]}
 				</div>
 
 				<div class="col-md-4">
-					{[ "type": "text", "label": "<?php echo tr('Interno'); ?>", "name": "interno", "value": "$interno$" ]}
+					{[ "type": "number", "label": "<?php echo tr('Trasferta'); ?>", "name": "minuti", "decimals": "0", "value": "$minuti$", "icon-after": "minuti"  ]}
 				</div>
-
+				
 				<div class="col-md-4">
-					{[ "type": "text", "label": "<?php echo tr('Referente Impianto'); ?>", "name": "occupante", "value": "$occupante$" ]}
+					{[ "type": "number", "label": "<?php echo tr('KM (Andata e Ritorno)'); ?>", "name": "km", "decimals": "0", "value": "$km$", "icon-after": "km"  ]}
 				</div>
+				
 			</div>
 
 		</div>
