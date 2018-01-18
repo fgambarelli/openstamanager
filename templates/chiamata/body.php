@@ -61,7 +61,7 @@ echo '
 // Richiesta
 echo '
     <tr>
-        <td colspan="5" style="height:20mm;">
+        <td colspan="5" style="height:30mm;">
             <b>'.tr('Richiesta').':</b>
             <p>'.nl2br($records[0]['richiesta']).'</p>
         </td>
@@ -70,9 +70,10 @@ echo '
 // Descrizione
 echo '
     <tr>
-        <td colspan="5" style="height:20mm;">
+        <td colspan="5" style="height:40mm;">
             <b>'.tr('Descrizione').':</b>
             <p>'.nl2br($records[0]['descrizione_intervento']).'</p>
+            
         </td>
     </tr>';
 
@@ -338,10 +339,10 @@ echo '
         </tr>
         <tr>
             <th class="text-center" style="font-size:8pt;width:5%">
-                <b>'.tr('Matricola').'</b>
+                <b>'.tr('Matr.').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:10%">
+            <th class="text-center" style="font-size:8pt;width:5%">
                 <b>'.tr('Tipo').'</b>
             </th>
 
@@ -349,15 +350,15 @@ echo '
                 <b>'.tr('Nome').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:20%">
+            <th class="text-center" style="font-size:8pt;width:25%">
                 <b>'.tr('Descrizione').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:25%">
+            <th class="text-center" style="font-size:8pt;width:20%">
                 <b>'.tr('Ubicazione').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:10%">
+            <th class="text-center" style="font-size:8pt;width:15%">
                 <b>'.tr('Referente').'</b>
             </th>
 
@@ -375,37 +376,37 @@ echo '
 
         // matricola
         echo '
-        	<td class="text-center" style="font-size:6pt">
+        	<td class="text-center" style="font-size:7pt">
         	    '.$r['matricola'].'
         	</td>';
 
         // tipo
           echo '
-          <td class="text-center" style="font-size:6pt">
+          <td class="text-center" style="font-size:7pt">
                 '.$r['tipoimpianto'].'
           </td>';
 
         // nome
         echo '
-        	<td class="text-center">
+        	<td class="text-center" style="font-size:7pt">
                 '.$r['nome'].'
         	</td>';
 
         // descrizione
         echo '
-        	<td class="text-center">
+        	<td class="text-center" style="font-size:7pt">
                 '.$r['descrizione'].'
         	</td>';
 
         // Ubicazione
         echo '
-        	<td class="text-center">
+        	<td class="text-center" style="font-size:7pt">
                 '.$r['ubicazione'].'
             </td>';
 
         // Ubicazione
         echo '
-          <td class="text-center" style="font-size:8pt">
+          <td class="text-center" style="font-size:7pt">
                 '.$r['occupante'].'
           </td>';
 
