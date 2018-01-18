@@ -176,7 +176,7 @@ echo '
 // INTESTAZIONE impianti
 echo '
 <table class="table table-bordered vertical-middle">
-    <thead>';
+   ';
 
 // AGGIUNGO TABELLA IMPIANTI
 $rs2 = $dbo->fetchArray('SELECT DISTINCT my_impianti_tipiimpianto.descrizione AS tipo_impianto, my_impianti.nome AS nome, my_impianti.matricola AS matricola FROM co_righe_documenti JOIN my_impianti_interventi ON co_righe_documenti.idintervento=my_impianti_interventi.idintervento JOIN my_impianti ON my_impianti.id = my_impianti_interventi.idimpianto JOIN my_impianti_tipiimpianto ON my_impianti_tipiimpianto.id=my_impianti.idtipoimpianto WHERE co_righe_documenti.iddocumento='.prepare($iddocumento));
@@ -186,6 +186,7 @@ for ($j = 0; $j < sizeof($rs2); ++$j) {
 }
 if (!empty($rs2[0]['nome'])) {
       echo '
+	<thead>
         <tr>
             <th class="text-center" colspan="6" style="font-size:11pt;">
                 <b>'.tr('impianti', [], ['upper' => true]).'</b>
@@ -274,13 +275,11 @@ if (!empty($rs2[0]['nome'])) {
 
         ';
     }
-
-
+}
 echo '
 </table>';
-
-      }
-
+	  
+	  
 // Aggiungo diciture per condizioni iva particolari
 foreach ($v_iva as $key => $value) {
     $dicitura = $dbo->fetchArray('SELECT dicitura FROM co_iva WHERE descrizione = '.prepare($key));
