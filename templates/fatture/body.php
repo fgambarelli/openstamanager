@@ -219,7 +219,7 @@ if (!empty($rs2[0]['nome'])) {
     <tbody>';
 	  
   // TABELLA IMPIANTI
-    $rst = $dbo->fetchArray('SELECT DISTINCT num_rapp, (select descrizione from my_impianti_tipiimpianto WHERE my_impianti_tipiimpianto.id = my_impianti.idtipoimpianto) AS tipoimpianto, nome, descrizione, ubicazione
+    $rst = $dbo->fetchArray('SELECT DISTINCT in_interventi.num_rapp, (select descrizione from my_impianti_tipiimpianto WHERE my_impianti_tipiimpianto.id = my_impianti.idtipoimpianto) AS tipoimpianto, my_impianti.nome, my_impianti.descrizione, my_impianti.ubicazione 
 	FROM my_impianti 
 	JOIN my_impianti_interventi ON my_impianti_interventi.idimpianto=my_impianti.id 
 	JOIN co_righe_documenti ON co_righe_documenti.idintervento=my_impianti_interventi.idintervento
