@@ -18,3 +18,8 @@ select  mg_movimenti.*,
 			  else (case when (`mg_movimenti`.`idintervento` > 0) then (select `in_interventi`.`idanagrafica` from `in_interventi` where (`in_interventi`.`id` = `mg_movimenti`.`idintervento`)) end) end))
 ) AS `cliente`
 from `mg_movimenti`;
+
+
+ALTER TABLE `my_impianti` ADD `delega_criter` TINYINT(1)  NOT NULL AFTER `idtipoimpianto`;
+ALTER TABLE `my_impianti` ADD `minuti` TINYINT(10)  NOT NULL AFTER `delega_criter`;
+ALTER TABLE `my_impianti` ADD `km` TINYINT(10)  NOT NULL AFTER `minuti`;
