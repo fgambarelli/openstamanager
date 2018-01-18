@@ -21,7 +21,7 @@ switch ($op) {
             $idtipoimpianto = post('idtipoimpianto');
 			$km = post('km');
 			$minuti = post('minuti');
-			$idtipoimpianto = post('idtipoimpianto');
+			$delega_criter = post('delega_criter');
 
             $proprietario = post('proprietario');
             $palazzo = post('palazzo');
