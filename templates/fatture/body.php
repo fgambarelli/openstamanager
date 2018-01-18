@@ -189,7 +189,7 @@ if (!empty($rs2[0]['nome'])) {
 	<thead>
         <tr>
             <th class="text-center" colspan="5" style="font-size:8pt;">
-                <b>'.tr('impianti', [], ['upper' => true]).'</b>
+                <b>'.tr('IMPIANTI SU CUI SONO STATI ESEGUITI GLI INTERVENTI', [], ['upper' => true]).'</b>
             </th>
         </tr>
         <tr>
