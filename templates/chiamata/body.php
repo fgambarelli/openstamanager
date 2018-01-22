@@ -61,11 +61,8 @@ echo '
 // Richiesta
 echo '
     <tr>
-<<<<<<< HEAD
         <td colspan="5" style="font-size:12pt;height:60mm;">
-=======
         <td colspan="5" style="height:25mm;">
->>>>>>> 0da3a2d5d42bdb25521ae1f92d5a10b6fb954a11
             <b>'.tr('Richiesta').':</b>
             <p>'.nl2br($records[0]['richiesta']).'</p>
         </td>
@@ -74,11 +71,8 @@ echo '
 // Descrizione
 echo '
     <tr>
-<<<<<<< HEAD
         <td colspan="5" style="font-size:12pt;height:60mm;">
-=======
         <td colspan="5" style="height:30mm;">
->>>>>>> 0da3a2d5d42bdb25521ae1f92d5a10b6fb954a11
             <b>'.tr('Descrizione').':</b>
             <p>'.nl2br($records[0]['descrizione_intervento']).'</p>
             
