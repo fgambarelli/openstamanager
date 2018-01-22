@@ -62,7 +62,6 @@ echo '
 echo '
     <tr>
         <td colspan="5" style="font-size:12pt;height:30mm;">
-        <td colspan="5" style="height:25mm;">
             <b>'.tr('Richiesta').':</b>
             <p>'.nl2br($records[0]['richiesta']).'</p>
         </td>
@@ -72,7 +71,6 @@ echo '
 echo '
     <tr>
         <td colspan="5" style="font-size:12pt;height:30mm;">
-        <td colspan="5" style="height:30mm;">
             <b>'.tr('Descrizione').':</b>
             <p>'.nl2br($records[0]['descrizione_intervento']).'</p>
             
