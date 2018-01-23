@@ -12,7 +12,7 @@ $report_name = 'intervento_'.$idintervento.'.pdf';
 echo '
 <table class="table table-bordered">
     <tr>
-        <th colspan="5" style="font-size:13pt;" class="text-center">'.tr('CHIAMATA', [], ['upper' => true]).'</th>
+        <th colspan="4" style="font-size:13pt;" class="text-center">'.tr('CHIAMATA', [], ['upper' => true]).'</th>
     </tr>
 
     <tr>
@@ -22,7 +22,7 @@ echo '
         ;
 
 if (!empty($records[0]['numero_contratto'])) {
-            echo ' <td class="text-center" style="width:20%">'.tr('ABBONATO').'</td>';
+            echo ' <td class="text-center" style="width:20%"><b>'.tr('ABBONATO').'</b></td>';
           }
 echo '
 
