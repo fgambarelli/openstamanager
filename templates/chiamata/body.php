@@ -45,7 +45,7 @@ echo '
 // riga 2
 echo '
     <tr>
-        <td colspan="5">
+        <td colspan="4">
             '.tr('Via').': <b>'.$c_indirizzo.'</b> -
             '.tr('CAP').': <b>'.$c_cap.'</b> -
             '.tr('Comune').': <b>'.$c_citta.' ('.strtoupper($c_provincia).')</b>
@@ -54,7 +54,7 @@ echo '
 
 echo '
     <tr>
-        <td colspan="5">
+        <td colspan="4">
             '.tr('Telefono').': <b>'.$c_telefono.'</b>';
 if (!empty($c_cellulare)) {
     echo' - '.tr('Cellulare').': <b>'.$c_cellulare.'</b>';
@@ -67,7 +67,7 @@ echo '
 // Richiesta
 echo '
     <tr>
-        <td colspan="5" style="font-size:12pt;height:30mm;">
+        <td colspan="4" style="font-size:12pt;height:30mm;">
             <b>'.tr('Richiesta').':</b>
             <p>'.nl2br($records[0]['richiesta']).'</p>
         </td>
@@ -76,7 +76,7 @@ echo '
 // Descrizione
 echo '
     <tr>
-        <td colspan="5" style="font-size:12pt;height:30mm;">
+        <td colspan="4" style="font-size:12pt;height:30mm;">
             <b>'.tr('Descrizione').':</b>
             <p>'.nl2br($records[0]['descrizione_intervento']).'</p>
 
