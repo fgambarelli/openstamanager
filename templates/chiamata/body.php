@@ -21,7 +21,11 @@ echo '
         <td class="text-center" style="width:20%">'.tr('Preventivo num.').': <b>'.$records[0]['numero_preventivo'].'</b></td>
         <td class="text-center" style="width:20%">'
         if (!empty($records[0]['numero_contratto'])) {
+<<<<<<< HEAD
             echo '.tr('ABBONATO.').': <b>'.$records[0]['numero_contratto'].'</b>};
+=======
+            echo '.tr('ABBONATO.').': <b>'.$records[0]['numero_contratto'].'</b>}
+>>>>>>> 1488065ba5641a0b7b8f0c204077796d94d58eb8
 echo '
         </td>
     </tr>';
