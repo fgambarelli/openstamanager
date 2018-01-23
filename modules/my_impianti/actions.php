@@ -22,6 +22,7 @@ switch ($op) {
 			$km = post('km');
 			$minuti = post('minuti');
 			$delega_criter = post('delega_criter');
+			$idzona = post('idzona');
 
             $proprietario = post('proprietario');
             $palazzo = post('palazzo');
@@ -46,6 +47,7 @@ switch ($op) {
                 ' piano='.prepare($piano).','.
                 ' idtipoimpianto='.prepare($idtipoimpianto).','.
 				' delega_criter='.prepare($delega_criter).','.
+				' idzona='.prepare($idzona).','.
 				' minuti='.prepare($minuti).','.
 				' km='.prepare($km).','.
                 ' interno='.prepare($interno).','.
