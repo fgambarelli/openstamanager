@@ -19,7 +19,11 @@ echo '
         <td class="text-center" style="width:20%">'.tr('Num. Interno').': <b>'.$records[0]['codice'].'</b></td>
         <td class="text-center" style="width:20%">'.tr('Data').': <b>'.Translator::dateToLocale($records[0]['data_richiesta']).'</b></td>
         <td class="text-center" style="width:20%">'.tr('Preventivo num.').': <b>'.$records[0]['numero_preventivo'].'</b></td>
-        <td class="text-center" style="width:20%">'.tr('Contratto num.').': <b>'.$records[0]['numero_contratto'].'</b></td>
+        <td class="text-center" style="width:20%">'
+        if (!empty($records[0]['numero_contratto'])) {
+            echo '.tr('ABBONATO.').': <b>'.$records[0]['numero_contratto'].'</b>}
+echo '
+        </td>
     </tr>';
 
 // Dati cliente
@@ -73,7 +77,7 @@ echo '
         <td colspan="5" style="font-size:12pt;height:30mm;">
             <b>'.tr('Descrizione').':</b>
             <p>'.nl2br($records[0]['descrizione_intervento']).'</p>
-            
+
         </td>
     </tr>';
 
