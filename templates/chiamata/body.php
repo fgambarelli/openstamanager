@@ -18,14 +18,14 @@ echo '
     <tr>
         <td class="text-center" style="width:20%">'.tr('Num. Interno').': <b>'.$records[0]['codice'].'</b></td>
         <td class="text-center" style="width:20%">'.tr('Data').': <b>'.Translator::dateToLocale($records[0]['data_richiesta']).'</b></td>
-        <td class="text-center" style="width:20%">'.tr('Preventivo num.').': <b>'.$records[0]['numero_preventivo'].'</b></td>
-        <td class="text-center" style="width:20%">';
+        <td class="text-center" style="width:20%">'.tr('Preventivo num.').': <b>'.$records[0]['numero_preventivo'].'</b></td>'
+        ;
 
 if (!empty($records[0]['numero_contratto'])) {
-            echo '.tr('ABBONATO').';
+            echo ' <td class="text-center" style="width:20%">'.tr('ABBONATO').'</td>';
           }
 echo '
-        </td>
+
     </tr>';
 
 // Dati cliente
