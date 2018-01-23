@@ -31,7 +31,7 @@ echo '
 // Dati cliente
 echo '
     <tr>
-        <td colspan=4 style="font-size:13pt">
+        <td colspan=3 style="font-size:13pt">
             '.tr('Cliente').': <b>'.$c_ragionesociale.'</b>
         </td>';
 
