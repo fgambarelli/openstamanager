@@ -22,7 +22,8 @@ echo '
         <td class="text-center" style="width:20%">';
 
 if (!empty($records[0]['numero_contratto'])) {
-            echo '.tr('ABBONATO').';}
+            echo '.tr('ABBONATO').';
+          }
 echo '
         </td>
     </tr>';
