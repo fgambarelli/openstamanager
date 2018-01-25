@@ -6,7 +6,7 @@ $report_name = 'preventivo_'.$idpreventivo.'.pdf';
 
 $autofill = [
     'count' => 0, // Conteggio delle righe
-    'words' => 70, // Numero di parolo dopo cui contare una riga nuova
+    'words' => 40, // Numero di parolo dopo cui contare una riga nuova
     'rows' => 20, // Numero di righe massimo presente nella pagina
     'additional' => 10, // Numero di righe massimo da aggiungere
     'columns' => 5, // Numero di colonne della tabella
@@ -144,7 +144,7 @@ foreach ($righe as $r) {
         if($r['is_descrizione']==0){
             echo
                 (empty($r['subtotale']) ? '' : Translator::numberToLocale($r['subtotale'])).' &euro;';
-                
+
             if ($r['sconto'] > 0) {
                 echo "
                     <br><small class='text-muted'>- ".tr('sconto _TOT_ _TYPE_', [
