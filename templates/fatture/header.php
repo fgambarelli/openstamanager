@@ -7,10 +7,11 @@ echo '
         <img src="'.__DIR__.'/logo_azienda.jpg" alt="Logo" border="0"/>
     </div>
     <div class="col-xs-6 text-right">
-        <p>$f_ragionesociale$</b></p>
+        <p><b>$f_ragionesociale$</b></p>
         <p>'.tr('Sede : ').'$f_indirizzo$ $f_citta_full$</p>
         <p>'.(!empty($f_telefono) ? tr('Tel.').': ' : '').'$f_telefono$'.tr(' Cellulare : ').' $f_cellulare$</p>
         <p>'.(!empty($f_fax) ? tr('Fax').': ' : '').'$f_fax$</p>
+        <p>'.(!empty($f_fax) ? tr('Email ').': ' : '').'$f_email$</p>
         <p>'.(!empty($f_piva) ? tr('P.Iva ').': ' : '').'$f_piva$'.(!empty($f_codicefiscale) ? tr(' C.F. ').': ' : '').'$f_codicefiscale$</p>
         <p>'.(!empty($f_capsoc) ? tr('Cap.Soc.').': ' : '').'$f_capsoc$</p>
     </div>
