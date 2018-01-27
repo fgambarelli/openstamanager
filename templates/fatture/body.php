@@ -217,7 +217,7 @@ if (!empty($rs2[0]['nome'])) {
         </tr>
         <tr>
             <th class="text-center" style="font-size:8pt;width:8%">
-                <b>'.tr('N.Rapp').'</b>
+                <b>'.tr('N.Rapp / Contr.').'</b>
             </th>
 
             <th class="text-center" style="font-size:8pt;width:7%">
@@ -247,7 +247,14 @@ if (!empty($rs2[0]['nome'])) {
 	JOIN my_impianti_interventi ON my_impianti_interventi.idimpianto=my_impianti.id
 	JOIN co_righe_documenti ON co_righe_documenti.idintervento=my_impianti_interventi.idintervento
 	JOIN in_interventi ON in_interventi.id = my_impianti_interventi.idintervento
-	WHERE co_righe_documenti.iddocumento='.prepare($iddocumento).' ORDER BY my_impianti.id');
+	WHERE co_righe_documenti.iddocumento='.prepare($iddocumento).'
+UNION
+SELECT DISTINCT co_contratti.numero, (select descrizione from my_impianti_tipiimpianto WHERE my_impianti_tipiimpianto.id = my_impianti.idtipoimpianto) AS tipoimpianto, my_impianti.nome, my_impianti.descrizione, my_impianti.ubicazione
+	FROM my_impianti
+	JOIN my_impianti_contratti ON my_impianti_contratti.idimpianto=my_impianti.id
+	JOIN co_righe_documenti ON co_righe_documenti.idcontratto=my_impianti_contratti.idcontratto
+	JOIN co_contratti ON co_contratti.id = my_impianti_contratti.idcontratto
+	WHERE co_righe_documenti.iddocumento='.prepare($iddocumento));
 
     foreach ($rst as $i => $r) {
         echo '
