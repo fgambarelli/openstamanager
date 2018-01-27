@@ -249,7 +249,7 @@ if (!empty($rs2[0]['nome'])) {
 	JOIN in_interventi ON in_interventi.id = my_impianti_interventi.idintervento
 	WHERE co_righe_documenti.iddocumento='.prepare($iddocumento).'
 UNION
-SELECT DISTINCT co_contratti.numero, (select descrizione from my_impianti_tipiimpianto WHERE my_impianti_tipiimpianto.id = my_impianti.idtipoimpianto) AS tipoimpianto, my_impianti.nome, my_impianti.descrizione, my_impianti.ubicazione
+SELECT DISTINCT co_contratti.nome, (select descrizione from my_impianti_tipiimpianto WHERE my_impianti_tipiimpianto.id = my_impianti.idtipoimpianto) AS tipoimpianto, my_impianti.nome, my_impianti.descrizione, my_impianti.ubicazione
 	FROM my_impianti
 	JOIN my_impianti_contratti ON my_impianti_contratti.idimpianto=my_impianti.id
 	JOIN co_righe_documenti ON co_righe_documenti.idcontratto=my_impianti_contratti.idcontratto
