@@ -29,3 +29,6 @@ ALTER TABLE `mg_articoli` ADD `servizio` TINYINT(1) NOT NULL AFTER `id_sottocate
 
 -- gestione RIBA presentate
 ALTER TABLE `co_scadenziario` ADD `riba_presentata` INT(11) NOT NULL AFTER `tipo`;
+
+-- gestione invio email
+ALTER TABLE `co_documenti` ADD `data_invio` DATE NOT NULL AFTER `tipo_sconto_globale`;
