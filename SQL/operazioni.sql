@@ -26,3 +26,6 @@ ALTER TABLE `my_impianti` ADD `km` TINYINT(10)  NOT NULL AFTER `minuti`;
 
 -- Aggiunta in articolo se servizio
 ALTER TABLE `mg_articoli` ADD `servizio` TINYINT(1) NOT NULL AFTER `id_sottocategoria`;
+
+-- gestione RIBA presentate
+ALTER TABLE `co_scadenziario` ADD `riba_presentata` INT(11) NOT NULL AFTER `tipo`;
