@@ -338,7 +338,7 @@ if ($dir == 'entrata') {
 		 
         if (( $records[0]['stato'] != 'Bozza' ) AND ( $records[0]['stato'] != 'Annullata' )) {
         ?>
-        <button type="button" class="btn btn-info btn-sm" onclick="launch_modal( 'Invia fattura tramite email', '<?php echo $rootdir ?>/modules/fatture/custom/form_email.php?id_module=<?php echo $id_module ?>&iddocumento=<?php echo $id_record ?>',1);"><i class="fa fa-envelope"></i> Invia email</button>&nbsp;
+        <button type="button" class="btn btn-info btn-sm" onclick="launch_modal( 'Invia fattura tramite email', '<?php echo $rootdir ?>/modules/fatture/form_email.php?id_module=<?php echo $id_module ?>&iddocumento=<?php echo $id_record ?>',1);"><i class="fa fa-envelope"></i> Invia email</button>&nbsp;
         <?php
         }else{
         
