@@ -1,5 +1,5 @@
 <?php
-	include_once("../../../core.php");
+	include_once __DIR__.'/../../core.php';
 	$module_name = 'Fatture di vendita';
 	//include($docroot."/lib/permissions_check.php");
 
