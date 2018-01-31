@@ -335,6 +335,18 @@ if ($dir == 'entrata') {
     }
 
     if ($dir == 'entrata') {
+		 
+        if (( $records[0]['stato'] != 'Bozza' ) AND ( $records[0]['stato'] != 'Annullata' )) {
+        ?>
+        <button type="button" class="btn btn-info btn-sm" onclick="launch_modal( 'Invia fattura tramite email', '<?php echo $rootdir ?>/modules/fatture/custom/form_email.php?id_module=<?php echo $id_module ?>&iddocumento=<?php echo $id_record ?>',1);"><i class="fa fa-envelope"></i> Invia email</button>&nbsp;
+        <?php
+        }else{
+        
+        ?>
+        <button type="button" class="btn btn-info btn-sm" onclick="alert('La fattura deve essere prima Emessa per essere inviata!')"><i class="fa fa-envelope"></i> Invia email</button>&nbsp;
+        <?php
+        }
+		
         if (sizeof($campi_mancanti) > 0) {
             echo "<div class='alert alert-warning'><i class='fa fa-warning'></i> Prima di procedere alla stampa completa i seguenti campi dell'anagrafica:<br/><b>".implode(', ', $campi_mancanti).'</b><br/>
             '.Modules::link('Anagrafiche', $records[0]['idanagrafica'], tr('Vai alla scheda anagrafica'), null).'</div>';
