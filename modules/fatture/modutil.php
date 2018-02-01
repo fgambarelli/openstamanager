@@ -138,8 +138,13 @@ function aggiungi_scadenza($iddocumento, $pagamento = '')
         if ($dir == 'uscita') {
             $da_pagare = -$da_pagare;
         }
-
-        $dbo->query('INSERT INTO co_scadenziario(iddocumento, data_emissione, scadenza, da_pagare, pagato, tipo) VALUES('.prepare($iddocumento).', '.prepare($data).', '.prepare($scadenza).', '.prepare($da_pagare).", 0, 'fattura')");
+		
+        if ($rs[$i]['riba'] == 0) {
+            $riba_da_pres = 1;
+        }
+				
+		
+        $dbo->query('INSERT INTO co_scadenziario(iddocumento, data_emissione, scadenza, da_pagare, riba_da_pres, pagato, tipo) VALUES('.prepare($iddocumento).', '.prepare($data).', '.prepare($scadenza).', '.prepare($da_pagare).', '.prepare($riba_da_pres).", 0, 'fattura')");
     }
 
     // Se c'è una ritenuta d'acconto, la aggiungo allo scadenzario
