@@ -25,11 +25,16 @@ if (empty($dbo->fetchArray('SELECT * FROM co_scadenziario'))) {
 <!-- STAMPE SINGOLE -->
 <div class="row">
 	<div class="col-md-2 col-md-offset-4">
-		<button type="button" onclick="window.open('<?php echo $rootdir ?>/pdfgen.php?ptype=scadenzario&type=clienti');"  <?php echo $disabled; ?>  class="btn btn-<?php echo $class; ?> btn-block"><i class="fa fa-print"></i> <?php echo tr('Scadenzario clienti'); ?></button>
+		<button type="button" onclick="window.open('<?php echo $rootdir ?>/pdfgen.php?ptype=scadenzario&type=clienti');"  <?php echo $disabled; ?>  class="btn btn-<?php echo $class; ?> btn-block"><i class="fa fa-print"></i> <?php echo tr('Scad. clienti'); ?></button>
 	</div>
 
 	<div class="col-md-2">
-		<button type="button" onclick="window.open('<?php echo $rootdir ?>/pdfgen.php?ptype=scadenzario&type=fornitori');"  <?php echo $disabled; ?>  class="btn btn-<?php echo $class; ?> btn-block"><i class="fa fa-print"></i> <?php echo tr('Scadenzario fornitori'); ?></button>
+		<button type="button" onclick="window.open('<?php echo $rootdir ?>/pdfgen.php?ptype=scadenzario&type=fornitori');"  <?php echo $disabled; ?>  class="btn btn-<?php echo $class; ?> btn-block"><i class="fa fa-print"></i> <?php echo tr('Scad. fornitori'); ?></button>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-2 col-md-offset-4">
+		<button type="button" onclick="window.open('<?php echo $rootdir ?>/pdfgen.php?ptype=scadenzarioriba');"  <?php echo $disabled; ?>  class="btn btn-<?php echo $class; ?> btn-block"><i class="fa fa-print"></i> <?php echo tr('Riba da Pres.'); ?></button>
 	</div>
 </div>
 <br>
