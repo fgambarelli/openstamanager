@@ -72,7 +72,7 @@ echo '
                             <th width="180">'.tr('Data').'</th>
                             <th width="150">'.tr('Importo').'</th>
                             <th width="150">'.tr('Pagato').'</th>
-							<th width="30">'.tr('Riba pres.').'</th>
+							<th width="30">'.tr('Riba da pres.').'</th>
                         </tr>';
 
 $totale_da_pagare = 0;
@@ -106,7 +106,7 @@ for ($i = 0; $i < count($rs); ++$i) {
                             </td>
 							
 							<td align="right">
-                                {[ "type": "checkbox", "name": "riba_presentata['.$rs[$i]['id'].']", "value": "'.$rs[$i]['riba_presentata'].'" ]}
+                                {[ "type": "checkbox", "name": "riba_da_pres['.$rs[$i]['id'].']", "value": "'.$rs[$i]['riba_da_pres'].'" ]}
                             </td>
 							
                         </tr>';
