@@ -63,7 +63,7 @@ for ($i = 0; $i < sizeof($rs); ++$i) {
 }
 
 $body .= "	<tr>\n";
-$body .= "		<td colspan='7' align='right'><b>TOTALE:</b></td><td align='right'>".Translator::numberToLocale($totale_da_pagare)."</td><td align='right'>".Translator::numberToLocale($totale_pagato)."</td>\n";
+$body .= "		<td colspan='8' align='right'><b>TOTALE:</b></td><td align='right'>".Translator::numberToLocale($totale_da_pagare)."</td>\n";
 $body .= "	</tr>\n";
 
 $body .= "</tbody>\n";
