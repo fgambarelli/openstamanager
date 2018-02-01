@@ -10,9 +10,9 @@ echo '
         <p><b>$f_ragionesociale$</b></p>
         <p>'.tr('Sede : ').'$f_indirizzo$ $f_citta_full$</p>
         <p>'.(!empty($f_telefono) ? tr('Tel/Fax').': ' : '').'$f_telefono$'.tr(' Cell.: ').' $f_cellulare$</p>
-        <p class="small">'.(!empty($f_fax) ? tr('Email ').': ' : '').'$f_email$'.(!empty($f_sitoweb) ? tr(' PEC ').': ' : '').'$f_sitoweb$</p>
         <p>'.(!empty($f_piva) ? tr('P.Iva ').': ' : '').'$f_piva$'.(!empty($f_codicefiscale) ? tr(' C.F. ').': ' : '').'$f_codicefiscale$</p>
-        <p>'.(!empty($f_capsoc) ? tr('Cap.Soc.').': ' : '').'$f_capsoc$</p>
+		<p class="small">'.(!empty($f_fax) ? tr('Email ').': ' : '').'$f_email$'.(!empty($f_sitoweb) ? tr(' PEC ').': ' : '').'$f_sitoweb$</p>
+        <p>'.(!empty($f_codiceri) ? tr('Registro Imprese.').': ' : '').'$f_codiceri$</p>
     </div>
 </div>
 
