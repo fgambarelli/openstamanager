@@ -15,7 +15,7 @@ include_once $docroot.'/templates/pdfgen_variables.php';
 */
 
 $titolo = 'Riba da presentare';
-$add_where = "AND co_scadenziario.riba_da_pres=1 ";
+$add_where = "AND co_scadenziario.riba_da_pres=1";
 
 
 $body .= '<h3>'.$titolo.' dal '.Translator::dateToLocale($_SESSION['period_start']).' al '.Translator::dateToLocale($_SESSION['period_end'])."</h3>\n";
@@ -24,12 +24,14 @@ $body .= "<col width=\"300\"><col width=\"200\"><col width=\"150\"><col width=\"
 
 $body .= "<thead>\n";
 $body .= "	<tr>\n";
-$body .= "		<th style='padding:2mm; background:#eee;'>Documento</th>\n";
 $body .= "		<th style='padding:2mm; background:#eee;'>Anagrafica</th>\n";
+$body .= "		<th style='padding:2mm; background:#eee;'>Num</th>\n";
+$body .= "		<th style='padding:2mm; background:#eee;'>Data</th>\n";
 $body .= "		<th style='padding:2mm; background:#eee;'>Tipo di pagamento</th>\n";
+$body .= "		<th style='padding:2mm; background:#eee;'>Banca Appoggio</th>\n";
+$body .= "		<th style='padding:2mm; background:#eee;'>IBAN</th>\n";
 $body .= "		<th style='padding:2mm; background:#eee;'>Data scadenza</th>\n";
 $body .= "		<th style='padding:2mm; background:#eee;'>Importo</th>\n";
-$body .= "		<th style='padding:2mm; background:#eee;'>Già pagato</th>\n";
 $body .= "	</tr>\n";
 $body .= "</thead>\n";
 
@@ -44,12 +46,14 @@ WHERE ABS(pagato) < ABS(da_pagare) ".$add_where." AND scadenza >= '".$_SESSION['
 
 for ($i = 0; $i < sizeof($rs); ++$i) {
     $body .= '	<tr>';
-    $body .= '		<td>'.$rs[$i]['Documento'].'<br><small>'.$rs[$i]['Data emissione']."</small></td>\n";
     $body .= '		<td>'.$rs[$i]['Anagrafica']."</td>\n";
+    $body .= '		<td>'.$rs[$i]['num_fatt']."</td>\n";
+	$body .= '		<td>'.$rs[$i]['data_fatt']."</td>\n";	
     $body .= '		<td>'.$rs[$i]['Tipo di pagamento']."</td>\n";
+    $body .= '		<td>'.$rs[$i]['appoggiobancario']."</td>\n";	
+	$body .= '		<td>'.$rs[$i]['iban']."</td>\n";	
     $body .= "		<td align='center'>".$rs[$i]['Data scadenza']."</td>\n";
     $body .= "		<td align='right'>".Translator::numberToLocale($rs[$i]['Importo'])."</td>\n";
-    $body .= "		<td align='right'>".Translator::numberToLocale($rs[$i]['Pagato'])."</td>\n";
     $body .= "	</tr>\n";
 
     $totale_da_pagare += $rs[$i]['Importo'];
