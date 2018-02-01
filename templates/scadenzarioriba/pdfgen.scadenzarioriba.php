@@ -20,11 +20,11 @@ $add_where = "AND co_scadenziario.riba_da_pres=1";
 
 $body .= '<h3>'.$titolo.' dal '.Translator::dateToLocale($_SESSION['period_start']).' al '.Translator::dateToLocale($_SESSION['period_end'])."</h3>\n";
 $body .= "<table class=\"table_values\" cellspacing=\"0\" border=\"0\" cellpadding=\"0\" style=\"table-layout:fixed; border-color:#aaa;\">\n";
-$body .= "<col width=\"100\"><col width=\"120\"><col width=\"15\"><col width=\"50\"><col width=\"80\"><col width=\"70\"><col width=\"150\"><col width=\"50\"><col width=\"60\">\n";
+$body .= "<col width=\"100\"><col width=\"120\"><col width=\"15\"><col width=\"50\"><col width=\"80\"><col width=\"70\"><col width=\"170\"><col width=\"50\"><col width=\"50\">\n";
 
 $body .= "<thead>\n";
 $body .= "	<tr>\n";
-$body .= "		<th style='padding:2mm; background:#eee;'>Anagrafica</th>\n";
+$body .= "		<th style='padding:2mm; background:#eee;'>Cliente</th>\n";
 $body .= "		<th style='padding:2mm; background:#eee;'>Indirizzo</th>\n";
 $body .= "		<th style='padding:2mm; background:#eee;'>Num</th>\n";
 $body .= "		<th style='padding:2mm; background:#eee;'>Data</th>\n";
