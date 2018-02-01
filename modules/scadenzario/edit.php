@@ -69,9 +69,10 @@ echo '
 				<div class="col-md-5">
 					<table class="table table-hover table-condensed table-bordered">
 					    <tr>
-                            <th width="100">'.tr('Data').'</th>
+                            <th width="150">'.tr('Data').'</th>
                             <th width="150">'.tr('Importo').'</th>
                             <th width="150">'.tr('Pagato').'</th>
+							<th width="30">'.tr('Riba pres.').'</th>
                         </tr>';
 
 $totale_da_pagare = 0;
