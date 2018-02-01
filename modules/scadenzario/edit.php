@@ -105,7 +105,7 @@ for ($i = 0; $i < count($rs); ++$i) {
                             </td>
 							
 							<td align="right">
-                                {[ "type": "checkbox", "name": "riba_presentata['.$rs[$i]['id'].']", "value": "'.Translator::numberToLocale($rs[$i]['riba_presentata']).'" ]}
+                                {[ "type": "checkbox", "name": "riba_presentata['.$rs[$i]['id'].']", "value": "'.$rs[$i]['riba_presentata'].'" ]}
                             </td>
 							
                         </tr>';
