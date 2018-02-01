@@ -20,7 +20,7 @@ switch (post('op')) {
 
         if ($totale_utente == $totale_da_pagare) {
             foreach ($post['scadenza'] as $idscadenza => $da_pagare) {
-                $dbo->query('UPDATE co_scadenziario SET da_pagare='.prepare($da_pagare).', pagato='.prepare(post('pagato')[$idscadenza]).', scadenza='.prepare(post('data')[$idscadenza]).' WHERE id='.prepare($idscadenza));
+                $dbo->query('UPDATE co_scadenziario SET da_pagare='.prepare($da_pagare).', pagato='.prepare(post('pagato')[$idscadenza]).', riba_presentata='.prepare(post('riba_presentata')[$idscadenza]).', scadenza='.prepare(post('data')[$idscadenza]).' WHERE id='.prepare($idscadenza));
             }
 
             $_SESSION['infos'][] = tr('Scadenze aggiornate!');
