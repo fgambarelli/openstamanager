@@ -20,7 +20,7 @@ $add_where = "AND co_scadenziario.riba_da_pres=1";
 
 $body .= '<h3>'.$titolo.' dal '.Translator::dateToLocale($_SESSION['period_start']).' al '.Translator::dateToLocale($_SESSION['period_end'])."</h3>\n";
 $body .= "<table class=\"table_values\" cellspacing=\"0\" border=\"0\" cellpadding=\"0\" style=\"table-layout:fixed; border-color:#aaa;\">\n";
-$body .= "<col width=\"100\"><col width=\"50\"><col width=\"50\"><col width=\"100\"><col width=\"100\"><col width=\"70\"><col width=\"50\"><col width=\"70\">\n";
+$body .= "<col width=\"100\"><col width=\"150\"><col width=\"20\"><col width=\"50\"><col width=\"100\"><col width=\"100\"><col width=\"70\"><col width=\"50\"><col width=\"70\">\n";
 
 $body .= "<thead>\n";
 $body .= "	<tr>\n";
