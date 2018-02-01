@@ -139,7 +139,7 @@ function aggiungi_scadenza($iddocumento, $pagamento = '')
             $da_pagare = -$da_pagare;
         }
 		
-        if ($rs[$i]['riba'] == 0) {
+        if ($rs[$i]['riba'] == 1) {
             $riba_da_pres = 1;
         }
 				
