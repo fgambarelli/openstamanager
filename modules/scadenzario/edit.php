@@ -103,6 +103,11 @@ for ($i = 0; $i < count($rs); ++$i) {
                             <td align="right">
                                 {[ "type": "number", "name": "pagato['.$rs[$i]['id'].']", "value": "'.Translator::numberToLocale($rs[$i]['pagato']).'" ]}
                             </td>
+							
+							<td align="right">
+                                {[ "type": "checkbox", "name": "riba_presentata['.$rs[$i]['id'].']", "value": "'.Translator::numberToLocale($rs[$i]['riba_presentata']).'" ]}
+                            </td>
+							
                         </tr>';
 
     $totale_da_pagare += $rs[$i]['da_pagare'];
