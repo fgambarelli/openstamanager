@@ -15,7 +15,7 @@ include_once $docroot.'/templates/pdfgen_variables.php';
 */
 
 $titolo = 'Scadenzario Riba da presentare';
-$add_where = "AND co_tipidocumento.dir='uscita'";
+$add_where = "AND co_scadenziario.riba_da_pres=1 and (ABS(co_scadenziario.pagato) < ABS(co_scadenziario.da_pagare) )";
 
 
 $body .= '<h3>'.$titolo.' dal '.Translator::dateToLocale($_SESSION['period_start']).' al '.Translator::dateToLocale($_SESSION['period_end'])."</h3>\n";
