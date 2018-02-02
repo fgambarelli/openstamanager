@@ -48,7 +48,7 @@
 	}
 
 
-	echo "<script type=\"text/javascript\" charset=\"utf-8\" src=\"".$rootdir."/assets/dist/js/ckeditor.js\"></script>\n";
+	echo "<script type=\"text/javascript\" charset=\"utf-8\" src=\"".$rootdir."/assets/ckeditor/ckeditor/ckeditor.js\"></script>\n";
 
 
 	echo "<form id=\"send_email\" action=\"".$rootdir."/editor.php?id_module=$id_module&id_record=$id_record\" onsubmit=\"return check_submit()\" method=\"post\">\n";
