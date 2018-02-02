@@ -1336,6 +1336,7 @@ case "sendemail":
       $allegato = post('allegato');
 
       $mail = new Mail();
+      $mail->SMTPDebug = 2;
 
       $mail->AddReplyTo($from_address, $from_name);
       $mail->SetFrom($from_address, $from_name);
@@ -1362,6 +1363,7 @@ case "sendemail":
             $dbo->query("UPDATE co_documenti SET data_invio=NOW() WHERE id=\"".$id_record."\"");
             array_push( $_SESSION['infos'], "Email inviata!" );
       }
+      exit();
 
 break;
 
