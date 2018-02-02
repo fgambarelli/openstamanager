@@ -262,31 +262,31 @@ SELECT DISTINCT co_contratti.nome, (select descrizione from my_impianti_tipiimpi
 
         // num_rapp
         echo '
-        	<td class="text-center" style="font-size:6pt">
+        	<td class="text-center" style="font-size:8pt">
         	    '.$r['num_rapp'].'
         	</td>';
 
         // tipo
           echo '
-          <td class="text-center" style="font-size:6pt">
+          <td class="text-center" style="font-size:8pt">
                 '.$r['tipoimpianto'].'
           </td>';
 
         // nome
         echo '
-        	<td class="text-center" style="font-size:6pt">
+        	<td class="text-center" style="font-size:8pt">
                 '.$r['nome'].'
         	</td>';
 
         // descrizione
         echo '
-        	<td class="text-center" style="font-size:6pt">
+        	<td class="text-center" style="font-size:8pt">
                 '.$r['descrizione'].'
         	</td>';
 
         // Ubicazione
         echo '
-        	<td class="text-center" style="font-size:6pt">
+        	<td class="text-center" style="font-size:8pt">
                 '.$r['ubicazione'].'
             </td>';
 
