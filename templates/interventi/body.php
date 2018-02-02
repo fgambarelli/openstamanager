@@ -353,8 +353,8 @@ echo '
 if ($mostra_prezzi) {
     $ore = get_ore_intervento($idintervento);
 
-    $costo_orario = $records[0]['tot_ore_consuntivo'] - $records[0]['tot_dirittochiamata'];
-
+    //$costo_orario = $records[0]['tot_ore_consuntivo'] - $records[0]['tot_dirittochiamata'];
+    $costo_orario = $records[0]['tot_ore_consuntivo']
     if ($ore > 0) {
         $costo_orario /= $ore;
     }
