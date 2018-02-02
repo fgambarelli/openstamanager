@@ -50,10 +50,10 @@ for ($i = 0; $i < sizeof($rs); ++$i) {
     $body .= '		<td>'.$rs[$i]['Anagrafica']."</td>\n";
     $body .= '		<td>'.$rs[$i]['indirizzo_completo']."</td>\n";
     $body .= '		<td>'.$rs[$i]['num_fatt']."</td>\n";
-	$body .= '		<td>'.$rs[$i]['data_fatt']."</td>\n";	
+	  $body .= '		<td>'.$rs[$i]['data_fatt']."</td>\n";
     $body .= '		<td>'.$rs[$i]['Tipo di pagamento']."</td>\n";
-    $body .= '		<td>'.$rs[$i]['appoggiobancario']."</td>\n";	
-	$body .= '		<td>'.$rs[$i]['iban']."</td>\n";	
+    $body .= '		<td>'.$rs[$i]['appoggiobancario']."</td>\n";
+	  $body .= '		<td>'.$rs[$i]['iban']."</td>\n";
     $body .= "		<td align='center'>".$rs[$i]['Data scadenza']."</td>\n";
     $body .= "		<td align='right'>".Translator::numberToLocale($rs[$i]['Importo'])."</td>\n";
     $body .= "	</tr>\n";
