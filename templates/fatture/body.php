@@ -8,7 +8,7 @@ $autofill = [
     'count' => 0, // Conteggio delle righe
     'words' => 70, // Numero di parolo dopo cui contare una riga nuova
     'rows' => 15, // Numero di righe massimo presente nella pagina
-    'additional' => 3, // Numero di righe massimo da aggiungere
+    'additional' => 10, // Numero di righe massimo da aggiungere
     'columns' => 5, // Numero di colonne della tabella
 ];
 
