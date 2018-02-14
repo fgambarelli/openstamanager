@@ -44,7 +44,6 @@ include_once __DIR__.'/../../core.php';
 						<div class="col-md-12">
 							{[ "type": "select", "label": "<?php echo tr('Cliente'); ?>", "name": "idanagrafica", "required": 1, "values": "query=SELECT an_anagrafiche.idanagrafica AS id, ragione_sociale AS descrizione FROM an_anagrafiche INNER JOIN (an_tipianagrafiche_anagrafiche INNER JOIN an_tipianagrafiche ON an_tipianagrafiche_anagrafiche.idtipoanagrafica=an_tipianagrafiche.idtipoanagrafica) ON an_anagrafiche.idanagrafica=an_tipianagrafiche_anagrafiche.idanagrafica WHERE descrizione='Cliente' AND deleted=0 ORDER BY ragione_sociale", "value": "$idanagrafica$", "extra": "onchange=\"load_preventivi( this.value ); load_contratti( this.value ); $('#idsede').load( '<?php echo $rootdir ?>/ajax_autocomplete.php?module=Anagrafiche&op=get_sedi_select&idanagrafica='+$('#idanagrafica option:selected').val() ); load_impianti( $('#idanagrafica option:selected').val(), $('#idsede option:selected').val() );\"", "ajax-source": "clienti" ]}
 						</div>
-
 					</div>
 				</div>
 			</div>
@@ -98,11 +97,10 @@ include_once __DIR__.'/../../core.php';
 				<div class="col-md-4">
 					{[ "type": "number", "label": "<?php echo tr('Trasferta'); ?>", "name": "minuti", "decimals": "0", "value": "$minuti$", "icon-after": "minuti"  ]}
 				</div>
-				
+
 				<div class="col-md-4">
 					{[ "type": "number", "label": "<?php echo tr('KM (Andata e Ritorno)'); ?>", "name": "km", "decimals": "0", "value": "$km$", "icon-after": "km"  ]}
 				</div>
-				
 			</div>
 
 		</div>
