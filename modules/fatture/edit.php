@@ -285,13 +285,17 @@ if ($records[0]['stato'] == 'Emessa') {
 if ($records[0]['stato'] != 'Pagato' && $records[0]['stato'] != 'Emessa') {
     if ($dir == 'entrata') {
         // Lettura interventi non rifiutati, non fatturati e non collegati a preventivi o contratti
-        $int_query = 'SELECT COUNT(*) AS tot FROM in_interventi WHERE idanagrafica='.prepare($records[0]['idanagrafica'])." AND NOT idstatointervento='DENY' AND id NOT IN (SELECT idintervento FROM co_righe_documenti WHERE idintervento IS NOT NULL)";
+		// Modificato, leggo anche gli interventi collegati a preventivi e contratti
+		// Inserito filtro solo su interventi da fatturare
+        $int_query = 'SELECT COUNT(*) AS tot FROM in_interventi WHERE idanagrafica='.prepare($records[0]['idanagrafica'])." AND (idstatointervento='DA_FAT' OR idstatointervento='DA_FAT_DET' OR idstatointervento='DA_FAT_P') AND id NOT IN (SELECT idintervento FROM co_righe_documenti WHERE idintervento IS NOT NULL)";
         $interventi = $dbo->fetchArray($int_query)[0]['tot'];
 
         // Se non trovo niente provo a vedere se ce ne sono per clienti terzi
         if (empty($interventi)) {
             // Lettura interventi non rifiutati, non fatturati e non collegati a preventivi o contratti (clienti terzi)
-            $int_query = 'SELECT COUNT(*) AS tot FROM in_interventi WHERE idclientefinale='.prepare($records[0]['idanagrafica'])." AND NOT idstatointervento='DENY' AND id NOT IN (SELECT idintervento FROM co_righe_documenti WHERE idintervento IS NOT NULL) AND id NOT IN (SELECT idintervento FROM co_preventivi_interventi WHERE idintervento IS NOT NULL) AND id NOT IN (SELECT idintervento FROM co_righe_contratti WHERE idintervento IS NOT NULL)";
+			// Modificato, leggo anche gli interventi collegati a preventivi e contratti
+			// Inserito filtro solo su interventi da fatturare
+            $int_query = 'SELECT COUNT(*) AS tot FROM in_interventi WHERE idclientefinale='.prepare($records[0]['idanagrafica'])." AND (idstatointervento='DA_FAT' OR idstatointervento='DA_FAT_DET' OR idstatointervento='DA_FAT_P') AND id NOT IN (SELECT idintervento FROM co_righe_documenti WHERE idintervento IS NOT NULL) ";
             $interventi = $dbo->fetchArray($int_query)[0]['tot'];
         }
 
