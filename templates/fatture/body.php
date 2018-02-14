@@ -107,7 +107,7 @@ foreach ($righe as $r) {
     echo '
             <td class="text-center">';
     if($r['is_descrizione']==0){
-        echo
+        echo 
                 Translator::numberToLocale($r['qta']).' '.$r['um'];
     }
     echo '
@@ -142,7 +142,7 @@ foreach ($righe as $r) {
     if($r['is_descrizione']==0){
         echo
                 (empty($r['subtotale']) ? '' : Translator::numberToLocale($r['subtotale'] - $r['sconto'])).' &euro;';
-
+    
         if ($r['sconto'] > 0) {
             echo "
                     <br><small class='text-muted'>".tr('sconto di _TOT_ _TYPE_', [
