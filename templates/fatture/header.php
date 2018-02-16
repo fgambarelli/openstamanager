@@ -58,11 +58,19 @@ echo '
                     <p>{PAGENO}/{nb}</p>
                 </td>
             </tr>
+       </table>
+    </div>
+</div>
+	
+<div class="row">
+    <!-- Dati PAGAMENTO -->
+    <div class="col-xs-7">
 
+	   <table class="table">
             <tr>
                 <td colspan="1" style="height:10mm;padding-top:2mm;">
                     <p class="small-bold">'.tr('Pagamento', [], ['upper' => true]).'</p>
-                    <p>$pagamento$</p>
+                    <p>$pagamento$</p>0
                 </td>
                 <td colspan="3" style="height:10mm;padding-top:2mm;">
                     <p class="small-bold">'.tr('Banca di appoggio', [], ['upper' => true]).'</p>
@@ -76,36 +84,6 @@ echo '
                 </td>
             </tr>
 
-        </table>
-    </div>
-
-    <div class="col-xs-5 col-xs-offset-1">
-        <table class="table" style="width:100%;margin-top:5mm;">
-            <tr>
-                <td colspan=2 class="border-full" style="height:20mm;">
-                    <p class="small-bold">'.tr('Spett.le', [], ['upper' => true]).'</p>
-                    <p><b>$c_ragionesociale$</b></p>
-                    <p>$c_indirizzo$ $c_citta_full$</p>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="border-bottom border-left">
-                    <p class="small-bold">'.tr('Partita IVA', [], ['upper' => true]).'</p>
-                </td>
-                <td class="border-right border-bottom text-right">
-                    <p>$c_piva$</p>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="border-bottom border-left">
-                    <p class="small-bold">'.tr('Codice fiscale', [], ['upper' => true]).'</p>
-                </td>
-                <td class="border-right border-bottom text-right">
-                    <p>$c_codicefiscale$</p>
-                </td>
-            </tr>
         </table>
     </div>
 </div>';
