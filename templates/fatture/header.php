@@ -50,13 +50,13 @@ echo '
                     <p>$pagamento$</p>
                 </td>
 				<td colspan="3" style="height:10mm;padding-top:2mm;">
-                    <p class="small-bold">'.tr('Banca di appoggio', [], ['upper' => true]).'</p>
+                    <p class="small-bold">'.tr('Banca appoggio (Cliente)', [], ['upper' => true]).'</p>
                     <p class="small">$c_appoggiobancario$</p>
                 </td>
             </tr>
             <tr>
                 <td colspan="3" style="height:10mm;padding-top:2mm;">
-                    <p class="small-bold">'.tr('IBAN').'</p>
+                    <p class="small-bold">'.tr('IBAN (Cliente)').'</p>
                     <p>$c_codiceiban$</p>
                 </td>
             </tr>
