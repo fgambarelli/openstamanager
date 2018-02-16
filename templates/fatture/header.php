@@ -13,6 +13,7 @@ echo '
         <p>'.(!empty($f_piva) ? tr('P.Iva ').': ' : '').'$f_piva$'.(!empty($f_codicefiscale) ? tr(' C.F. ').': ' : '').'$f_codicefiscale$</p>
 		<p>'.(!empty($f_fax) ? tr('Email ').': ' : '').'$f_email$'.(!empty($f_sitoweb) ? tr(' PEC ').': ' : '').'$f_sitoweb$</p>
         <p>'.(!empty($f_codiceri) ? tr('Registro Imprese.').': ' : '').'$f_codiceri$</p>
+		<p>'.(!empty($f_appoggiobancario) ? tr('IBAN ').': ' : '').'$f_appoggiobancario$</p>
     </div>
 </div>
 
@@ -54,14 +55,14 @@ echo '
                     <p><b>$data$</b></p>
                 </td>
 
-
                 <td class="border-right border-bottom border-top center text-center">
-
+                    <p class="small-bold">'.tr('Foglio', [], ['upper' => true]).'</p>
                     <p>{PAGENO}/{nb}</p>
                 </td>
             </tr>
+
             <tr>
-                <td colspan="4" style="height:10mm;padding-top:2mm;">
+                <td colspan="2" style="height:10mm;padding-top:2mm;">
                     <p class="small-bold">'.tr('Pagamento', [], ['upper' => true]).'</p>
                     <p>$pagamento$</p>
                 </td>
