@@ -55,7 +55,10 @@ $custom = [
     'numero_doc' => $numero,
     'data' => Translator::dateToLocale($records[0]['data']),
     'pagamento' => $records[0]['tipo_pagamento'],
+	'codiceiban' => $records[0]['codiceiban'],
+	'appoggiobancario' => $records[0]['appoggiobancario'],
     'c_destinazione' => $destinazione,
+	
 ];
 
 // Controllo sui permessi
