@@ -49,15 +49,15 @@ echo '
                     <p class="small-bold">'.tr('Pagamento', [], ['upper' => true]).'</p>
                     <p>$pagamento$</p>
                 </td>
-            </tr>
-            <tr>
-                <td colspan="2" style="height:10mm;padding-top:2mm;">
-                    <p class="small-bold">'.tr('IBAN').'</p>
-                    <p>$c_codiceiban$</p>
-                </td>
-                <td colspan="2" style="height:10mm;padding-top:2mm;">
+				<td colspan="3" style="height:10mm;padding-top:2mm;">
                     <p class="small-bold">'.tr('Banca di appoggio', [], ['upper' => true]).'</p>
                     <p>$c_appoggiobancario$</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" style="height:10mm;padding-top:2mm;">
+                    <p class="small-bold">'.tr('IBAN').'</p>
+                    <p>$c_codiceiban$</p>
                 </td>
             </tr>
         </table>
