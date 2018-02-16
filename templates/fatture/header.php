@@ -12,8 +12,7 @@ echo '
         <p>'.(!empty($f_telefono) ? tr('Tel/Fax').': ' : '').'$f_telefono$'.tr(' Cell. ').' $f_cellulare$</p>
         <p>'.(!empty($f_piva) ? tr('P.Iva ').': ' : '').'$f_piva$'.(!empty($f_codicefiscale) ? tr(' C.F. ').': ' : '').'$f_codicefiscale$</p>
 		<p>'.(!empty($f_fax) ? tr('Email ').': ' : '').'$f_email$'.(!empty($f_sitoweb) ? tr(' PEC ').': ' : '').'$f_sitoweb$</p>
-        <p>'.(!empty($f_codiceri) ? tr('Registro Imprese.').': ' : '').'$f_codiceri$</p>
-		<p>'.(!empty($f_appoggiobancario) ? tr('IBAN ').': ' : '').'$f_appoggiobancario$</p>
+        <p>'.(!empty($f_codiceri) ? tr('Registro Imprese.').': ' : '').'$f_codiceri$'.tr(' IBAN ').' $f_appoggiobancario$</p>
     </div>
 </div>
 
