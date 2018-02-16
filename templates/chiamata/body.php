@@ -341,11 +341,11 @@ echo '
             </th>
         </tr>
         <tr>
-            <th class="text-center" style="font-size:8pt;width:5%">
+            <th class="text-center" style="font-size:8pt;width:10%">
                 <b>'.tr('Matr.').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:8%">
+            <th class="text-center" style="font-size:8pt;width:7%">
                 <b>'.tr('Tipo').'</b>
             </th>
 
@@ -361,7 +361,7 @@ echo '
                 <b>'.tr('Ubicazione').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:20%">
+            <th class="text-center" style="font-size:8pt;width:16%">
                 <b>'.tr('Referente').'</b>
             </th>
 
