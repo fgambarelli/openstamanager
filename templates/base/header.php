@@ -19,6 +19,6 @@ return '
         <p>'.$f_indirizzo.' '.$f_citta_full.'</p>
         <p>'.(!empty($f_piva) ? tr('P.Iva').': '.$f_piva : '').'
         '.(!empty($f_codicefiscale) ? tr('C.F.').': '.$f_codicefiscale : '').'</p>
-        <p>'.(!empty($f_telefono) ? tr('Tel').': '.$f_telefono : '').'</p>
-    </div>
+        <p>'.(!empty($f_telefono) ? tr('Tel/Fax').': '.$f_telefono : '').'
+        '.(!empty($f_cellulare) ? tr(' Cell. ').': '.$f_cellulare : '').'</p>
 </div>';
