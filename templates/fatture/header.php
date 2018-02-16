@@ -70,11 +70,11 @@ echo '
             <tr>
                 <td colspan="2" style="height:10mm;padding-top:2mm;">
                     <p class="small-bold">'.tr('IBAN').'</p>
-                    <p>$f_codiceiban$</p>
+                    <p>$codiceiban$</p>
                 </td>
                 <td colspan="2" style="height:10mm;padding-top:2mm;">
                     <p class="small-bold">'.tr('Banca di appoggio', [], ['upper' => true]).'</p>
-                    <p>$f_appoggiobancario$</p>
+                    <p>$appoggiobancario$</p>
                 </td>
             </tr>
 
