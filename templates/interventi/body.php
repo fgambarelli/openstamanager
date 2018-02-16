@@ -346,7 +346,7 @@ echo '
 // Diritto di chiamata
 if ($mostra_prezzi) {
   echo '
-      <td class="text-center" colspan="2">
+      <td class="text-center" colspan="3">
           <small>'.tr('Diritto di chiamata').':</small><br/><b>'.Translator::numberToLocale($records[0]['tot_dirittochiamata']).' &euro;</b>
       </td>';
 } else {
@@ -359,12 +359,12 @@ if ($mostra_prezzi) {
 // Costo totale manodopera
 if ($mostra_prezzi) {
     echo '
-        <td colspan="3" class="text-center">
+        <td colspan="2" class="text-center">
             <small>'.tr('Totale manodopera').':</small><br/><b>'.Translator::numberToLocale($costi_intervento['manodopera_addebito']).' &euro;</b>
         </td>';
 } else {
     echo '
-        <td colspan="3" class="text-center">-</td>';
+        <td colspan="2" class="text-center">-</td>';
 }
 
 // Timbro e firma
