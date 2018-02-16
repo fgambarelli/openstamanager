@@ -132,7 +132,9 @@ if (empty($records[0]['firma_file'])) {
                 <div class="col-md-3">
 					{[ "type": "text", "label": "<?php echo tr('Num. Rapportino'); ?>", "name": "num_rapp", "required": 0, "value": "$num_rapp$" ]}
 				</div>
-
+				
+				
+				
 			</div>
 
 
@@ -280,6 +282,17 @@ if (empty($records[0]['firma_file'])) {
 		$("#idsede").selectReset();
 		$("#idpreventivo").selectReset();
 		$("#idcontratto").selectReset();
+		
+		if (($(this).val())) {
+			if (($(this).selectData().idzona)){
+				$('#idzona').val($(this).selectData().idzona).change();
+	
+			}else{
+				$('#idzona').val('').change();
+			}
+			//session_set('superselect,idzona', $(this).selectData().idzona, 0);
+		}
+		
 	});
 
 	$('#idpreventivo').change( function(){
@@ -298,6 +311,19 @@ if (empty($records[0]['firma_file'])) {
 	$('#matricola').change( function(){
 		session_set('superselect,marticola', $(this).val(), 0);
 	});
+	
+	$('#idsede').change( function(){
+		if (($(this).val())) {
+			if (($(this).selectData().idzona)){
+				$('#idzona').val($(this).selectData().idzona).change();
+			}else{
+				$('#idzona').val('').change();
+			}
+			//session_set('superselect,idzona', $(this).selectData().idzona, 0);
+		}
+	});
+	
+	
 </script>
 
 
