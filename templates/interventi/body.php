@@ -281,22 +281,23 @@ echo '
         <td class="text-center">
             <small>'.tr('Ore lavorate').':</small><br/><b>'.Translator::numberToLocale($ore).'</b>
         </td>';
-// Diritto di chiamata
+// Costo totale manodopera
 if ($mostra_prezzi) {
   echo '
       <td class="text-center" colspan="3">
-          <small>'.tr('Diritto di chiamata').':</small><br/><b>'.Translator::numberToLocale($records[0]['tot_dirittochiamata']).' &euro;</b>
+          <small>'.tr('Totale manodopera').':</small><br/><b>'.Translator::numberToLocale($costi_intervento['manodopera_addebito']).' &euro;</b>
       </td>';
 } else {
     echo '
-      <td class="text-center" colspan="2">-</td>
+      <td class="text-center" colspan="3">-</td>
   ';
 }
-// Costo totale manodopera
+
+// Diritto di chiamata
 if ($mostra_prezzi) {
     echo '
         <td colspan="2" class="text-center">
-            <small>'.tr('Totale manodopera').':</small><br/><b>'.Translator::numberToLocale($costi_intervento['manodopera_addebito']).' &euro;</b>
+            <small>'.tr('Diritto di chiamata').':</small><br/><b>'.Translator::numberToLocale($records[0]['tot_dirittochiamata']).' &euro;</b>
         </td>';
 } else {
     echo '
