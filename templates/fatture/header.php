@@ -5,7 +5,7 @@ echo '
     <div class="col-xs-4">
         <img src="'.__DIR__.'/logo_azienda.jpg" alt="Logo" border="0"/>
     </div>
-    <div class="col-xs-10 text-right">
+    <div class="col-xs-14 text-right">
         <p><b>$f_ragionesociale$</b></p>
         <p>'.tr('Sede ').'$f_indirizzo$ $f_citta_full$</p>
         <p>'.(!empty($f_telefono) ? tr('Tel/Fax').': ' : '').'$f_telefono$'.tr(' Cell. ').' $f_cellulare$</p>
