@@ -333,17 +333,7 @@ foreach ($rst as $i => $r) {
 }
 
 
-// Diritto di chiamata
-if ($mostra_prezzi) {
-  echo '
-      <td class="text-center" colspan="3">
-          <small>'.tr('Diritto di chiamata').':</small><br/><b>'.Translator::numberToLocale($records[0]['tot_dirittochiamata']).' &euro;</b>
-      </td>';
-} else {
-    echo '
-      <td class="text-center" colspan="2">-</td>
-  ';
-}
+
 
 
 // Ore lavorate
@@ -355,6 +345,18 @@ echo '
             <small>'.tr('Ore lavorate').':</small><br/><b>'.Translator::numberToLocale($ore).'</b>
         </td>';
 
+
+// Diritto di chiamata
+        if ($mostra_prezzi) {
+          echo '
+              <td class="text-center" colspan="3">
+                  <small>'.tr('Diritto di chiamata').':</small><br/><b>'.Translator::numberToLocale($records[0]['tot_dirittochiamata']).' &euro;</b>
+              </td>';
+        } else {
+            echo '
+              <td class="text-center" colspan="2">-</td>
+          ';
+        }
 
 // Costo totale manodopera
 if ($mostra_prezzi) {
