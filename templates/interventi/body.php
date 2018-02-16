@@ -368,7 +368,7 @@ echo '
 echo '
     <tr>
         <td class="text-center">
-            <small>'.tr('Km percorsi').':</small><br/><b>'.Translator::numberToLocale($records[0]['tot_km']).'</b>
+
         </td>';
 
 
@@ -376,7 +376,7 @@ echo '
 if ($mostra_prezzi) {
     echo '
         <td class="text-center">
-            <small>'.tr('Costi di trasferta').':</small><br/><b>'.Translator::numberToLocale($records[0]['tot_km_consuntivo']).' &euro;</b>
+
         </td>';
 } else {
     echo '
