@@ -346,55 +346,69 @@ foreach ($rst as $i => $r) {
     </tr>';
 }
 
-echo '
-    <tr>';
+
 
 // Ore lavorate
+$ore = get_ore_intervento($idintervento);
+
+echo '
+    <tr>
+        <td class="text-center">
+            <small>'.tr('Ore lavorate').':</small><br/><b>'.Translator::numberToLocale($ore).'</b>
+        </td>';
+
+// Costo totale manodopera
 if ($mostra_prezzi) {
-    $ore = get_ore_intervento($idintervento);
-
-    $costo_orario = $records[0]['tot_ore_consuntivo'] - $records[0]['tot_dirittochiamata'];
-
-    if ($ore > 0) {
-        $costo_orario /= $ore;
-    }
-
     echo '
-        <td class="text-center">
-        '.tr('Ore lavorate').':<br/><b>'.Translator::numberToLocale($ore).'</b>
-        </td>';
-
-    // Costo orario
-    echo '
-        <td class="text-center">
-            '.tr('Costo orario').':<br/><b>'.Translator::numberToLocale($costo_orario).'</b>';
-
-    if ($records[0]['tot_dirittochiamata'] != 0) {
-        echo '
-            <small> + '.Translator::numberToLocale($records[0]['tot_dirittochiamata']).' d.c.</small>';
-    }
-
-    echo '
-        </td>';
-
-    // Costo totale manodopera
-    echo '
-        <td colspan="2" class="text-center">
-        '.tr('Manodopera').':<br/><b>'.Translator::numberToLocale($costi_intervento['manodopera_scontato']).'</b>
+        <td colspan="3" class="text-center">
+            <small>'.tr('Totale manodopera').':</small><br/><b>'.Translator::numberToLocale($costi_intervento['manodopera_addebito']).' &euro;</b>
         </td>';
 } else {
     echo '
-        <td colspan="4"></td>';
+        <td colspan="3" class="text-center">-</td>';
 }
 
 // Timbro e firma
 $firma = !empty($records[0]['firma_file']) ? '<img src="'.$docroot.'/files/interventi/'.$records[0]['firma_file'].'" style="width:70mm;">' : '';
 echo '
-        <td class="text-center" style="font-size:8pt;height:30mm;vertical-align:bottom">
+        <td rowspan="2" class="text-center" style="font-size:8pt;height:30mm;vertical-align:bottom">
             '.$firma.'<br>
             <i>('.tr('Timbro e firma leggibile').'.)</i>
         </td>
     </tr>';
+
+
+// Totale km
+echo '
+    <tr>
+        <td class="text-center">
+            <small>'.tr('Km percorsi').':</small><br/><b>'.Translator::numberToLocale($records[0]['tot_km']).'</b>
+        </td>';
+
+
+// Costo trasferta
+if ($mostra_prezzi) {
+    echo '
+        <td class="text-center">
+            <small>'.tr('Costi di trasferta').':</small><br/><b>'.Translator::numberToLocale($records[0]['tot_km_consuntivo']).' &euro;</b>
+        </td>';
+} else {
+    echo '
+        <td class="text-center">-</td>';
+}
+
+// Diritto di chiamata
+if ($mostra_prezzi) {
+    echo '
+        <td class="text-center" colspan="2">
+            <small>'.tr('Diritto di chiamata').':</small><br/><b>'.Translator::numberToLocale($records[0]['tot_dirittochiamata']).' &euro;</b>
+        </td>';
+} else {
+    echo '
+        <td class="text-center" colspan="2">-</td>
+        ';
+}
+
 
 // TOTALE COSTI FINALI
 if ($mostra_prezzi) {
@@ -406,34 +420,38 @@ if ($mostra_prezzi) {
         </td>
 
         <th class="text-center">
-            <b>'.Translator::numberToLocale($costi_intervento['totale_scontato']).' &euro;</b>
+            <b>'.Translator::numberToLocale($costi_intervento['totale_addebito']).' &euro;</b>
         </th>
     </tr>';
 
-    // Eventuale sconto incondizionato
-    if (!empty($costi_intervento['sconto_globale'])) {
+    $sconto_addebito = $costi_intervento['totale_addebito'] - $costi_intervento['totale_scontato'];
+
+    $totale_sconto = $costi_intervento['sconto_globale'] + $sconto_addebito;
+
+    // Eventuale sconto totale
+    if (!empty($totale_sconto)) {
         echo '
-    <tr>
-        <td colspan="4" class="text-right">
-            <b>'.tr('Sconto incondizionato', [], ['upper' => true]).':</b>
-        </td>
+        <tr>
+            <td colspan="4" class="text-right">
+            <b>'.tr('Sconto', [], ['upper' => true]).':</b>
+            </td>
 
-        <th class="text-center">
-            <b>-'.Translator::numberToLocale($costi_intervento['sconto_globale']).' &euro;</b>
-        </th>
-    </tr>';
+            <th class="text-center">
+                <b>-'.Translator::numberToLocale($totale_sconto).' &euro;</b>
+            </th>
+        </tr>';
 
         // Imponibile scontato
         echo '
-    <tr>
-        <td colspan="4" class="text-right">
-            <b>'.tr('Imponibile scontato', [], ['upper' => true]).':</b>
-        </td>
+        <tr>
+            <td colspan="4" class="text-right">
+                <b>'.tr('Imponibile scontato', [], ['upper' => true]).':</b>
+            </td>
 
-        <th class="text-center">
-            <b>'.Translator::numberToLocale($costi_intervento['totale']).' &euro;</b>
-        </th>
-    </tr>';
+            <th class="text-center">
+                <b>'.Translator::numberToLocale($costi_intervento['totale']).' &euro;</b>
+            </th>
+        </tr>';
     }
 
     // Leggo iva da applicare
