@@ -10,6 +10,6 @@ return [
         'left' => 10,
         'right' => 10,
     ],
-    'header-height' => 32,
+    'header-height' => 33,
     'footer-height' => 5,
 ];
