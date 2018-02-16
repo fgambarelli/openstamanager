@@ -2,7 +2,7 @@
 echo '
 <!-- Intestazione fornitore -->
 <div class="row">
-    <div class="col-xs-5">
+    <div class="col-xs-4">
         <img src="'.__DIR__.'/logo_azienda.jpg" alt="Logo" border="0"/>
     </div>
     <div class="col-xs-14 text-right">
