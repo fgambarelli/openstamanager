@@ -333,16 +333,6 @@ foreach ($rst as $i => $r) {
 }
 
 
-
-// Ore lavorate
-$ore = get_ore_intervento($idintervento);
-
-echo '
-    <tr>
-        <td class="text-center">
-            <small>'.tr('Ore lavorate').':</small><br/><b>'.Translator::numberToLocale($ore).'</b>
-        </td>';
-
 // Diritto di chiamata
 if ($mostra_prezzi) {
   echo '
@@ -354,6 +344,16 @@ if ($mostra_prezzi) {
       <td class="text-center" colspan="2">-</td>
   ';
 }
+
+
+// Ore lavorate
+$ore = get_ore_intervento($idintervento);
+
+echo '
+    <tr>
+        <td class="text-center">
+            <small>'.tr('Ore lavorate').':</small><br/><b>'.Translator::numberToLocale($ore).'</b>
+        </td>';
 
 
 // Costo totale manodopera
