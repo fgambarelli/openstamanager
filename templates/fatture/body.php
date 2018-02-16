@@ -229,7 +229,7 @@ if (!empty($rs2[0]['nome'])) {
             </th>
         </tr>
         <tr>
-            <th class="text-center" style="font-size:8pt;width:8%">
+            <th class="text-center" style="font-size:8pt;width:20%">
                 <b>'.tr('N.Rapp / Contr.').'</b>
             </th>
 
@@ -237,11 +237,11 @@ if (!empty($rs2[0]['nome'])) {
                 <b>'.tr('Tipo').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:35%">
+            <th class="text-center" style="font-size:8pt;width:25%">
                 <b>'.tr('Nome').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:25%">
+            <th class="text-center" style="font-size:8pt;width:23%">
                 <b>'.tr('Descrizione').'</b>
             </th>
 
