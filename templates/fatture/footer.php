@@ -57,11 +57,11 @@ if (!empty($v_iva)) {
                                     <p class='small-bold'>".tr('Aliquota IVA', [], ['upper' => true])."</p>
                                 </td>
 
-                                <td style='width:20mm;' class='text-center'>
+                                <td style='width:20mm;' class='text-right'>
                                     <p class='small-bold'>".tr('Importo', [], ['upper' => true])."</p>
                                 </td>
 
-                                <td style='width:20mm;' class='text-center'>
+                                <td style='width:20mm;' class='text-right'>
                                     <p class='small-bold'>".tr('Importo IVA', [], ['upper' => true]).'</p>
                                 </td>
                             </tr>';
