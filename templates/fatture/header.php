@@ -55,7 +55,6 @@ echo '
                 </td>
 
                 <td class="border-right border-bottom border-top center text-center">
-                    <p class="small-bold">'.tr('Foglio', [], ['upper' => true]).'</p>
                     <p>{PAGENO}/{nb}</p>
                 </td>
             </tr>
@@ -70,11 +69,11 @@ echo '
             <tr>
                 <td colspan="2" style="height:10mm;padding-top:2mm;">
                     <p class="small-bold">'.tr('IBAN').'</p>
-                    <p>$codiceiban$</p>
+                    <p>$c_codiceiban$</p>
                 </td>
                 <td colspan="2" style="height:10mm;padding-top:2mm;">
                     <p class="small-bold">'.tr('Banca di appoggio', [], ['upper' => true]).'</p>
-                    <p>$appoggiobancario$</p>
+                    <p>$c_appoggiobancario$</p>
                 </td>
             </tr>
 

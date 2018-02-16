@@ -7,8 +7,6 @@ $records = $dbo->fetchArray('SELECT *,
     (SELECT descrizione FROM co_statidocumento WHERE id=idstatodocumento) AS stato_doc,
     (SELECT descrizione FROM co_tipidocumento WHERE id=idtipodocumento) AS tipo_doc,
     (SELECT descrizione FROM co_pagamenti WHERE id=idpagamento) AS tipo_pagamento,
-	(SELECT codiceiban FROM an_anagrafiche WHERE idanagrafica=an_anagrafiche.idanagrafica) AS codiceiban,
-	(SELECT appoggiobancario FROM an_anagrafiche WHERE idanagrafica=an_anagrafiche.idanagrafica) AS appoggiobancario,
     (SELECT dir FROM co_tipidocumento WHERE id=idtipodocumento) AS dir
 FROM co_documenti WHERE id='.prepare($iddocumento));
 
@@ -57,10 +55,7 @@ $custom = [
     'numero_doc' => $numero,
     'data' => Translator::dateToLocale($records[0]['data']),
     'pagamento' => $records[0]['tipo_pagamento'],
-	'codiceiban' => $records[0]['codiceiban'],
-	'appoggiobancario' => $records[0]['appoggiobancario'],
     'c_destinazione' => $destinazione,
-	
 ];
 
 // Controllo sui permessi
