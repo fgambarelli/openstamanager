@@ -5,11 +5,11 @@ return [
     'format' => 'A4',
     'font-size' => 10,
     'margins' => [
-        'top' => 10,
-        'bottom' => 10,
-        'left' => 12,
-        'right' => 12,
+        'top' => 5,
+        'bottom' => 5,
+        'left' => 10,
+        'right' => 10,
     ],
-    'header-height' => 35,
+    'header-height' => 25,
     'footer-height' => 5,
 ];
