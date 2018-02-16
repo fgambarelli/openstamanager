@@ -51,7 +51,7 @@ echo '
                 </td>
 				<td colspan="3" style="height:10mm;padding-top:2mm;">
                     <p class="small-bold">'.tr('Banca di appoggio', [], ['upper' => true]).'</p>
-                    <p>$c_appoggiobancario$</p>
+                    <p class="small">$c_appoggiobancario$</p>
                 </td>
             </tr>
             <tr>
