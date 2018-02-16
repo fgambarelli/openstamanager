@@ -343,6 +343,19 @@ echo '
             <small>'.tr('Ore lavorate').':</small><br/><b>'.Translator::numberToLocale($ore).'</b>
         </td>';
 
+// Diritto di chiamata
+if ($mostra_prezzi) {
+  echo '
+      <td class="text-center" colspan="2">
+          <small>'.tr('Diritto di chiamata').':</small><br/><b>'.Translator::numberToLocale($records[0]['tot_dirittochiamata']).' &euro;</b>
+      </td>';
+} else {
+    echo '
+      <td class="text-center" colspan="2">-</td>
+  ';
+}
+
+
 // Costo totale manodopera
 if ($mostra_prezzi) {
     echo '
@@ -355,45 +368,14 @@ if ($mostra_prezzi) {
 }
 
 // Timbro e firma
-$firma = !empty($records[0]['firma_file']) ? '<img src="'.$docroot.'/files/interventi/'.$records[0]['firma_file'].'" style="width:70mm;">' : '';
-echo '
-        <td rowspan="2" class="text-center" style="font-size:8pt;height:30mm;vertical-align:bottom">
-            '.$firma.'<br>
-            <i>('.tr('Timbro e firma leggibile').'.)</i>
-        </td>
-    </tr>';
+
 
 
 // Totale km
-echo '
-    <tr>
-        <td class="text-center">
 
-        </td>';
 
 
 // Costo trasferta
-if ($mostra_prezzi) {
-    echo '
-        <td class="text-center">
-
-        </td>';
-} else {
-    echo '
-        <td class="text-center">-</td>';
-}
-
-// Diritto di chiamata
-if ($mostra_prezzi) {
-    echo '
-        <td class="text-center" colspan="2">
-            <small>'.tr('Diritto di chiamata').':</small><br/><b>'.Translator::numberToLocale($records[0]['tot_dirittochiamata']).' &euro;</b>
-        </td>';
-} else {
-    echo '
-        <td class="text-center" colspan="2">-</td>
-        ';
-}
 
 
 // TOTALE COSTI FINALI
