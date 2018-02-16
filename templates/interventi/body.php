@@ -58,20 +58,6 @@ echo '
         </td>
     </tr>';
 
-// riga 3
-// Elenco impianti su cui è stato fatto l'intervento
-$rs2 = $dbo->fetchArray('SELECT *, (SELECT nome FROM my_impianti WHERE id=my_impianti_interventi.idimpianto) AS nome, (SELECT matricola FROM my_impianti WHERE id=my_impianti_interventi.idimpianto) AS matricola, (SELECT my_impianti_tipiimpianto.descrizione FROM my_impianti LEFT JOIN my_impianti_tipiimpianto ON my_impianti_tipiimpianto.id = idtipoimpianto WHERE my_impianti.id=my_impianti_interventi.idimpianto) AS tipo_impianto  FROM my_impianti_interventi WHERE idintervento='.prepare($idintervento));
-$impianti = [];
-for ($j = 0; $j < sizeof($rs2); ++$j) {
-    $impianti[] = '<b> ['.$rs2[$j]['tipo_impianto'].'] - '.$rs2[$j]['nome']."</b> <small style='color:#777;'>(".$rs2[$j]['matricola'].')</small>';
-}
-echo '
-    <tr>
-        <td colspan="5">
-        '.tr('Impianti').': '.implode(', ', $impianti).'
-        </td>
-    </tr>';
-
 // Richiesta
 echo '
     <tr>
