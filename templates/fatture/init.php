@@ -8,7 +8,7 @@ $records = $dbo->fetchArray('SELECT *,
     (SELECT descrizione FROM co_tipidocumento WHERE id=idtipodocumento) AS tipo_doc,
     (SELECT descrizione FROM co_pagamenti WHERE id=idpagamento) AS tipo_pagamento,
     (SELECT dir FROM co_tipidocumento WHERE id=idtipodocumento) AS dir,
-    (SELECT ragione_sociale FROM an_anagrafiche WHERE idanagrafica=idanagrafica) AS cliente
+    (SELECT ragione_sociale FROM an_anagrafiche WHERE an_anagrafiche.idanagrafica=co_documenti.idanagrafica) AS cliente
 FROM co_documenti WHERE id='.prepare($iddocumento));
 
 $records[0]['rivalsainps'] = floatval($records[0]['rivalsainps']);
