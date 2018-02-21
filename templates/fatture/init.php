@@ -7,7 +7,7 @@ $records = $dbo->fetchArray('SELECT *,
     (SELECT descrizione FROM co_statidocumento WHERE id=idstatodocumento) AS stato_doc,
     (SELECT descrizione FROM co_tipidocumento WHERE id=idtipodocumento) AS tipo_doc,
     (SELECT descrizione FROM co_pagamenti WHERE id=idpagamento) AS tipo_pagamento,
-    (SELECT dir FROM co_tipidocumento WHERE id=idtipodocumento) AS dir
+    (SELECT dir FROM co_tipidocumento WHERE id=idtipodocumento) AS dir,
     (SELECT ragione_sociale FROM an_anagrafiche WHERE idanagrafica=idanagrafica) AS cliente
 FROM co_documenti WHERE id='.prepare($iddocumento));
 
