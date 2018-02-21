@@ -1,7 +1,7 @@
 <?php
 include_once __DIR__.'/../../core.php';
 include_once $docroot.'/modules/interventi/modutil.php';
-$report_name = 'intervento_'.$idintervento.'.pdf';
+$report_name = 'intervento_'.$intervento_numero.'.pdf';
 /*
     Dati intervento
 */
