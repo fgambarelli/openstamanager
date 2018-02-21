@@ -11,9 +11,10 @@ $query = 'SELECT in_interventi.*, (SELECT numero FROM co_contratti WHERE id=(SEL
 $records = $dbo->fetchArray($query);
 
 $costi_intervento = get_costi_intervento($idintervento);
-
 $id_cliente = $records[0]['idanagrafica'];
 $id_sede = $records[0]['idsede'];
+$numero = $records[0]['codice'];
+
 
 // Sostituzioni specifiche
 // Imposta numerointervento-data-numerocommessa su intestazione
