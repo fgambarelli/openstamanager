@@ -19,6 +19,7 @@ $module_name = ($records[0]['dir'] == 'entrata') ? 'Fatture di vendita' : 'Fattu
 
 $id_cliente = $records[0]['idanagrafica'];
 $cliente = $records[0]['cliente'];
+$data_fatt = Translator::dateToLocale($records[0]['data']);
 
 $id_sede = $records[0]['idsede'];
 
