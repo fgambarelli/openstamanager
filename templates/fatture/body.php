@@ -2,7 +2,7 @@
 
 include_once __DIR__.'/../../core.php';
 
-$report_name = 'fattura_'.$numero.'.pdf';
+$report_name = 'fattura_'.$numero.'-'.$cliente.'.pdf';
 
 $autofill = [
     'count' => 0, // Conteggio delle righe

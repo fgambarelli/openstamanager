@@ -8,6 +8,7 @@ $records = $dbo->fetchArray('SELECT *,
     (SELECT descrizione FROM co_tipidocumento WHERE id=idtipodocumento) AS tipo_doc,
     (SELECT descrizione FROM co_pagamenti WHERE id=idpagamento) AS tipo_pagamento,
     (SELECT dir FROM co_tipidocumento WHERE id=idtipodocumento) AS dir
+    (SELECT ragione_sociale FROM an_anagrafiche WHERE idanagrafica=idanagrafica) AS cliente
 FROM co_documenti WHERE id='.prepare($iddocumento));
 
 $records[0]['rivalsainps'] = floatval($records[0]['rivalsainps']);
@@ -17,6 +18,8 @@ $records[0]['bollo'] = floatval($records[0]['bollo']);
 $module_name = ($records[0]['dir'] == 'entrata') ? 'Fatture di vendita' : 'Fatture di acquisto';
 
 $id_cliente = $records[0]['idanagrafica'];
+$cliente = $records[0]['cliente'];
+
 $id_sede = $records[0]['idsede'];
 
 $tipo_doc = $records[0]['tipo_doc'];
@@ -59,7 +62,7 @@ $custom = [
 ];
 
 // Accesso solo a:
-// - cliente se è impostato l'idanagrafica di un Cliente
+// - cliente se ï¿½ impostato l'idanagrafica di un Cliente
 // - utente qualsiasi con permessi almeno in lettura sul modulo
 // - admin
 if ( ( !empty(Auth::user()['idanagrafica']) && $id_cliente != Auth::user()['idanagrafica'] && !Auth::admin()) || Modules::getPermission($module_name)=='-') {
