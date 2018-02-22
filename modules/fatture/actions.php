@@ -1336,49 +1336,67 @@ switch (post('op')) {
         break;
 
 
-case "sendemail":
+    case "sendemail":
 
-      $from_address = post('from_address');
-      $from_name = post('from_name');
+        $from_address = post('from_address');
+        $from_name = post('from_name');
 
-      $destinatario = post('destinatario');
-      $cc = get_var('Destinatario fisso in copia (campo CC)');
+        $destinatario = post('destinatario');
+        $cc = get_var('Destinatario fisso in copia (campo CC)');
 
-      $oggetto = html_entity_decode(post('oggetto'));
-      $testo_email = post('body');
-      $allegato = post('allegato');
+        $oggetto = html_entity_decode(post('oggetto'));
+        $testo_email = post('body');
+        $allegato = post('allegato');
 
-      $mail = new Mail();
-      $mail->SMTPDebug = 2;
+        $mail = new Mail();
+        
+        $mail->IsSMTP();
+        $mail->SMTPDebug = 2;
+        $mail->Host = get_var("Server SMTP");
 
-      $mail->AddReplyTo($from_address, $from_name);
-      $mail->SetFrom($from_address, $from_name);
+        if( get_var("Username SMTP") != '' ){
+            $mail->SMTPAuth = 1;
+            $mail->Username = get_var("Username SMTP");
+            $mail->Password = get_var("Password SMTP");
+        }
 
-      $mail->AddAddress($destinatario, '');
+        if( get_var("Sicurezza SMTP") == "SSL" ){
+            $mail->SMTPSecure = 'ssl';
+        }
 
-      // se ho impostato la conferma di lettura
-      if (post('confermalettura') == 'on') {
-          $mail->ConfirmReadingTo = $from_address;
-      }
+        else if( get_var("Sicurezza SMTP") == "TLS" ){
+            $mail->SMTPSecure = 'tls';
+        }
 
-      $mail->Subject = $oggetto;
-      $mail->AddCC($cc);
+        $mail->Port = get_var("Porta SMTP");
 
-      $mail->MsgHTML($testo_email);
+        $mail->AddReplyTo($from_address, $from_name);
+        $mail->SetFrom($from_address, $from_name);
 
-      if (!empty($allegato)) {
-          $mail->AddAttachment($allegato);
-      }
+        $mail->AddAddress($destinatario, '');
 
-      if(!$mail->Send()) {
-        array_push( $_SESSION['errors'], "ERRORE durante l'invio email: ".$mail->Debugoutput);
-      } else {
+        // se ho impostato la conferma di lettura
+        if (post('confermalettura') == 'on') {
+            $mail->ConfirmReadingTo = $from_address;
+        }
+
+        $mail->Subject = $oggetto;
+        $mail->AddCC($cc);
+
+        $mail->MsgHTML($testo_email);
+
+        if (!empty($allegato)) {
+            $mail->AddAttachment($allegato);
+        }
+
+        if(!$mail->Send()) {
+            $_SESSION['errors'][] = "ERRORE durante l'invio email: ".$mail->ErrorInfo;
+        } else {
             $dbo->query("UPDATE co_documenti SET data_invio=NOW() WHERE id=\"".$id_record."\"");
-            array_push( $_SESSION['infos'], "Email inviata!" );
-      }
-      exit();
+            $_SESSION['infos'][] = "Email inviata!";
+        }
 
-break;
+    break;
 
 }
 
