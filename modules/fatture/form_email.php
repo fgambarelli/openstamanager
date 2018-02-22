@@ -1,9 +1,10 @@
 <?php
-	include_once __DIR__.'/../../core.php';
+	include_once("../../core.php");
 	$module_name = 'Fatture di vendita';
 	//include($docroot."/lib/permissions_check.php");
 
 	$iddocumento = save($_GET['iddocumento']);
+	$id_record = $iddocumento;
 
 	// Lettura dati fattura
 	$query = "SELECT * FROM co_documenti WHERE id=\"".$iddocumento."\"";
@@ -13,33 +14,42 @@
 		echo "Fattura inesistente!";
 		exit;
 	}
-
+	
 	//cliente, numero e data in base al documento
 	$idanagrafica = $rs[0]['idanagrafica'];
 	$idcliente = $rs[0]['idanagrafica'];
 	$numero = $rs[0]['numero_esterno'];
 	$data = date( "d/m/Y", strtotime($rs[0]['data']) );
-
-	$rapportino_nome = sanitizeFilename("Fattura_".$numero.".pdf");
-	$filename = $docroot.'/files/'.strtolower($module_name).'/'.$rapportino_nome;
+	
+	//$rapportino_nome = sanitizeFilename("Fattura_".$numero.".pdf");
+	//$filename = $docroot.'/files/'.strtolower($module_name).'/'.$rapportino_nome; 
 
 	$oggetto = "Invio fattura num. $numero del $data";
 	$testo = "Gentile Cliente,<br/>\n
 				inviamo in allegato la fattura num. $numero del $data.<br/><br/>\n
 				Distinti saluti<br/>";
+	
 
-	$dst_dir = $docroot."/files/".strtolower($module_name)."/";
-
-
-	$iddocumento = $id_record; // Fix temporaneo per la stampa
-	$ptype = 'fatture';
 
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// creazione file da allegare
+	$files = array();
+	
+	$rapportino_nome = sanitizeFilename("Fattura_".$numero.".pdf");
+    array_push($files, $rapportino_nome);
+    
+    $filename = $docroot.'/files/'.strtolower($module_name).'/'.$rapportino_nome; 
+    $dst_dir = $docroot."/files/".strtolower($module_name)."/";
 
-	require $docroot.'/pdfgen.php';
-
+                
+    $iddocumento = $id_record; // Fix temporaneo per la stampa
+    $ptype = 'fatture';
+    
+    require $docroot.'/pdfgen.php';
+    
+    $module_name = 'Fatture di vendita';
+    
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	if( !file_exists($filename) ){
@@ -70,7 +80,7 @@
 	$ragione_sociale_azienda = $rsp[0]['ragione_sociale'];
 	//$email_azienda = $rsp[0]['email'];
 	$email_azienda = get_var ('Indirizzo per le email in uscita');
-
+	
 
 	//echo "			<span>".$ragione_sociale_azienda." &lt;".$email_azienda."&gt;</span>\n";
 	echo "			<input type=\"text\" name=\"from_name\" class=\"form-control\" id=\"from_name\" value=\"".$ragione_sociale_azienda."\" />\n";
@@ -127,7 +137,7 @@
 	echo "			<input type=\"text\" name=\"oggetto\" id=\"oggetto\" maxlength=\"255\"  value=\"".$oggetto."\" class=\"form-control\"  />\n";
 	echo "		</div>\n";
 	echo "	</div>\n";
-
+	
 
 	// destinatario
 	echo "	<div class='row form-group'>\n";
@@ -135,24 +145,24 @@
 	echo "			<textarea placeholder=\"\" class=\"form-control\" id=\"body\" name=\"body\">$testo</textarea>\n";
 	echo "		</div>\n";
 	echo "	</div>\n";
-
-
+	
+	
 	echo "	<button type='button' class='btn btn-primary pull-right' onclick=\"$('#send_email').submit();\"><i class=\"fa fa-envelope\"></i> Invia email</button>\n";
-
+	
 	echo "</form>\n";
 	echo "<div class='clearfix'></div>\n";
 ?>
 
 
 <script type="text/javascript">
-
+	
 	function check_submit(){
 
 		if( $('#destinatario').val()!='' && $('#oggetto').val()!='' ){
 
-			if( confirm('Inviare email?') )
+			if( confirm('Inviare email?') ) 
 					return true;
-			else
+			else 
 					return false;
 
 		} else {
@@ -160,7 +170,7 @@
 			return false;
 		}
 	}
-
+	
 
 
 	$(document).ready(function(){
@@ -171,17 +181,17 @@
 
 		});
 
-
+	
 		CKEDITOR.replace( 'body', {
 			toolbar: [
 				{ name: 'document', items: [ 'NewPage', 'Preview', '-', 'Templates' ] },	// Defines toolbar group with name (used to create voice label) and items in 3 subgroups.
 				['Undo','Redo','-','Cut','Copy','Paste','PasteText','PasteFromWord','-','Scayt', '-','Link','Unlink','-','Bold','Italic','Underline','Superscript','SpecialChar','HorizontalRule','-','NumberedList','BulletedList','Outdent','Indent','Blockquote','-','Styles','Format','Image','Table'], 	// Defines toolbar group without name.
-
+				
 			]
 		});
-
+		
 
 	});
 
-
+	
 </script>
