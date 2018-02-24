@@ -163,7 +163,7 @@ $_SESSION['superselect']['ddt'] = $dir;
 				</div>
 
         <div class="col-md-3">
-					{[ "type": "span", "label": "<?php echo tr('Email inviata il '); ?>", "name": "data_invio", "required": 0, "value": ".Translator::dateToLocale($data_invio$)." ]}
+					{[ "type": "span", "label": "<?php echo tr('Email inviata il '); ?>", "name": "data_invio", "required": 0, "value": "'.Translator::dateToLocale($data_invio$).'" ]}
 				</div>
 
 
