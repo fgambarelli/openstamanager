@@ -433,7 +433,7 @@ echo '
                     <b>'.tr('impianti - ubicazione', [], ['upper' => true]).'</b>
                 </th>
             </tr>
-
+            <tr>
                 <th class="text-center" style="font-size:8pt;width:40%">
                     <b>'.tr('Descrizione').'</b>
                 </th>
