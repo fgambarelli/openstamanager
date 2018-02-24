@@ -336,7 +336,7 @@ echo '
 <table class="table table-bordered vertical-middle">
     <thead>
         <tr>
-            <th class="text-center" colspan="6" style="font-size:11pt;">
+            <th class="text-center" colspan="4" style="font-size:11pt;">
                 <b>'.tr('impianti', [], ['upper' => true]).'</b>
             </th>
         </tr>
@@ -353,13 +353,6 @@ echo '
                 <b>'.tr('Nome').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:22%">
-                <b>'.tr('Descrizione').'</b>
-            </th>
-
-            <th class="text-center" style="font-size:8pt;width:20%">
-                <b>'.tr('Ubicazione').'</b>
-            </th>
 
             <th class="text-center" style="font-size:8pt;width:16%">
                 <b>'.tr('Referente').'</b>
@@ -395,17 +388,6 @@ echo '
                 '.$r['nome'].'
         	</td>';
 
-        // descrizione
-        echo '
-        	<td class="text-center" style="font-size:7pt">
-                '.$r['descrizione'].'
-        	</td>';
-
-        // Ubicazione
-        echo '
-        	<td class="text-center" style="font-size:7pt">
-                '.$r['ubicazione'].'
-            </td>';
 
         // Ubicazione
         echo '
@@ -434,11 +416,11 @@ echo '
                 </th>
             </tr>
             <tr>
-                <th class="text-center" style="font-size:8pt;width:40%">
+                <th class="text-center" style="font-size:12pt;width:40%">
                     <b>'.tr('Descrizione').'</b>
                 </th>
 
-                <th class="text-center" style="font-size:8pt;width:60%">
+                <th class="text-center" style="font-size:12pt;width:60%">
                     <b>'.tr('Ubicazione').'</b>
                 </th>
 
