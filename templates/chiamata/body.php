@@ -341,20 +341,20 @@ echo '
             </th>
         </tr>
         <tr>
-            <th class="text-center" style="font-size:8pt;width:10%">
+            <th class="text-center" style="font-size:10pt;width:10%">
                 <b>'.tr('Matr.').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:7%">
+            <th class="text-center" style="font-size:10pt;width:7%">
                 <b>'.tr('Tipo').'</b>
             </th>
 
-            <th class="text-center" style="font-size:8pt;width:25%">
+            <th class="text-center" style="font-size:10pt;width:25%">
                 <b>'.tr('Nome').'</b>
             </th>
 
 
-            <th class="text-center" style="font-size:8pt;width:16%">
+            <th class="text-center" style="font-size:10pt;width:16%">
                 <b>'.tr('Referente').'</b>
             </th>
 
@@ -372,26 +372,25 @@ echo '
 
         // matricola
         echo '
-        	<td class="text-center" style="font-size:6pt">
+        	<td class="text-center" style="font-size:10pt">
         	    '.$r['matricola'].'
         	</td>';
 
         // tipo
           echo '
-          <td class="text-center" style="font-size:6pt">
+          <td class="text-center" style="font-size:10pt">
                 '.$r['tipoimpianto'].'
           </td>';
 
         // nome
         echo '
-        	<td class="text-center" style="font-size:7pt">
+        	<td class="text-center" style="font-size:10pt">
                 '.$r['nome'].'
         	</td>';
 
-
-        // Ubicazione
+        // Referente
         echo '
-          <td class="text-center" style="font-size:7pt">
+          <td class="text-center" style="font-size:10pt">
                 '.$r['occupante'].'
           </td>';
 
