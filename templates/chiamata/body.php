@@ -439,13 +439,13 @@ echo '
 
             // descrizione
             echo '
-            	<td class="text-center" style="font-size:7pt">
+            	<td class="text-center" style="font-size:12pt">
                     '.$r['descrizione'].'
             	</td>';
 
             // Ubicazione
             echo '
-            	<td class="text-center" style="font-size:7pt">
+            	<td class="text-center" style="font-size:12pt">
                     '.$r['ubicazione'].'
                 </td>';
 
