@@ -5,6 +5,8 @@ include_once __DIR__.'/../../core.php';
 $rs = $dbo->fetchArray('SELECT co_tipidocumento.descrizione, dir FROM co_tipidocumento INNER JOIN co_documenti ON co_tipidocumento.id=co_documenti.idtipodocumento WHERE co_documenti.id='.prepare($id_record));
 $dir = $rs[0]['dir'];
 $tipodoc = $rs[0]['descrizione'];
+$data_invio_d = $data_invio;
+
 
 $_SESSION['superselect']['idanagrafica'] = $records[0]['idanagrafica'];
 $_SESSION['superselect']['ddt'] = $dir;
