@@ -73,18 +73,136 @@ echo '
         </td>
     </tr>';
 
-// Descrizione
-echo '
-    <tr>
-        <td colspan="4" style="font-size:12pt;height:30mm;">
-            <b>'.tr('Descrizione').':</b>
-            <p>'.nl2br($records[0]['descrizione_intervento']).'</p>
-
-        </td>
-    </tr>';
 
 echo '
 </table>';
+
+// INTESTAZIONE impianti
+echo '
+<table class="table table-bordered vertical-middle">
+    <thead>
+        <tr>
+            <th class="text-center" colspan="4" style="font-size:11pt;">
+                <b>'.tr('impianti', [], ['upper' => true]).'</b>
+            </th>
+        </tr>
+        <tr>
+            <th class="text-center" style="font-size:10pt;width:10%">
+                <b>'.tr('Matr.').'</b>
+            </th>
+
+            <th class="text-center" style="font-size:10pt;width:7%">
+                <b>'.tr('Tipo').'</b>
+            </th>
+
+            <th class="text-center" style="font-size:10pt;width:25%">
+                <b>'.tr('Nome').'</b>
+            </th>
+
+
+            <th class="text-center" style="font-size:10pt;width:16%">
+                <b>'.tr('Referente').'</b>
+            </th>
+
+        </tr>
+    </thead>
+
+    <tbody>';
+
+    // TABELLA IMPIANTI
+    $rst = $dbo->fetchArray('SELECT *, (select descrizione from my_impianti_tipiimpianto WHERE my_impianti_tipiimpianto.id = my_impianti.idtipoimpianto) AS tipoimpianto FROM my_impianti JOIN my_impianti_interventi ON my_impianti_interventi.idimpianto=my_impianti.id WHERE my_impianti_interventi.idintervento='.prepare($idintervento).' ORDER BY my_impianti.id');
+
+    foreach ($rst as $i => $r) {
+        echo '
+        <tr>';
+
+        // matricola
+        echo '
+        	<td class="text-center" style="font-size:10pt">
+        	    '.$r['matricola'].'
+        	</td>';
+
+        // tipo
+          echo '
+          <td class="text-center" style="font-size:10pt">
+                '.$r['tipoimpianto'].'
+          </td>';
+
+        // nome
+        echo '
+        	<td class="text-center" style="font-size:10pt">
+                '.$r['nome'].'
+        	</td>';
+
+        // Referente
+        echo '
+          <td class="text-center" style="font-size:10pt">
+                '.$r['occupante'].'
+          </td>';
+
+
+
+        echo '
+        </tr>
+
+        ';
+    }
+
+    echo '
+    </table>';
+
+    // INTESTAZIONE ubicazione impianti
+    echo '
+    <table class="table table-bordered vertical-middle">
+        <thead>
+            <tr>
+                <th class="text-center" colspan="2" style="font-size:11pt;">
+                    <b>'.tr('impianti - ubicazione', [], ['upper' => true]).'</b>
+                </th>
+            </tr>
+            <tr>
+                <th class="text-center" style="font-size:12pt;width:40%">
+                    <b>'.tr('Descrizione').'</b>
+                </th>
+
+                <th class="text-center" style="font-size:12pt;width:60%">
+                    <b>'.tr('Ubicazione').'</b>
+                </th>
+
+            </tr>
+        </thead>
+
+        <tbody>';
+
+        // TABELLA IMPIANTI
+        $rst = $dbo->fetchArray('SELECT *, (select descrizione from my_impianti_tipiimpianto WHERE my_impianti_tipiimpianto.id = my_impianti.idtipoimpianto) AS tipoimpianto FROM my_impianti JOIN my_impianti_interventi ON my_impianti_interventi.idimpianto=my_impianti.id WHERE my_impianti_interventi.idintervento='.prepare($idintervento).' ORDER BY my_impianti.id');
+
+        foreach ($rst as $i => $r) {
+            echo '
+            <tr>';
+
+
+            // descrizione
+            echo '
+            	<td class="text-center" style="font-size:12pt">
+                    '.$r['descrizione'].'
+            	</td>';
+
+            // Ubicazione
+            echo '
+            	<td class="text-center" style="font-size:12pt">
+                    '.$r['ubicazione'].'
+                </td>';
+
+            echo '
+            </tr>
+
+            ';
+        }
+
+echo '
+</table>';
+
 
 $totale = [];
 
@@ -331,131 +449,8 @@ foreach ($rst as $i => $r) {
 echo '
 </table>';
 
-// INTESTAZIONE impianti
-echo '
-<table class="table table-bordered vertical-middle">
-    <thead>
-        <tr>
-            <th class="text-center" colspan="4" style="font-size:11pt;">
-                <b>'.tr('impianti', [], ['upper' => true]).'</b>
-            </th>
-        </tr>
-        <tr>
-            <th class="text-center" style="font-size:10pt;width:10%">
-                <b>'.tr('Matr.').'</b>
-            </th>
-
-            <th class="text-center" style="font-size:10pt;width:7%">
-                <b>'.tr('Tipo').'</b>
-            </th>
-
-            <th class="text-center" style="font-size:10pt;width:25%">
-                <b>'.tr('Nome').'</b>
-            </th>
-
-
-            <th class="text-center" style="font-size:10pt;width:16%">
-                <b>'.tr('Referente').'</b>
-            </th>
-
-        </tr>
-    </thead>
-
-    <tbody>';
-
-    // TABELLA IMPIANTI
-    $rst = $dbo->fetchArray('SELECT *, (select descrizione from my_impianti_tipiimpianto WHERE my_impianti_tipiimpianto.id = my_impianti.idtipoimpianto) AS tipoimpianto FROM my_impianti JOIN my_impianti_interventi ON my_impianti_interventi.idimpianto=my_impianti.id WHERE my_impianti_interventi.idintervento='.prepare($idintervento).' ORDER BY my_impianti.id');
-
-    foreach ($rst as $i => $r) {
-        echo '
-        <tr>';
-
-        // matricola
-        echo '
-        	<td class="text-center" style="font-size:10pt">
-        	    '.$r['matricola'].'
-        	</td>';
-
-        // tipo
-          echo '
-          <td class="text-center" style="font-size:10pt">
-                '.$r['tipoimpianto'].'
-          </td>';
-
-        // nome
-        echo '
-        	<td class="text-center" style="font-size:10pt">
-                '.$r['nome'].'
-        	</td>';
-
-        // Referente
-        echo '
-          <td class="text-center" style="font-size:10pt">
-                '.$r['occupante'].'
-          </td>';
-
-
-
-        echo '
-        </tr>
-
-        ';
-    }
-
-    echo '
-    </table>';
-
-    // INTESTAZIONE ubicazione impianti
-    echo '
-    <table class="table table-bordered vertical-middle">
-        <thead>
-            <tr>
-                <th class="text-center" colspan="2" style="font-size:11pt;">
-                    <b>'.tr('impianti - ubicazione', [], ['upper' => true]).'</b>
-                </th>
-            </tr>
-            <tr>
-                <th class="text-center" style="font-size:12pt;width:40%">
-                    <b>'.tr('Descrizione').'</b>
-                </th>
-
-                <th class="text-center" style="font-size:12pt;width:60%">
-                    <b>'.tr('Ubicazione').'</b>
-                </th>
-
-            </tr>
-        </thead>
-
-        <tbody>';
-
-        // TABELLA IMPIANTI
-        $rst = $dbo->fetchArray('SELECT *, (select descrizione from my_impianti_tipiimpianto WHERE my_impianti_tipiimpianto.id = my_impianti.idtipoimpianto) AS tipoimpianto FROM my_impianti JOIN my_impianti_interventi ON my_impianti_interventi.idimpianto=my_impianti.id WHERE my_impianti_interventi.idintervento='.prepare($idintervento).' ORDER BY my_impianti.id');
-
-        foreach ($rst as $i => $r) {
-            echo '
-            <tr>';
-
-
-            // descrizione
-            echo '
-            	<td class="text-center" style="font-size:12pt">
-                    '.$r['descrizione'].'
-            	</td>';
-
-            // Ubicazione
-            echo '
-            	<td class="text-center" style="font-size:12pt">
-                    '.$r['ubicazione'].'
-                </td>';
-
-            echo '
-            </tr>
-
-            ';
-        }
 
 echo '
-</table>
   <div class="col-xs-12">
       <img src="'.DOCROOT.'/templates/'.$ptype.'/tabella.jpg" alt="Logo" border="0"/>
   </div>'
