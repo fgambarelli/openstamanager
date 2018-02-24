@@ -162,6 +162,11 @@ $_SESSION['superselect']['ddt'] = $dir;
 					{[ "type": "select", "label": "<?php echo tr('Pagamento'); ?>", "name": "idpagamento", "required": 1, "values": "query=SELECT id, descrizione FROM co_pagamenti GROUP BY descrizione ORDER BY descrizione ASC", "value": "$idpagamento$" ]}
 				</div>
 
+        <div class="col-md-3">
+					{[ "type": "span", "label": "<?php echo tr('Email inviata il '); ?>", "name": "data_invio", "required": 0, "value": "$data_invio$" ]}
+				</div>
+
+
 			</div>
 
 
