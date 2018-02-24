@@ -421,56 +421,6 @@ echo '
         ';
     }
 
-    // INTESTAZIONE ubicazione impianti
-    echo '
-    <table class="table table-bordered vertical-middle">
-        <thead>
-            <tr>
-                <th class="text-center" colspan="6" style="font-size:11pt;">
-                    <b>'.tr('impianti - ubicazione', [], ['upper' => true]).'</b>
-                </th>
-            </tr>
-
-                <th class="text-center" style="font-size:8pt;width:40%">
-                    <b>'.tr('Descrizione').'</b>
-                </th>
-
-                <th class="text-center" style="font-size:8pt;width:60%">
-                    <b>'.tr('Ubicazione').'</b>
-                </th>
-
-            </tr>
-        </thead>
-
-        <tbody>';
-
-        // TABELLA IMPIANTI
-        $rst = $dbo->fetchArray('SELECT *, (select descrizione from my_impianti_tipiimpianto WHERE my_impianti_tipiimpianto.id = my_impianti.idtipoimpianto) AS tipoimpianto FROM my_impianti JOIN my_impianti_interventi ON my_impianti_interventi.idimpianto=my_impianti.id WHERE my_impianti_interventi.idintervento='.prepare($idintervento).' ORDER BY my_impianti.id');
-
-        foreach ($rst as $i => $r) {
-            echo '
-            <tr>';
-
-
-            // descrizione
-            echo '
-            	<td class="text-center" style="font-size:7pt">
-                    '.$r['descrizione'].'
-            	</td>';
-
-            // Ubicazione
-            echo '
-            	<td class="text-center" style="font-size:7pt">
-                    '.$r['ubicazione'].'
-                </td>';
-
-
-
-            echo '
-            </tr>
-
-            ';
-        }
 
 echo '
 </table>
