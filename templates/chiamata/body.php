@@ -421,6 +421,9 @@ echo '
         ';
     }
 
+    echo '
+    </table>';
+
     // INTESTAZIONE ubicazione impianti
     echo '
     <table class="table table-bordered vertical-middle">
@@ -463,8 +466,6 @@ echo '
             	<td class="text-center" style="font-size:7pt">
                     '.$r['ubicazione'].'
                 </td>';
-
-
 
             echo '
             </tr>
