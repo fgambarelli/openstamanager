@@ -429,7 +429,7 @@ echo '
     <table class="table table-bordered vertical-middle">
         <thead>
             <tr>
-                <th class="text-center" colspan="6" style="font-size:11pt;">
+                <th class="text-center" colspan="2" style="font-size:11pt;">
                     <b>'.tr('impianti - ubicazione', [], ['upper' => true]).'</b>
                 </th>
             </tr>
