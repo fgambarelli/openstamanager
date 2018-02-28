@@ -95,7 +95,7 @@ if (!empty($rs2)) {
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th colspan="4" class="text-center">
+            <th colspan="5" class="text-center">
                 <b>'.tr('Materiale utilizzato', [], ['upper' => true]).'</b>
             </th>
         </tr>
@@ -109,12 +109,16 @@ if (!empty($rs2)) {
                 <b>'.tr('Descrizione').'</b>
             </th>
 
-            <th style="font-size:8pt;width:15%" class="text-center">
+            <th style="font-size:8pt;width:5%" class="text-center">
                 <b>'.tr('Q.tà').'</b>
             </th>
 
             <th style="font-size:8pt;width:15%" class="text-center">
                 <b>'.tr('Prezzo').'</b>
+            </th>
+
+            <th style="font-size:8pt;width:10%" class="text-center">
+                <b>'.tr('Sconto').'</b>
             </th>
         </tr>
     </thead>
@@ -148,6 +152,12 @@ if (!empty($rs2)) {
         echo '
             <td class="text-center">
                 '.($mostra_prezzi ? Translator::numberToLocale($netto) : '-').'
+            </td>';
+
+        // sconto
+        echo '
+            <td>
+                '.$r['sconto_unitario'].'
             </td>
         </tr>';
     }
