@@ -136,20 +136,21 @@ if (!empty($options) && $options != 'custom') {
 								<div class="row">
 									<input type="hidden" value="'.$field['id'].'" name="id['.$key.']">
 
-									<div class="col-xs-12 col-md-6">
+									<div class="col-xs-12 col-md-12">
 										{[ "type": "text", "label": "'.tr('Nome').'", "name": "name['.$key.']", "value": "'.$field['name'].'"';
         if (!$editable) {
             echo ', "readonly": "1"';
         }
         echo ', "help": "'.tr('Nome con cui il campo viene identificato e visualizzato nella tabella').'" ]}
 									</div>
-
-									<div class="col-xs-12 col-md-6">
-										{[ "type": "text", "label": "'.tr('Query prevista').'", "name": "query['.$key.']", "value": "'.$field['query'].'"';
+								</div>
+								<div class="row">
+									<div class="col-xs-12 col-md-12">
+										{[ "type": "textarea", "label": "'.tr('Query prevista').'", "name": "query['.$key.']", "value": "'.$field['query'].'"';
         if (!$editable) {
             echo ', "readonly": "1"';
         }
-        echo ', "required": "1", "help": "'.tr('Nome effettivo del campo sulla tabella oppure subquery che permette di ottenere il valore del campo').'" ]}
+        echo ', "required": "1", "help": "'.tr('Nome effettivo del campo sulla tabella oppure subquery che permette di ottenere il valore del campo').'.<br>'.tr('ATTENZIONE: utilizza sempre i caratteri < o > seguiti da spazio!').'" ]}
 									</div>
 								</div>
 
@@ -214,7 +215,7 @@ if (!empty($options) && $options != 'custom') {
         if (!$editable) {
             echo ', "readonly": "1"';
         }
-        echo ', "help": "'.tr('Query personalizzata per la ricerca (consigliata per colori e icone)').'" ]}
+        echo ', "help": "'.tr('Query personalizzata per la ricerca (consigliata per colori e icone)').'.<br>'.tr('ATTENZIONE: utilizza sempre i caratteri < o > seguiti da spazio!').'" ]}
 									</div>
 
 									<div class="col-xs-12 col-md-6">
@@ -222,7 +223,7 @@ if (!empty($options) && $options != 'custom') {
         if (!$editable) {
             echo ', "readonly": "1"';
         }
-        echo ', "help": "'.tr("Query personalizzata per l'ordinamento (date e numeri formattati tramite query)").'" ]}
+        echo ', "help": "'.tr("Query personalizzata per l'ordinamento (date e numeri formattati tramite query)").'.<br>'.tr('ATTENZIONE: utilizza sempre i caratteri < o > seguiti da spazio!').'" ]}
 									</div>
 								</div>
 							</div>
@@ -279,13 +280,13 @@ if (!empty($options) && $options != 'custom') {
 		<div class="box-body">
 			<div class="row">
 				<input type="hidden" value="" name="id[-id-]">
-
-				<div class="col-xs-12 col-md-6">
+				<div class="col-xs-12 col-md-12">
 					{[ "type": "text", "label": "'.tr('Nome').'", "name": "name[-id-]" ]}
 				</div>
-
-				<div class="col-xs-12 col-md-6">
-					{[ "type": "text", "label": "'.tr('Query prevista').'", "name": "query[-id-]" ]}
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					{[ "type": "textarea", "label": "'.tr('Query prevista').'", "name": "query[-id-]" ]}
 				</div>
 			</div>
 
