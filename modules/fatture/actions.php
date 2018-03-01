@@ -195,7 +195,7 @@ switch (post('op')) {
         $rs = $dbo->fetchArray($query);
 
         for ($i = 0; $i < sizeof($rs); ++$i) {
-            $dbo->query("UPDATE in_interventi SET idstatointervento=(SELECT idstatointervento FROM in_statiintervento WHERE descrizione='Completato') WHERE id=".prepare($rs[$i]['idintervento']));
+            $dbo->query("UPDATE in_interventi SET idstatointervento='OK' WHERE id=".prepare($rs[$i]['idintervento']));
         }
 
         // Se delle righe sono state create da un ordine, devo riportare la quantità evasa nella tabella degli ordini al valore di prima, riaggiungendo la quantità che sto togliendo
@@ -295,7 +295,7 @@ switch (post('op')) {
             $codice = $rs[0]['codice'];
 
             //Fatturo le ore di lavoro raggruppate per costo orario
-            $rst = $dbo->fetchArray('SELECT SUM( ROUND( TIMESTAMPDIFF( MINUTE, orario_inizio, orario_fine ) / 60, '.get_var('Cifre decimali per quantità').' ) ) AS tot_ore, SUM(prezzo_ore_consuntivo) AS tot_prezzo_ore_consuntivo, prezzo_ore_unitario FROM in_interventi_tecnici WHERE idintervento='.prepare($idintervento).' GROUP BY prezzo_ore_unitario');
+            $rst = $dbo->fetchArray('SELECT SUM( ROUND( TIMESTAMPDIFF( MINUTE, orario_inizio, orario_fine ) / 60, '.get_var('Cifre decimali per quantità').' ) ) AS tot_ore, SUM(prezzo_ore_consuntivo) AS tot_prezzo_ore_consuntivo, SUM(sconto) AS tot_sconto, prezzo_ore_unitario FROM in_interventi_tecnici WHERE idintervento='.prepare($idintervento).' GROUP BY prezzo_ore_unitario');
             
             //Aggiunta riga intervento sul documento
             if( sizeof($rst) == 0 ){
@@ -310,8 +310,12 @@ switch (post('op')) {
                     $query = 'SELECT * FROM co_iva WHERE id='.prepare($idiva);
                     $rs = $dbo->fetchArray($query);
 
-                    $sconto = $rst[$i]['sconto'];
+                    $sconto = $rst[$i]['tot_sconto'];
                     $subtot = $rst[$i]['tot_prezzo_ore_consuntivo'];
+
+					// controllo se prezzo_ore è vuoto
+					if ($subtot = 0) {$ore=0;}
+
                     $iva = ($subtot - $sconto) / 100 * $rs[0]['percentuale'];
                     $iva_indetraibile = $iva / 100 * $rs[0]['indetraibile'];
                     $desc_iva = $rs[0]['descrizione'];
@@ -1114,10 +1118,6 @@ switch (post('op')) {
             $id_record = $rsp[0]['iddocumento'];
             $idintervento = $rsp[0]['idintervento'];
 
-            $query = 'DELETE FROM `co_righe_documenti` WHERE iddocumento='.prepare($id_record).' AND id='.prepare($idriga);
-
-            $dbo->query($query);
-
             // Ricalcolo inps, ritenuta e bollo
             if ($dir == 'entrata') {
                 ricalcola_costiagg_fattura($id_record);
@@ -1126,19 +1126,23 @@ switch (post('op')) {
             }
 
             // Lettura interventi collegati
-            $query = 'SELECT id, idintervento FROM co_righe_documenti WHERE iddocumento='.prepare($id_record).' AND idintervento IS NOT NULL';
-            $rs = $dbo->fetchArray($query);
+            //$query = 'SELECT id, idintervento FROM co_righe_documenti WHERE iddocumento='.prepare($id_record).' AND idintervento IS NOT NULL';
+            //$rs = $dbo->fetchArray($query);
 
             // Se ci sono degli interventi collegati li rimetto nello stato "Completato"
-            for ($i = 0; $i < sizeof($rs); ++$i) {
-                $dbo->query("UPDATE in_interventi SET idstatointervento=(SELECT idstatointervento FROM in_statiintervento WHERE descrizione='Completato') WHERE id=".prepare($rs[$i]['idintervento']));
+            //for ($i = 0; $i < sizeof($rs); ++$i) {
+			$dbo->query("UPDATE in_interventi SET idstatointervento='OK' WHERE id=".prepare($idintervento));
 
-                // Rimuovo dalla fattura gli articoli collegati all'intervento
-                $rs2 = $dbo->fetchArray('SELECT idarticolo FROM mg_articoli_interventi WHERE idintervento='.prepare($idintervento));
-                for ($j = 0; $j < sizeof($rs2); ++$j) {
-                    rimuovi_articolo_dafattura($rs[0]['idarticolo'], $id_record, $rs[0]['idrigadocumento']);
-                }
-            }
+			// Rimuovo dalla fattura gli articoli collegati all'intervento
+			$rs2 = $dbo->fetchArray('SELECT idarticolo FROM mg_articoli_interventi WHERE idintervento='.prepare($idintervento));
+			for ($j = 0; $j < sizeof($rs2); ++$j) {
+				rimuovi_articolo_dafattura($rs[0]['idarticolo'], $id_record, $rs[0]['idrigadocumento']);
+			}
+            //}
+			
+			//rimuovo riga da co_righe_documenti
+			$query = 'DELETE FROM `co_righe_documenti` WHERE iddocumento='.prepare($id_record).' AND id='.prepare($idriga);
+            $dbo->query($query);
 
             $_SESSION['infos'][] = tr('Intervento _NUM_ rimosso!', [
                 '_NUM_' => $idintervento,
@@ -1190,7 +1194,7 @@ switch (post('op')) {
                     $dbo->query("UPDATE co_preventivi SET idstato=(SELECT id FROM co_statipreventivi WHERE descrizione='In lavorazione') WHERE id=".prepare($rsp[$i]['idpreventivo']));
 
                     // Aggiorno anche lo stato degli interventi collegati ai preventivi
-                    $dbo->query("UPDATE in_interventi SET idstatointervento=(SELECT idstatointervento FROM in_statiintervento WHERE descrizione='Completato') WHERE id IN (SELECT idintervento FROM co_preventivi_interventi WHERE idpreventivo=".prepare($rsp[$i]['idpreventivo']).')');
+                    $dbo->query("UPDATE in_interventi SET idstatointervento='OK' WHERE id IN (SELECT idintervento FROM co_preventivi_interventi WHERE idpreventivo=".prepare($rsp[$i]['idpreventivo']).')');
                 }
 
                 /*
@@ -1240,7 +1244,7 @@ switch (post('op')) {
                     $dbo->query("UPDATE co_contratti SET idstato=(SELECT id FROM co_staticontratti WHERE descrizione='In lavorazione') WHERE id=".prepare($rsp[$i]['idcontratto']));
 
                     // Aggiorno anche lo stato degli interventi collegati ai contratti
-                    $dbo->query("UPDATE in_interventi SET idstatointervento=(SELECT idstatointervento FROM in_statiintervento WHERE descrizione='Completato') WHERE id IN (SELECT idintervento FROM co_righe_contratti WHERE idcontratto=".prepare($rsp[$i]['idcontratto']).')');
+                    $dbo->query("UPDATE in_interventi SET idstatointervento='OK' WHERE id IN (SELECT idintervento FROM co_righe_contratti WHERE idcontratto=".prepare($rsp[$i]['idcontratto']).')');
                 }
 
                 /*
