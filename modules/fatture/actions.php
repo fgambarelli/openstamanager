@@ -296,7 +296,7 @@ switch (post('op')) {
 
             //Fatturo le ore di lavoro raggruppate per costo orario
             $rst = $dbo->fetchArray('SELECT SUM( ROUND( TIMESTAMPDIFF( MINUTE, orario_inizio, orario_fine ) / 60, '.get_var('Cifre decimali per quantità').' ) ) AS tot_ore, SUM(prezzo_ore_consuntivo) AS tot_prezzo_ore_consuntivo, SUM(sconto) AS tot_sconto, prezzo_ore_unitario FROM in_interventi_tecnici WHERE idintervento='.prepare($idintervento).' GROUP BY prezzo_ore_unitario');
-            
+
             //Aggiunta riga intervento sul documento
             if( sizeof($rst) == 0 ){
                 $_SESSION['warnings'][] = tr('L\'intervento _NUM_ non ha sessioni di lavoro!', [
@@ -305,16 +305,13 @@ switch (post('op')) {
             } else {
                 for( $i=0; $i<sizeof($rst); $i++ ){
                     $ore = $rst[$i]['tot_ore'];
-                    
+
                     // Calcolo iva
                     $query = 'SELECT * FROM co_iva WHERE id='.prepare($idiva);
                     $rs = $dbo->fetchArray($query);
 
                     $sconto = $rst[$i]['tot_sconto'];
                     $subtot = $rst[$i]['tot_prezzo_ore_consuntivo'];
-
-					// controllo se prezzo_ore è vuoto
-					if ($subtot = 0) {$ore=0;}
 
                     $iva = ($subtot - $sconto) / 100 * $rs[0]['percentuale'];
                     $iva_indetraibile = $iva / 100 * $rs[0]['indetraibile'];
@@ -329,13 +326,16 @@ switch (post('op')) {
                     $query = 'SELECT * FROM co_ritenutaacconto WHERE id='.prepare(get_var("Percentuale ritenuta d'acconto"));
                     $rs = $dbo->fetchArray($query);
                     $ritenutaacconto = ($subtot - $sconto + $rivalsainps) / 100 * $rs[0]['percentuale'];
-                    
+
+                    // controllo se prezzo_ore è vuoto
+          					if ($subtot = 0) {$qta = 0;}
+
                     $query = 'INSERT INTO co_righe_documenti(iddocumento, idintervento, idconto, idiva, desc_iva, iva, iva_indetraibile, descrizione, subtotale, sconto, sconto_unitario, tipo_sconto, um, qta, idrivalsainps, rivalsainps, idritenutaacconto, ritenutaacconto, `order`) VALUES('.prepare($id_record).', '.prepare($idintervento).', '.prepare($idconto).', '.prepare($idiva).', '.prepare($desc_iva).', '.prepare($iva).', '.prepare($iva_indetraibile).', '.prepare($descrizione).', '.prepare($subtot).', '.prepare($sconto).', '.prepare($sconto).", 'UNT', 'ore', ".prepare($ore).', '.prepare(get_var('Percentuale rivalsa INPS')).', '.prepare($rivalsainps).', '.prepare(get_var("Percentuale ritenuta d'acconto")).', '.prepare($ritenutaacconto).', (SELECT IFNULL(MAX(`order`) + 1, 0) FROM co_righe_documenti AS t WHERE iddocumento='.prepare($id_record).'))';
                     $dbo->query($query);
                 }
             }
-            
-            
+
+
             $costi_intervento = get_costi_intervento($idintervento);
 
             //Fatturo i diritti di chiamata raggruppati per costo
@@ -1139,7 +1139,7 @@ switch (post('op')) {
 				rimuovi_articolo_dafattura($rs[0]['idarticolo'], $id_record, $rs[0]['idrigadocumento']);
 			}
             //}
-			
+
 			//rimuovo riga da co_righe_documenti
 			$query = 'DELETE FROM `co_righe_documenti` WHERE iddocumento='.prepare($id_record).' AND id='.prepare($idriga);
             $dbo->query($query);
@@ -1353,7 +1353,7 @@ switch (post('op')) {
         $allegato = post('allegato');
 
         $mail = new Mail();
-        
+
         $mail->IsSMTP();
         $mail->SMTPDebug = 2;
         $mail->Host = get_var("Server SMTP");
