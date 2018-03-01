@@ -49,7 +49,7 @@ $default_header$
             <tr>
                 <td colspan="4" class="border-full" style="height:11mm;">
                     <p class="small-bold">'.tr('Pagamento', [], ['upper' => true]).'</p>
-                    <p>$c_pagamento$</p>
+                    <p>$pagamento$</p>
                 </td>
             </tr>
         </table>
