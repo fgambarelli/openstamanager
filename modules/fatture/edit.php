@@ -27,13 +27,13 @@ $_SESSION['superselect']['ddt'] = $dir;
 		</div>
 
 		<div class="panel-body">
-		
+
 			<?php
 				if ($dir == 'entrata') {
 					$rs2 = $dbo->fetchArray('SELECT piva, codice_fiscale, citta, indirizzo, cap, provincia FROM an_anagrafiche WHERE idanagrafica='.prepare($records[0]['idanagrafica']));
 					$campi_mancanti = [];
-					
-					
+
+
 					if ($rs2[0]['piva'] == '') {
 						if ($rs2[0]['codice_fiscale'] == '') {
 							array_push($campi_mancanti, 'codice fiscale');
@@ -48,7 +48,7 @@ $_SESSION['superselect']['ddt'] = $dir;
 					if ($rs2[0]['cap'] == '') {
 						array_push($campi_mancanti, 'C.A.P.');
 					}
-					
+
 
 					if (sizeof($campi_mancanti) > 0) {
 						echo "<div class='alert alert-warning'><i class='fa fa-warning'></i> Prima di procedere alla stampa completa i seguenti campi dell'anagrafica:<br/><b>".implode(', ', $campi_mancanti).'</b><br/>
@@ -56,16 +56,16 @@ $_SESSION['superselect']['ddt'] = $dir;
 					}
 				}
 			?>
-			
-				
+
+
             <div class="pull-right">
-			
+
                 <button type="button" class="btn btn-primary" onclick="if( confirm('Duplicare questa fattura?') ){ $('#form-copy').submit(); }"><i class="fa fa-copy"></i> <?php echo tr('Duplica fattura'); ?></button>
 
 				<button type="submit" class="btn btn-success"><i class="fa fa-check"></i> <?php echo tr('Salva modifiche'); ?></button>
-				
+
 			</div>
-			
+
 			<div class="clearfix"></div>
 
 			<div class="row">
@@ -327,7 +327,7 @@ if ($records[0]['stato'] != 'Pagato' && $records[0]['stato'] != 'Emessa') {
                         </a>';
 
         // Lettura ddt
-        $ddt_query = 'SELECT COUNT(*) AS tot FROM dt_ddt WHERE idanagrafica='.prepare($records[0]['idanagrafica']).' AND idstatoddt IN (SELECT id FROM dt_statiddt WHERE descrizione IN(\'Bozza\', \'Parzialmente fatturato\')) AND idtipoddt=(SELECT id FROM dt_tipiddt WHERE dir='.prepare($dir).') AND dt_ddt.id IN (SELECT idddt FROM dt_righe_ddt WHERE dt_righe_ddt.idddt = dt_ddt.id AND (qta - qta_evasa) > 0)';
+        $ddt_query = 'SELECT COUNT(*) AS tot FROM dt_ddt WHERE idanagrafica='.prepare($records[0]['idanagrafica']).' AND idstatoddt IN (SELECT id FROM dt_statiddt WHERE descrizione IN(\'Evaso\', \'Parzialmente fatturato\')) AND idtipoddt=(SELECT id FROM dt_tipiddt WHERE dir='.prepare($dir).') AND dt_ddt.id IN (SELECT idddt FROM dt_righe_ddt WHERE dt_righe_ddt.idddt = dt_ddt.id AND (qta - qta_evasa) > 0)';
         $ddt = $dbo->fetchArray($ddt_query)[0]['tot'];
         echo '
                         <a class="btn btn-sm btn-primary'.(!empty($ddt) ? '' : ' disabled').'" data-href="'.$rootdir.'/modules/fatture/add_ddt.php?id_module='.$id_module.'&id_record='.$id_record.'" data-toggle="modal" data-title="Aggiungi ddt" data-target="#bs-popup">
