@@ -328,7 +328,7 @@ switch (post('op')) {
                     $ritenutaacconto = ($subtot - $sconto + $rivalsainps) / 100 * $rs[0]['percentuale'];
 
                     // controllo se prezzo_ore è vuoto
-          					if ($subtot=0) {
+          					if ($subtot==0) {
                         $ore=0;
                       }
 
