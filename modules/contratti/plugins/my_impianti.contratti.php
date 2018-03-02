@@ -24,7 +24,7 @@ if (!empty($results)) {
         echo '
             <tr>
                 <td>
-                    '.Modules::link('Interventi', $result['id'], tr('Contratto num. _NUM_ del _DATE_', [
+                    '.Modules::link('Contratti', $result['id'], tr('Contratto num. _NUM_ del _DATE_', [
                         '_NUM_' => $result['numero'],
                         '_DATE_' => Translator::dateToLocale($result['data_accettazione']),
                     ])).'
