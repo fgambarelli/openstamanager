@@ -16,7 +16,7 @@ if (!empty($results)) {
     echo '
         <table class="table table-striped table-hover">
             <tr>
-                <th width="25%">'.tr('Contratto').'</th>
+                <th width="60%">'.tr('Contratto').'</th>
                 <th>'.tr('Descrizione').'</th>
             </tr>';
 
