@@ -24,6 +24,7 @@ $body .= "<col width=\"100\"><col width=\"120\"><col width=\"10\"><col width=\"5
 
 $body .= "<thead>\n";
 $body .= "	<tr>\n";
+$body .= "		<th style='padding:2mm; background:#eee;'>PROG</th>\n";
 $body .= "		<th style='padding:2mm; background:#eee;'>Cliente</th>\n";
 $body .= "		<th style='padding:2mm; background:#eee;'>Indirizzo</th>\n";
 $body .= "		<th style='padding:2mm; background:#eee;'>N.</th>\n";
@@ -38,15 +39,17 @@ $body .= "</thead>\n";
 
 $body .= "<tbody>\n";
 
-$rs = $dbo->fetchArray("SELECT co_scadenziario.id AS id, ragione_sociale AS `Anagrafica`, co_pagamenti.descrizione AS `Tipo di pagamento`, CONCAT( co_tipidocumento.descrizione, CONCAT( ' numero ', IF(numero_esterno<>'', numero_esterno, numero) ) ) AS `Documento`, DATE_FORMAT(data_emissione, '%d/%m/%Y') AS `Data emissione`, DATE_FORMAT(scadenza, '%d/%m/%Y') AS `Data scadenza`, da_pagare AS `Importo`, pagato AS `Pagato`, IF(scadenza<NOW(), '#ff7777', '') AS _bg_, co_documenti.numero num_fatt, DATE_FORMAT(co_documenti.data, '%d/%m/%Y') AS data_fatt, an_anagrafiche.codiceiban AS iban, an_anagrafiche.appoggiobancario AS appoggiobancario, CONCAT (an_anagrafiche.indirizzo,' ',an_anagrafiche.citta, ' ', an_anagrafiche.cap , ' ' ,an_anagrafiche.provincia ) AS indirizzo_completo FROM co_scadenziario
+$rs = $dbo->fetchArray("SELECT @s:=@s+1 serial_no, ,co_scadenziario.id AS id, ragione_sociale AS `Anagrafica`, co_pagamenti.descrizione AS `Tipo di pagamento`, CONCAT( co_tipidocumento.descrizione, CONCAT( ' numero ', IF(numero_esterno<>'', numero_esterno, numero) ) ) AS `Documento`, DATE_FORMAT(data_emissione, '%d/%m/%Y') AS `Data emissione`, DATE_FORMAT(scadenza, '%d/%m/%Y') AS `Data scadenza`, da_pagare AS `Importo`, pagato AS `Pagato`, IF(scadenza<NOW(), '#ff7777', '') AS _bg_, co_documenti.numero num_fatt, DATE_FORMAT(co_documenti.data, '%d/%m/%Y') AS data_fatt, an_anagrafiche.codiceiban AS iban, an_anagrafiche.appoggiobancario AS appoggiobancario, CONCAT (an_anagrafiche.indirizzo,' ',an_anagrafiche.citta, ' ', an_anagrafiche.cap , ' ' ,an_anagrafiche.provincia ) AS indirizzo_completo FROM co_scadenziario
     INNER JOIN co_documenti ON co_scadenziario.iddocumento=co_documenti.id
     INNER JOIN an_anagrafiche ON co_documenti.idanagrafica=an_anagrafiche.idanagrafica
     INNER JOIN co_pagamenti ON co_documenti.idpagamento=co_pagamenti.id
     INNER JOIN co_tipidocumento ON co_documenti.idtipodocumento=co_tipidocumento.id
+    JOIN JOIN (select @s:=0) s
 WHERE ABS(pagato) < ABS(da_pagare) ".$add_where." AND data_emissione >= '".$_SESSION['period_start']."' AND data_emissione <= '".$_SESSION['period_end']."' ORDER BY ragione_sociale ASC");
 
 for ($i = 0; $i < sizeof($rs); ++$i) {
     $body .= '	<tr>';
+    $body .= '		<td>'.$rs[$i]['serial_no']."</td>\n";
     $body .= '		<td>'.$rs[$i]['Anagrafica']."</td>\n";
     $body .= '		<td>'.$rs[$i]['indirizzo_completo']."</td>\n";
     $body .= '		<td>'.$rs[$i]['num_fatt']."</td>\n";
