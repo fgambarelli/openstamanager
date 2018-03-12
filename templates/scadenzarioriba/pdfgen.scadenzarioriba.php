@@ -43,7 +43,7 @@ $rs = $dbo->fetchArray("SELECT co_scadenziario.id AS id, ragione_sociale AS `Ana
     INNER JOIN an_anagrafiche ON co_documenti.idanagrafica=an_anagrafiche.idanagrafica
     INNER JOIN co_pagamenti ON co_documenti.idpagamento=co_pagamenti.id
     INNER JOIN co_tipidocumento ON co_documenti.idtipodocumento=co_tipidocumento.id
-WHERE ABS(pagato) < ABS(da_pagare) ".$add_where." AND scadenza >= '".$_SESSION['period_start']."' AND scadenza <= '".$_SESSION['period_end']."' ORDER BY scadenza ASC");
+WHERE ABS(pagato) < ABS(da_pagare) ".$add_where." AND data_emissione >= '".$_SESSION['period_start']."' AND data_emissione <= '".$_SESSION['period_end']."' ORDER BY scadenza ASC");
 
 for ($i = 0; $i < sizeof($rs); ++$i) {
     $body .= '	<tr>';
