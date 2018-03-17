@@ -143,7 +143,7 @@ foreach ($righe as $r) {
             <td class='text-right'>";
         if($r['is_descrizione']==0){
             echo
-                (empty($r['subtotale']) ? '' : Translator::numberToLocale($r['subtotale'])).' &euro;';
+                (empty($r['subtotale']) ? '' : Translator::numberToLocale($r['subtotale'] - $r['sconto'])).' &euro;';
 
             if ($r['sconto'] > 0) {
                 echo "
